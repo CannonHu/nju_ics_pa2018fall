@@ -4,6 +4,7 @@ void set_CF_add(uint32_t result,uint32_t src,size_t data_size){
 	result = sign_ext(result & (0xFFFFFFFF >> (32 - data_size)),data_size);
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)),data_size);
 	cpu.eflags.CF = result<src;
+	printf("CF: %d",cpu.eflags.CF);
 	
 }
 
@@ -114,6 +115,7 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size) {
 	uint32_t res = 0;
 	uint32_t src_t = ~src + 1;
 	res = dest + src_t;
+	printf("dest: %x src: %x\n",dest,src);
 
 	set_CF_add(res,src_t,data_size);
 	set_PF(res);
