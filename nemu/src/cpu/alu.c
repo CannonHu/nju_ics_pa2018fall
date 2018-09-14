@@ -106,8 +106,7 @@ uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size) {
 #else
 	uint32_t res = 0;
 	res = dest + src;
-	printf("src: %x dest: %x\n",src,dest);
-
+	
 	set_CF_add(res,src,data_size);
 	set_PF(res);
 
@@ -143,8 +142,7 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size) {
 	uint32_t res = 0;
 	uint32_t src_t = ~src + 1;
 	res = dest + src_t;
-	printf("dest: %x src: %x\n",dest,src);
-
+	
 	set_CF_sub(res,src,dest,data_size);
 	set_PF(res);
 
