@@ -25,7 +25,7 @@ void set_PF(uint32_t result){
 		}
 		tool = tool << 1;
 	}
-	cpu.efalgs.PF = counts % 2;
+	cpu.eflags.PF = counts % 2;
 }
 
 void set_OF_add(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
