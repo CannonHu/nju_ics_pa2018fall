@@ -1,12 +1,71 @@
 #include "cpu/cpu.h"
 
+void set_CF_add(unit32_t result,unit32_t src,size_t data_size){
+	result = sign_ext(result & (0xFFFFFFFF >> (32 - data_size)),data_size);
+	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)),data_size);
+	cpu.eflags.CF=result<src;
+}
+
+void set_ZF(unit32_t result,size_t data_size){
+	result = result & (0xFFFFFFFF >> (32 - data_size));
+	cpu.eflags.ZF = (result == 0);
+}
+
+void set_SF(unit32_t result,size_t data_size){
+	result = sign_ext(result & (0xFFFFFFFF >> (32 - data_size)),data_size);
+	cpu.efalgs.SF = sign(result);
+}
+
+void set_PF(unit32_t result){
+	int counts = 0;int tool = 0x00000001;
+	for(int i = 0;i < 8;i++){
+		if(tool & result){
+			counts++;
+		}
+		tool = tool << 1;
+	}
+	cpu.efalgs.PF = counts % 2;
+}
+
+void set_OF_add(unit32_t result,unit32_t src,unit32_t dest,size_t data_size){
+	switch(data_size){
+		case 8:
+			result = sign_ext(result & 0xFF,8);
+			src = sign_ext(sign & 0xFF,8);
+			dest = sign_ext(dest & 0xFF,8);
+			break;
+		case 16:
+			result = sign_ext(result & 0xFFF,16);
+			src = sign_ext(sign & 0xFFF,16);
+			dest = sign_ext(dest & 0xFFF,16);
+			break;
+		default:break;
+	}
+	if(sign(src) == sign(dest)){
+		if(sign(src) != sign(result))
+			cpu.eflags.OF = 1;
+		else
+			cpu.eflags.OF = 0;
+	}
+	else{
+		cpu.eflags.OF = 0;
+	}
+}
+
+
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size) {
 #ifdef NEMU_REF_ALU
 	return __ref_alu_add(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	unit32_t res = 0;
+	res = dest + src;
+
+	set_CF_add(res,src,data_size);
+	set_PF(res);
+
+	set_ZF(res,data_size);
+	set_SF(res,data_size);
+	set_OF_add(res,src,dest,data_size);
 #endif
 }
 
