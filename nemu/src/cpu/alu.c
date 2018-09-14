@@ -13,6 +13,7 @@ void set_CF_adc(uint32_t result,uint32_t src,size_t data_size){
 		cpu.eflags.CF = result<=src;
 	else
 		cpu.eflags.CF = 0;
+	printf(" CF: %x\n",cpu.eflags.CF);
 }
 
 void set_ZF(uint32_t result,size_t data_size){
@@ -86,7 +87,7 @@ uint32_t alu_adc(uint32_t src, uint32_t dest, size_t data_size) {
 #else
 	uint32_t res = 0;
 	res = dest + src + cpu.eflags.CF;
-	printf("src: %x dest: %x",src,dest);
+	printf("src: %x dest: %x\n",src,dest);
 	set_CF_adc(res,src,data_size);
 	set_PF(res);
 
