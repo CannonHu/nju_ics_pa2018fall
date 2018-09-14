@@ -12,7 +12,7 @@ void set_ZF(uint32_t result,size_t data_size){
 }
 
 void set_SF(uint32_t result,size_t data_size){
-	result = sign_ext(result & (0xFFFFFFFF >> (32-data_size)),size_data);
+	result = sign_ext(result & (0xFFFFFFFF >> (32-data_size)),data_size);
 	cpu.eflags.SF=sign(result);
 }
 
