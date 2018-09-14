@@ -1,20 +1,6 @@
 #include "cpu/cpu.h"
 
-void set_CF_add(unit32_t result,unit32_t src,size_t data_size){
-	result = sign_ext(result & (0xFFFFFFFF >> (32 - data_size)),data_size);
-	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)),data_size);
-	cpu.eflags.CF=result<src;
-}
-
-void set_ZF(unit32_t result,size_t data_size){
-	result = result & (0xFFFFFFFF >> (32 - data_size));
-	cpu.eflags.ZF = (result == 0);
-}
-
-void set_SF(unit32_t result,size_t data_size){
-	result = sign_ext(result & (0xFFFFFFFF >> (32 - data_size)),data_size);
-	cpu.efalgs.SF = sign(result);
-}
+void set_CF_add(uni
 
 void set_PF(unit32_t result){
 	int counts = 0;int tool = 0x00000001;
