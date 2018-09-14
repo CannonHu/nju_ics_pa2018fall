@@ -22,6 +22,7 @@ void set_CF_adc(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 		cpu.eflags.CF=result<src;
 }
 
+
 void set_ZF(uint32_t result,size_t data_size){
 	result = result & (0xFFFFFFFF >> (32 - data_size));
 	cpu.eflags.ZF=(result==0);
@@ -114,7 +115,7 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size) {
 	uint32_t src_t = ~src + 1;
 	res = dest + src_t;
 
-	set_CF_add(res,src,data_size);
+	set_CF_add(res,src_t,data_size);
 	set_PF(res);
 
 	set_ZF(res,data_size);
