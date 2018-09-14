@@ -10,7 +10,7 @@ void set_CF_add(uint32_t result,uint32_t src,size_t data_size){
 
 void set_CF_adc(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 	printf(" CF: %d",cpu.eflags.CF);
-	if(src == 0x00000000 || dest == 0x00000000){
+	if((src == 0x00000000 || dest == 0x00000000) && cpu.eflags.CF == 0){
 		cpu.eflags.CF = 0;
 		return;
 	}
