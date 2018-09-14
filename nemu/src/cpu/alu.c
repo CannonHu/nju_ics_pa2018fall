@@ -1,8 +1,23 @@
 #include "cpu/cpu.h"
 
-void set_CF_add(uni
+void set_CF_add(uint32_t result,uint32_t src,size_t data_size){
+	result = sign_ext(result & (0xFFFFFFFF >> (32 - data_size)),data_size);
+	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)),data_size);
+	cpu.eflags.CF = result<src;
+}
 
-void set_PF(unit32_t result){
+void set_ZF(uint32_t result,size_t data_size){
+	result = result & (0xFFFFFFFF >> (32 - data_size));
+	cpu.eflags.ZF=(result==0);
+}
+
+void set_SF(uint32_t result,size_t data_size){
+	result = sign_ext(result & (0xFFFFFFFF >> (32-data_size)),size_data);
+	cpu.eflags.SF=sign(result);
+}
+
+
+void set_PF(uint32_t result){
 	int counts = 0;int tool = 0x00000001;
 	for(int i = 0;i < 8;i++){
 		if(tool & result){
@@ -13,7 +28,7 @@ void set_PF(unit32_t result){
 	cpu.efalgs.PF = counts % 2;
 }
 
-void set_OF_add(unit32_t result,unit32_t src,unit32_t dest,size_t data_size){
+void set_OF_add(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 	switch(data_size){
 		case 8:
 			result = sign_ext(result & 0xFF,8);
