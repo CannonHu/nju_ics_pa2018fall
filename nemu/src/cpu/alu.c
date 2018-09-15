@@ -213,7 +213,12 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size) {
 	printf("%d %x %x\n",data_size,dest,src);
 	printf("%llx %llx\n",(int64_t)dest,(int64_t)src);
 	res = (int64_t)dest * (int64_t)src;
-	printf("%4 - data_size * 2));
+	printf("%llx\n",__ref_alu_imul(src,dest,data_size));
+	int64_t t=res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size * 2));
+	printf("%llx\n",t);
+	return t;
+
+
 #endif
 }
 
