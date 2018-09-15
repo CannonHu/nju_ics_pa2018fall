@@ -304,10 +304,12 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
 	return __ref_alu_shl(src, dest, data_size);
 #else
 	uint32_t res = 0;
+	printf("%d %x %x\n",data_size,dest,src);
 	dest = dest & (0xFFFFFFFF >> (32-data_size));
 	res = dest << src;
 	
 	cpu.eflags.CF = !((dest << (src-1)) == 0);
+	printf("%x\n",cpu.eflags.CF);
 	set_PF(res);
 
 	set_ZF(res,data_size);
