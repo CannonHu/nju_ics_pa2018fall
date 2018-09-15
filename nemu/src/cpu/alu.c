@@ -190,11 +190,9 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
 	return __ref_alu_mul(src, dest, data_size);
 #else
 	uint64_t res = 0;
-	printf("%d %x %x\n",data_size,dest,src);
 	dest = dest & (0xFFFFFFFF >> (32-data_size));
 	src = src & (0xFFFFFFFF >> (32-data_size));
 	res = (uint64_t)dest * (uint64_t)src;
-	cpu.eflags.CF = 0; cpu.eflags.OF = 0;
 	if((res >> data_size) != 0){
 		cpu.eflags.CF = 1;
 		cpu.eflags.OF = 1;
