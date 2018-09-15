@@ -309,7 +309,7 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
 	res = dest << src;
 	printf("%x ",dest);
 
-	cpu.eflags.CF = !((dest << (src-1)) == 0);
+	cpu.eflags.CF = (1 << (src-1)) & dest;
 	printf("%x\n",cpu.eflags.CF);
 	set_PF(res);
 
