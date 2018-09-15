@@ -191,8 +191,8 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
 #else
 	uint64_t res = 0;
 	printf("%x %x %x\n",data_size,dest,src);
-	dest = dest >> (uint32_t)(32-data_size);
-	src = src >> (uint32_t)(32-data_size);
+	dest = dest >> 10;
+	src = src >> 10;
 	printf("%x %x\n",dest,src);
 	res = (uint64_t)dest * (uint64_t)src;
 	uint64_t t = res & (0xFFFFFFFFFFFFFFF >> (64 - data_size * 2));
