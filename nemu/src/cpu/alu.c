@@ -338,7 +338,7 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
 	dest = sign_ext(dest & (0xFFFFFFFF >> (32-data_size)),data_size);
 
 	res = dest >> src;
-	printf("res: %x\n",res);
+	printf("dest: %x\n",dest);
 
 	cpu.eflags.CF = dest >> (src-1);
 	set_PF(res);
