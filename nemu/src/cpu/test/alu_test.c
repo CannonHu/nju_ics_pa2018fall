@@ -580,6 +580,7 @@ void alu_test_mul() {
 	
 			temp_a = res_asm_a;
 			temp_d = res_asm_d;
+			printf("llx%\n",(temp_a | (temp_d << 32)));
 			assert(res == (temp_a | (temp_d << 32)));
 			assert(cpu.eflags.CF == test_eflags.CF);
 			assert(cpu.eflags.OF == test_eflags.OF);
