@@ -336,12 +336,13 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size) {
 	printf("%d %x %x\n",data_size,dest,src);
 	dest = (dest & (0xFFFFFFFF >> (32-data_size))) << (32-data_size) ;
 	res = (int)dest >> (int)src;
-	printf("%x", res);
+	printf("%x\n", res);
 	cpu.eflags.CF = dest >> (src-1);
 	set_PF(res);
 
 	set_ZF(res,data_size);
 	set_SF(res,data_size);
+	printf("%x\n", res & (0xFFFFFFFF << (32-data_size)));
 	return res & (0xFFFFFFFF << (32-data_size));
 
 #endif
