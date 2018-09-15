@@ -334,6 +334,9 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
 	return __ref_alu_sal(src, dest, data_size);
 #else
 	uint32_t res = 0;
+	dest = sign_ext(dest & (0xFFFFFFFF >> (32-data_size)),data_size);
+	src = sign_ext(src & (0xFFFFFFFF >> (32-data_size)),data_size);
+
 	res = dest >> src;
 
 	cpu.eflags.CF = dest >> (src-1);
