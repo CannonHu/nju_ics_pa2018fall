@@ -222,7 +222,7 @@ uint32_t alu_div(uint64_t src, uint64_t dest, size_t data_size) {
 	return __ref_alu_div(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	assert(src == 0);
+	assert(src != 0);
 	res = dest / src;
 	return res;	
 #endif
@@ -243,7 +243,7 @@ uint32_t alu_mod(uint64_t src, uint64_t dest) {
 	return __ref_alu_mod(src, dest);
 #else
 	uint32_t res = 0;
-	assert(src == 0);
+	assert(src != 0);
 	uint32_t tmp = dest / src;
 	res = dest - tmp * src;
 	return res;
