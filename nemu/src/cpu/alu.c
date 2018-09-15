@@ -211,10 +211,11 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size) {
 #else
 	int64_t res = 0;
 	printf("%d %x %x\n",data_size,dest,src);
+	dest = sign_ext
 	printf("%llx %llx\n",(int64_t)dest,(int64_t)src);
 	res = (int64_t)dest * (int64_t)src;
-	printf("%llx\n",__ref_alu_imul(src,dest,data_size));
-	printf("%llx\n",res);
+	printf("%lld\n",__ref_alu_imul(src,dest,data_size));
+	printf("%lld\n",res);
 
 	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size * 2));
 #endif
