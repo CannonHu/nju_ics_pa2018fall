@@ -189,9 +189,9 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
 #ifdef NEMU_REF_ALU
 	return __ref_alu_mul(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint64_t res = 0;
+	res = (uint64_t)dest * (uint64_t)src;
+	return res & (0xFFFFFFFFFFFFFFF >> (64 - data_size * 2));
 #endif
 }
 
