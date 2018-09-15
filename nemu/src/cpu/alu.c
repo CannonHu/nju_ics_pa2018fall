@@ -196,7 +196,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
 	src = src & (0xFFFFFFFF >> (32-data_size));
 	printf("%x %x\n",dest,src);
 	res = (uint64_t)dest * (uint64_t)src;
-	uint64_t t = res & (0xFFFFFFFFFFFFFFF >> (64 - data_size * 2));
+	uint64_t t = res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size * 2));
 	printf("%llx\n",t);
 	return t;
 #endif
