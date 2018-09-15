@@ -196,6 +196,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
 	res = (uint64_t)dest * (uint64_t)src;
 	__ref_alu_mul(src,dest,data_size);
 	printf("%d %d\n",cpu.eflags.CF,cpu.eflags.OF);
+	cpu.eflags.CF = 0; cpu.eflags.OF = 0;
 	if((res >> data_size) != 0){
 		cpu.eflags.CF = 1;
 		cpu.eflags.OF = 1;
