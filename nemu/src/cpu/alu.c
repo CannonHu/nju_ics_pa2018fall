@@ -357,6 +357,15 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
 #ifdef NEMU_REF_ALU
 	return __ref_alu_sal(src, dest, data_size);
 #else
-return 0;
+	uint32_t res = 0;
+	dest = dest & (0xFFFFFFFF >> (32-data_size));
+	res = dest << src;
+	
+	cpu.eflags.CF = (dest >> (data_size - src));	
+	set_PF(res);
+
+	set_ZF(res,data_size);
+	set_SF(res,data_size);
+	return res & (0xFFFFFFFF >> (32-data_size));
 #endif
 }
