@@ -214,8 +214,8 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size) {
 	dest = dest & (0xFFFFFFFF >> (32-data_size));
 	src = src & (0xFFFFFFFF >> (32-data_size));
 	res = (int64_t)dest * (int64_t)src;
-	printf("%x\n",__ref_ale_imul(src,dest,data_size));
-	printf("%x\n",res);
+	printf("%llx\n",__ref_ale_imul(src,dest,data_size));
+	printf("%llx\n",res);
 
 	return res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size * 2));
 #endif
