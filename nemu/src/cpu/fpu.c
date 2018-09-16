@@ -20,45 +20,54 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			) {
 
 			/* TODO: shift right, pay attention to sticky bit*/
-		
-			sig_grs = sig_grs >> 1;
-			uint64_t sticky = ((sig_grs << 26) != 0) >> 26;
-			sig_grs = sig_grs & (0xFFFFFFFFFFFFFFFF << 38);
+			
+			uint64_t sticky = ((sig_grs & 3) != 0);
+			sig_grs >>= 1;
 			sig_grs |= sticky;
 			exp++;
 		}
 
 		if(exp >= 0xff) {
 			/* TODO: assign the number to infinity */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			
+			exp = 0xff;
+			sign = 0;
+			sig_grs = 0;
 			overflow = true;
 		}
 		if(exp == 0) {
 			// we have a denormal here, the exponent is 0, but means 2^-126, 
 			// as a result, the significand should shift right once more
 			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+	
+			uint64_t sticky = ((sig_grs & 3) != 0);
+			sig_grs >>= 1;
+			sig_grs |= sticky;
+	
 		}
 		if(exp < 0) { 
 			/* TODO: assign the number to zero */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			
+			exp = 0;
+			sig_grs = 0;
 			overflow = true;
 		}
 	} else if(((sig_grs >> (23 + 3)) == 0) && exp > 0) {
 		// normalize toward left
 		while(((sig_grs >> (23 + 3)) == 0) && exp > 0) {
 			/* TODO: shift left */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			
+			sig_grs <<= 1;
+			exp--;			
 		}
 		if(exp == 0) {
 			// denormal
 			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+		
+			uint64_t sticky = ((sig_grs & 3) != 0);
+			sig_grs >>= 1;
+			sig_grs |= sticky;
+
 		}
 	} else if(exp == 0 && sig_grs >> (23 + 3) == 1) {
 		// two denormals result in a normal
@@ -67,8 +76,14 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
 	if(!overflow) {
 		/* TODO: round up and remove the GRS bits */
-		printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-		assert(0);
+		if((sig_grs & 7) > 4){
+			sig_grs += 8;
+		}
+		else if((sig_grs & 7) == 4){
+			if((sig_grs & 8) != 0)
+				sig_grs += 8;
+		}
+
 	}
 
 
@@ -118,7 +133,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 		fb.val = a;
 	}
 
-	uint32_t sig_a, sig_b, sig_res;
+	uint32_t sig_a, sig_b, sig_reds;
 	sig_a = fa.fraction;
 	if(fa.exponent != 0) sig_a |= 0x800000; // the hidden 1
 	sig_b = fb.fraction;
@@ -128,8 +143,9 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	uint32_t shift = 0;
 
 	/* TODO: shift = ? */
-	printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-	assert(0);
+	shift = fa.exponent - fb.exponent;
+	if(shift < 0)
+		shift *= -1;
 	assert(shift >= 0);
 
 	sig_a = (sig_a << 3); // guard, round, sticky
