@@ -77,6 +77,8 @@ void set_OF_add(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 			break;
 		default:break;
 	}
+	printf("%d %x %x %x %d\n",data_size,dest,src,result,cpu.eflags.OF);
+
 	if(sign(src) == sign(dest)){
 		if(sign(src) != sign(result))
 			cpu.eflags.OF = 1;
