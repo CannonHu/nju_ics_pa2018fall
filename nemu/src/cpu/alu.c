@@ -102,7 +102,7 @@ void set_OF_sub(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 			break;
 		default:break;
 	}
-	printf("%d %x %x %x %d\n",data_size,dest,src,res,cpu.eflags.OF);
+	printf("%d %x %x %x %d\n",data_size,dest,src,result,cpu.eflags.OF);
 
 	if(sign(src) != sign(dest)){
 		if(sign(dest) != sign(result))
