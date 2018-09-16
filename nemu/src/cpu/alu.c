@@ -104,8 +104,6 @@ void set_OF_sub(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 			break;
 		default:break;
 	}
-	printf("%d %x %x %x %d\n",data_size,dest,src,result,cpu.eflags.OF);
-
 	if(sign(src) != sign(dest)){
 		if(sign(dest) != sign(result))
 			cpu.eflags.OF = 1;
@@ -115,6 +113,8 @@ void set_OF_sub(uint32_t result,uint32_t src,uint32_t dest,size_t data_size){
 	else{
 		cpu.eflags.OF = 0;
 	}
+	printf("%d %x %x %x %d\n",data_size,dest,src,result,cpu.eflags.OF);
+
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size) {
