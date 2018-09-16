@@ -58,7 +58,8 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			/* TODO: shift left */
 			
 			sig_grs <<= 1;
-			exp--;			
+			exp--;
+			printf("%llx\n",sig_grs);			
 		}
 		if(exp == 0) {
 			// denormal
