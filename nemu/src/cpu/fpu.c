@@ -110,7 +110,6 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
 	FLOAT f;
 	f.sign = sign;
-	printf("%d\n",f.sign);
 	f.exponent = (uint32_t) (exp & 0xff);
 	f.fraction = sig_grs; // here only the lowest 23 bits are kept
 	return f.val;
@@ -194,8 +193,6 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 
 	if(sign(sig_res)){ f.sign = 1; sig_res *= -1; }
 	else { f.sign = 0; }
-	printf("my func: %d %x\n",f.sign,sig_res);
-
 
 	uint32_t exp_res = fb.exponent;
 	return internal_normalize(f.sign, exp_res, sig_res);
