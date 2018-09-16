@@ -164,6 +164,7 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size) {
 	__ref_alu_sub(src,dest,data_size);
 	printf("%x %x %x %x %d\n",dest,src,src_t,res,cpu.eflags.OF);
 	set_OF_add(res,src_t,dest,data_size);
+	printf("%d\n",cou.eflags.OF);
 	return res & (0xFFFFFFFF >> (32-data_size));
 #endif
 }
