@@ -192,6 +192,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	if(fb.sign) { sig_b *= -1; }
 
 	sig_res = sig_a + sig_b;
+	printf("my func: %x\n",sig_res);
 
 	if(sign(sig_res)){ f.sign = 1; sig_res *= -1; }
 	else { f.sign = 0; }
