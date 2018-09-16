@@ -59,7 +59,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			
 			sig_grs <<= 1;
 			exp--;
-			printf("%llx\n",sig_grs);			
+		
 		}
 		if(exp == 0) {
 			// denormal
@@ -83,6 +83,28 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		else if((sig_grs & 7) == 4){
 			if((sig_grs & 8) != 0)
 				sig_grs += 8;
+		}
+		
+		if((sig_grs >> (23 + 3)) > 1) {
+		// normalize toward right
+		while(((sig_grs >> (23 + 3)) > 1) && exp < 0xff) {
+
+			/* TODO: shift right, pay attention to sticky bit*/
+			
+			uint64_t sticky = (sig_grs & 0x1);
+			sig_grs >>= 1;
+			sig_grs |= sticky;
+			exp++;
+		}
+
+		if(exp >= 0xff) {
+			/* TODO: assign the number to infinity */
+			
+			exp = 0xff;
+			sign = 0;
+			sig_grs = 0;
+			overflow = true;
+		}
 		}
 		sig_grs >>= 3;
 	}
