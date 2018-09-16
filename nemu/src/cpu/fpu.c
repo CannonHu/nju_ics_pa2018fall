@@ -133,7 +133,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 		fb.val = a;
 	}
 
-	uint32_t sig_a, sig_b, sig_reds;
+	uint32_t sig_a, sig_b, sig_res;
 	sig_a = fa.fraction;
 	if(fa.exponent != 0) sig_a |= 0x800000; // the hidden 1
 	sig_b = fb.fraction;
