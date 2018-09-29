@@ -5,8 +5,8 @@ static void instr_execute_2op() {
 	opr_dest.val = opr_src.val;
 	operand_write(&opr_dest);
 }
-
-make_instr_impl_2op(mov, r, rm, b)
+/*
+make_instr_impl_2op(mov, r, rm, b)*/
 make_instr_impl_2op(mov, r, rm, v)
 make_instr_impl_2op(mov, rm, r, b)
 make_instr_impl_2op(mov, rm, r, v)
