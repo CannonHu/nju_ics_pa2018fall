@@ -19,7 +19,7 @@ make_instr_impl_2op(mov, a, o, v)
 make_instr_impl_2op(mov, o, a, b)
 make_instr_impl_2op(mov, o, a, v)
 
-
+/*
 make_instr_func(mov_r2rm_b) {
 	src.data_size = 8;
 	dest.data_size = 8;
@@ -288,4 +288,4 @@ make_instr_func(mov_srm162r_l) {
 
 	print_asm_2("mov", "", len, &rm, &r);
         return len;
-}
+}*/
