@@ -5,7 +5,7 @@ static void instr_execute_2op() {
 	opr_dest.val = opr_src.val;
 	operand_write(&opr_dest);
 }
-/*
+
 make_instr_impl_2op(mov, r, rm, b)
 make_instr_impl_2op(mov, r, rm, v)
 make_instr_impl_2op(mov, rm, r, b)
@@ -18,7 +18,7 @@ make_instr_impl_2op(mov, a, o, b)
 make_instr_impl_2op(mov, a, o, v)
 make_instr_impl_2op(mov, o, a, b)
 make_instr_impl_2op(mov, o, a, v)
-*/
+
 /*
 make_instr_func(mov_r2rm_b) {
 	//src.data_size = 8;
@@ -40,6 +40,7 @@ make_instr_func(mov_r2rm_b) {
 }*/
 
 
+/*
 make_instr_func(mov_r2rm_v) {
 	OPERAND r, rm;
 	r.data_size = data_size;
@@ -54,7 +55,7 @@ make_instr_func(mov_r2rm_v) {
 	execute(&r, &rm);
 	return len;
 }
-/*
+
 make_instr_func(mov_rm2r_b) {
 	OPERAND r, rm;
 	r.data_size = 8;
