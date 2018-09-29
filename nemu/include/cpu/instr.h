@@ -23,5 +23,15 @@ extern uint8_t data_size;
 #include "cpu/instr/x87.h"
 
 /* TODO: add more instructions here */
-
+make_instr_func(add_r2rm_b){
+	OPERAND r, rm;
+	r.data_size = 8;
+	rm.data_size = 8;
+	int len = 1;
+	len += modrm_r_rm(eip + 1, &r, &rm);
+	operand_read(&r);
+	rm.val = alu_add(r.val, rm.val, 8);
+	operand_write(&rm);
+	return len;
+}
 #endif
