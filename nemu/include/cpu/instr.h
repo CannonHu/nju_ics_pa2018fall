@@ -24,7 +24,6 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 make_instr_func(add_r2rm_b){
-	printf("shepiguai\n");
 	OPERAND r, rm;
 	r.data_size = 8;
 	rm.data_size = 8;
