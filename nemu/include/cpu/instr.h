@@ -29,6 +29,6 @@ make_instr_func(sub_i2rm_bv){
 
 	int len = 1;
 	len += modrm_rm(eip + 1,&rm);
-	return 2;
+	return len + 1;
 }
 #endif
