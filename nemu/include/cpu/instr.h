@@ -29,6 +29,7 @@ make_instr_func(sub_i2rm_bv){
 	imm.data_size = 8;
 
 	int len = 1;
+	printf("eip: %x",eip);
 	len += modrm_rm(eip, &rm);
 
 	imm.type = OPR_IMM;
