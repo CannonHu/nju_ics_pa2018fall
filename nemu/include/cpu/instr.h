@@ -30,7 +30,8 @@ make_instr_func(sub_i2rm_bv){
 
 	int len = 1;
 	len += modrm_rm(eip, &rm);
-
+	
+	imm.type = OPR_IMM;
 	return len + 1;
 }
 #endif
