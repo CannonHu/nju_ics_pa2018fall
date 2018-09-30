@@ -24,4 +24,5 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 make_instr_func(sub_i2rm_bv);
+make_instr_func(cmp_i2rm_bv);
 #endif
