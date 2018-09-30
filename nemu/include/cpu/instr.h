@@ -24,7 +24,8 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 make_instr_func(sub_i2rm_bv){
-	OPERAND rm, imm;
+	
+	/*OPERAND rm, imm;
 	rm.data_size = data_size;
 	imm.data_size = data_size;
 	int len = 1;
@@ -36,7 +37,7 @@ make_instr_func(sub_i2rm_bv){
 	operand_read(&imm);
 	imm.val = sign_ext(imm.val,8);
 	rm.val = alu_sub(imm.val,rm.val,data_size);
-	operand_write(&rm);
-	return len + 1;
+	operand_write(&rm);*/
+	return 1;
 }
 #endif
