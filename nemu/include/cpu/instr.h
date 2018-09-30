@@ -31,8 +31,6 @@ make_instr_func(sub_i2rm_bv){
 	len += modrm_rm(eip,&rm);
 	
 
-	int len = 1;
-	len += modrm_rm(eip, &rm);
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
 	operand_read(&imm);
