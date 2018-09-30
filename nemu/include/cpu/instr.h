@@ -36,6 +36,6 @@ make_instr_func(sub_i2rm_bv){
 	imm.val = sign_ext(imm.val,8);
 	rm.val = alu_sub(imm.val,rm.val,data_size);
 	operand_write(&rm);
-	return len;
+	return len + 1;
 }
 #endif
