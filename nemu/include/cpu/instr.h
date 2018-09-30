@@ -24,6 +24,7 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 make_instr_func(sub_i2rm_bv){
+	printf("run\n");
 	OPERAND rm, imm;
 	rm.data_size = data_size;
 	imm.data_size = 8;
