@@ -5,7 +5,7 @@ make_instr_func(sub_i2rm_bv){
 	rm.data_size = data_size;
 
 	int len = 1;
-	len += moderm_rm(eip + 1,&rm);
+	len += modrm_rm(eip + 1,&rm);
 
 	return len + 1;
 }
