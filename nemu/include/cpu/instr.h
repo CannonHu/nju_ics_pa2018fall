@@ -24,7 +24,11 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 make_instr_func(sub_i2rm_bv){	
-};
+	print_asm_2("run",eip);
+	int len = 1;
+	return len;
+}
+;
 	/*{
 	printf("run\n");
 	OPERAND rm, imm;
