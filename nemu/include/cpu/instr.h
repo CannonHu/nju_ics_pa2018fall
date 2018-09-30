@@ -23,10 +23,7 @@ extern uint8_t data_size;
 #include "cpu/instr/x87.h"
 
 /* TODO: add more instructions here */
-make_instr_func(sub_i2rm_bv){	
-	int len = 1;
-	return len;
-}
+make_instr_func(sub_i2rm_bv);
 
 	/*{
 	printf("run\n");
