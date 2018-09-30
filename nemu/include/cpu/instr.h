@@ -24,6 +24,20 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 make_instr_func(sub_i2rm_bv){
-	return 1;
+	OPERAND rm, imm;
+	rm.data_size = data_size;
+	imm.data_size = data_size;
+
+	int len = 1;
+	len += modrm_rm(eip, &rm);
+
+	imm.type = OPR_IMM;
+	imm.addr = eip + len;
+	imm.data_size = data_size;
+
+	operand_read(&imm);
+	rm.val = (sign_ext(imm.val,8),rm.val,data_size);
+	operand_write(&rm);
+	return len + 1;
 }
 #endif
