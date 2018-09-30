@@ -4,6 +4,7 @@
 	make_instr_func(name) { \
 		uint8_t op_code; \
 		modrm_opcode(eip + 1, &op_code); \
+		printf("op_code %d\n",op_code);\
 		return concat(name, _entry)[op_code](eip, op_code); \
 	}
 #define make_group_impl_ref(name) \
