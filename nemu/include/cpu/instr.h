@@ -24,8 +24,8 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 make_instr_func(sub_i2rm_bv){	
-	print_asm_1("run");
 	int len = 1;
+	print_asm_2("run",len);
 	return len;
 }
 ;
