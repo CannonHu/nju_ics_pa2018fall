@@ -44,7 +44,7 @@ make_instr_func(sub_i2rm_bv);
 	return len + 1;
 
 }*/
-make_instr_func(add_r2rm_b){
+make_instr_func(add_r2rm_b);/*{
 	OPERAND r, rm;
 	r.data_size = 8;
 	rm.data_size = 8;
@@ -55,5 +55,5 @@ make_instr_func(add_r2rm_b){
 	operand_write(&rm);
 	return len;
 
-}
+}*/
 #endif
