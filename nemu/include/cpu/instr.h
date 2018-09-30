@@ -33,6 +33,8 @@ make_instr_func(sub_i2rm_bv){
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
 	operand_read(&imm);
+	rm.val = imm.val;
+	operand_write(&rm);
 	return len;
 }
 #endif
