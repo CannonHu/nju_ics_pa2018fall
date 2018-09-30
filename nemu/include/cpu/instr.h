@@ -30,7 +30,6 @@ make_instr_func(sub_i2rm_bv){
 	int len = 1;
 	len += modrm_rm(eip,&rm);
 	
-	printf("len %d\n",len);
 
 	int len = 1;
 	len += modrm_rm(eip, &rm);
