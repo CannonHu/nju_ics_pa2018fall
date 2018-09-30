@@ -23,7 +23,8 @@ extern uint8_t data_size;
 #include "cpu/instr/x87.h"
 
 /* TODO: add more instructions here */
-make_instr_func(sub_i2rm_bv){
+make_instr_func(sub_i2rm_bv);
+	/*{
 	printf("run\n");
 	OPERAND rm, imm;
 	rm.data_size = data_size;
@@ -42,7 +43,7 @@ make_instr_func(sub_i2rm_bv){
 	operand_write(&rm);
 	return len + 1;
 
-}
+}*/
 make_instr_func(add_r2rm_b){
 	OPERAND r, rm;
 	r.data_size = 8;
