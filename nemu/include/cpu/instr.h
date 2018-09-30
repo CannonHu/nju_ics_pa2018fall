@@ -27,7 +27,7 @@ make_instr_func(sub_i2rm_bv){
 	int len = 1;
 	return len;
 }
-;
+
 	/*{
 	printf("run\n");
 	OPERAND rm, imm;
