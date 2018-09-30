@@ -28,7 +28,7 @@ make_instr_func(sub_i2rm_bv){
 	rm.data_size = data_size;
 	imm.data_size = data_size;
 	int len = 1;
-	len += modrm_rm(eip + 1,&rm);
+	len += modrm_rm(eip,&rm);
 	
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
