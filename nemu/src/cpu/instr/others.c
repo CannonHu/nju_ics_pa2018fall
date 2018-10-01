@@ -56,7 +56,7 @@ make_instr_func(cmp_i2rm_bv){
 make_instr_func(call_near){
 	uint32_t eipval = 0;
 	OPERAND dest,addr;
-	printf("esp: %x\n",cpu.esp);
+
 	if(data_size == 16){
 		cpu.esp -= 2;
 		eipval = cpu.eip & 0xffff;
@@ -70,7 +70,6 @@ make_instr_func(call_near){
 	dest.type = OPR_MEM;
 	dest.addr = cpu.esp;
 	dest.val = eipval;
-	printf("addr: %x val: %x\n",dest.addr,dest.val);
 	operand_write(&dest);
 
 	addr.data_size = data_size;
