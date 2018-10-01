@@ -50,6 +50,6 @@ make_instr_func(cmp_i2rm_bv){
 	return len + 1;
 }
 
-make_instr_func(call_near){
+/*make_instr_func(call_near){
 	
-}
+}*/
