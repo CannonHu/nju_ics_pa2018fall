@@ -1,5 +1,22 @@
 #include "cpu/instr.h"
 
+make_instr_func(push_r_v){
+	OPERAND r,dest;
+	dest.data_size = r.data_size = data_size;
+	cpu.esp -= 2;
+	
+	r.type = OPR_REG;
+	r.addr = opcode & 0x7;
+
+	dest.type = OPR_MEM;
+	dest.addr = cpu.esp;
+	
+	operand_read(&r);
+	dest.val = r.val;
+	operand_write(&dest);
+	return 1;
+}
+
 make_instr_func(sub_i2rm_bv){
 	OPERAND rm, imm;
 	rm.data_size = data_size;
@@ -31,4 +48,8 @@ make_instr_func(cmp_i2rm_bv){
 	uint32_t tval = sign_ext(imm.val, 8);
 	alu_sub(tval, rm.val, data_size);
 	return len + 1;
+}
+
+make_instr_func(call_near){
+	
 }
