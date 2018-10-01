@@ -3,8 +3,11 @@
 make_instr_func(push_r_v){
 	OPERAND r,dest;
 	dest.data_size = r.data_size = data_size;
-	cpu.esp -= 2;
-	
+	if(data_size == 16)
+		cpu.esp -= 2;
+	if(data_size == 32)
+		cpu.esp -= 4;
+
 	r.type = OPR_REG;
 	r.addr = opcode & 0x7;
 
@@ -50,6 +53,8 @@ make_instr_func(cmp_i2rm_bv){
 	return len + 1;
 }
 
-/*make_instr_func(call_near){
-	
-}*/
+make_instr_func(call_near){
+	if(data_size == 16){
+		
+	}
+}
