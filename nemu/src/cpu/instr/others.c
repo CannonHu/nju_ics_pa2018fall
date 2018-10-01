@@ -86,3 +86,20 @@ make_instr_func(call_near){
 	}
 	return 1 + data_size / 8;
 }
+
+make_instr_func(ret_near){
+	OPERAND top;
+	top.type = OPR_MEM;
+	top.data_size = data_size;
+	top.addr = cpu.esp;
+	oerand_read(&top);
+
+	if(data_size == 16){
+		cpu.eip = top.val & 0xffff;
+		cpu.esp += 2;
+	}
+	if(data_size == 32){
+		cpu.eip = top.val;
+		cpu.esp += 4;
+	}
+}
