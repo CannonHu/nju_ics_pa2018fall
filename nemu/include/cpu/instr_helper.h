@@ -160,7 +160,7 @@ static inline bool inv_cc();
 
 #define condition_e \
 	cpu.eflags.ZF == 0;\
-	printf("shepiguai\n");\
+
 
 #define condition_a \
 	inv_cc()
