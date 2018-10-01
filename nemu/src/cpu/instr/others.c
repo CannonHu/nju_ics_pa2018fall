@@ -37,7 +37,8 @@ make_instr_func(cmp_i2rm_bv){
 
 	uint32_t tval = sign_ext(imm.val, 8);
 	alu_sub(tval, rm.val, data_size);
-	return len + 1;
+	return 1 + len;
+		
 }
 
 make_instr_func(call_near){
