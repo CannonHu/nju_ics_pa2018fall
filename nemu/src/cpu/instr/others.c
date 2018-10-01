@@ -69,7 +69,7 @@ make_instr_func(call_near){
 	dest.data_size = data_size;
 	dest.type = OPR_MEM;
 	dest.addr = cpu.esp;
-	dest.val = eipval;
+	dest.val = eipval + data_size / 8;
 	operand_write(&dest);
 
 	addr.data_size = data_size;
