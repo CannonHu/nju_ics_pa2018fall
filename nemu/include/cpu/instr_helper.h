@@ -199,7 +199,7 @@ static inline bool inv_cc();
 	inv_cc()
 
 #define condition_g \
-	inv_cc()
+	(ZF == 0 && SF == OF)\
 
 #define condition_ge \
 	inv_cc()
