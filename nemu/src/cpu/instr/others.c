@@ -33,6 +33,7 @@ make_instr_func(cmp_i2rm_bv){
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
 	operand_read(&imm);
+
 	uint32_t tval = sign_ext(imm.val, 8);
 	alu_sub(tval, rm.val, data_size);
 	printf("imm: %x rm: %x ZF: %x\n",imm.val,rm.val,cpu.eflags.ZF);
