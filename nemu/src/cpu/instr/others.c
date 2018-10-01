@@ -73,6 +73,7 @@ make_instr_func(call_near){
 
 	addr.data_size = data_size;
 	addr.type = OPR_IMM;
+	addr.addr = eip + 1;
 	operand_read(&addr);
 
 	eipval += addr.val;
