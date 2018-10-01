@@ -53,8 +53,35 @@ make_instr_func(cmp_i2rm_bv){
 	return len + 1;
 }
 
+#define call_push{\
+	OPERAND dest;\
+	if(data_size == 16){\
+		cpu.esp -= 2;\
+		eipval = cpu.eip & 0xffff;\
+	}\
+	if(data_size == 32)\
+		cpu.esp -= 4;\
+	dest.data_size = data_size;\
+	dest.type = OPR_MEM;\
+	dest.addr = cpu.esp;\
+	dest.val = eipval;\
+	operand_write(&dest);\
+}\
+
 make_instr_func(call_near){
+	uint32_t eipval = 0;
+	call_push;
+	OPERAND addr;
+	addr.data_size = data_size;
+	addr.type = OPR_IMM;
+	operand_read(&addr);
+
+	eipval += addr.val;
 	if(data_size == 16){
-		
+		cpu.eip = eipval & 0xffff;	
 	}
+	if(data_size == 32){
+		cpu.eip = eipval;
+	}
+	return 1 + data_size/8;
 }
