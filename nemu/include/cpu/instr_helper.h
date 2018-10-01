@@ -64,6 +64,7 @@ void print_asm_3(char * instr, char * suffix, uint8_t len, OPERAND * opr_1, OPER
 		return len; \
 	}
 
+
 // determine the data size of operands
 // possible sizes b, w, l, v, bv, short, near
 #define decode_data_size_b opr_src.data_size = opr_dest.data_size = 8;
