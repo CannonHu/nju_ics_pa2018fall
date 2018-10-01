@@ -20,22 +20,7 @@ make_instr_func(push_r_v){
 	return 1;
 }
 
-make_instr_func(sub_i2rm_bv){
-	OPERAND rm, imm;
-	rm.data_size = data_size;
-	imm.data_size = 8;
 
-	int len = 1;
-	len += modrm_rm(eip + 1,&rm);
-	
-	imm.type = OPR_IMM;
-	imm.addr = eip + len;
-	operand_read(&imm);
-	uint32_t tval = sign_ext(imm.val, 8);
-	rm.val = alu_sub(tval, rm.val, data_size);
-	operand_write(&rm);
-	return len + 1;
-}
 
 make_instr_func(cmp_i2rm_bv){
 	OPERAND rm, imm;
@@ -103,4 +88,10 @@ make_instr_func(ret_near){
 		cpu.esp += 4;
 	}
 	return 1;
+}
+
+static void instr_execute_2op(){
+	operand_read(&opr_src);
+
+	alu_and(opr_src.val, opr_dest.val, data_size);
 }
