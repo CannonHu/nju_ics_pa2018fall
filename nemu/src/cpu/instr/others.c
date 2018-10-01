@@ -92,7 +92,7 @@ make_instr_func(ret_near){
 	top.type = OPR_MEM;
 	top.data_size = data_size;
 	top.addr = cpu.esp;
-	oerand_read(&top);
+	operand_read(&top);
 
 	if(data_size == 16){
 		cpu.eip = top.val & 0xffff;
