@@ -61,8 +61,10 @@ make_instr_func(call_near){
 		cpu.esp -= 2;
 		eipval = cpu.eip & 0xffff;
 	}
-	if(data_size == 32)
+	if(data_size == 32){
 		cpu.esp -= 4;
+		eipval = cpu.eip;
+	}
 
 	dest.data_size = data_size;
 	dest.type = OPR_MEM;
