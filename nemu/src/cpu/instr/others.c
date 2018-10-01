@@ -67,6 +67,7 @@ make_instr_func(call_near){
 	dest.type = OPR_MEM;
 	dest.addr = cpu.esp;
 	dest.val = eipval;
+	printf("addr: %x val: %x\n",dest.addr,dest.val);
 	operand_write(&dest);
 
 	addr.data_size = data_size;
