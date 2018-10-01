@@ -55,7 +55,6 @@ make_instr_func(cmp_i2rm_bv){
 
 make_instr_func(call_near){
 	uint32_t eipval = 0;
-	call_push;
 	OPERAND dest,addr;
 	if(data_size == 16){
 		cpu.esp -= 2;
