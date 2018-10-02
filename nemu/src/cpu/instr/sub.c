@@ -5,3 +5,21 @@ static void instr_execute_2op(){
 	opr_dest = alu_sub(opr_src.val, opr_dest.val ,data_size);
 	operand_write(&opr_dest);
 }
+
+make_instr_func(sub_i2rm_bv){
+	OPERAND rm, imm;
+	rm.data_size = imm.data_size = data_size;
+
+	int len = 1;
+	len += mod_rm(eip + 1, &rm);
+
+	imm.type = OPR_IMM;
+	imm.addr = eip + len;
+
+	operand_read(&imm);
+	imm.val = sign_ext(imm.val, 8);
+	rm.val = alu_sub(imm.val, rm.val, data_size);
+	operand_write(&rm);
+	return 1 + len;
+
+}
