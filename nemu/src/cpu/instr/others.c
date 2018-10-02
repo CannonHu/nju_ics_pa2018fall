@@ -113,6 +113,6 @@ make_instr_func(lea){
 	operand_read(&rm);
 	r.val = rm.addr;
 	operand_write(&r);
-	return len + 1;
+	return len;
 
 }
