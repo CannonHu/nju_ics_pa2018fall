@@ -24,3 +24,5 @@ make_instr_func(cmp_i2rm_bv){
 	alu_sub(tval, rm.val, data_size);
 	return 1 + len;
 }
+
+make_instr_impl_2op(cmp, r, rm v);
