@@ -42,7 +42,7 @@ make_instr_func(push_rm_v){
 	if(data_size == 32)
 		dest.val = rm.val;
 	operand_write(&dest);
-	return 1;
+	return len;
 }
 
 make_instr_func(call_near){

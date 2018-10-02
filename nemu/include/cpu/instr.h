@@ -24,6 +24,7 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 make_instr_func(push_r_v);
+make_instr_func(push_rm_v);
 
 make_instr_func(cmp_i2rm_bv);
 make_instr_func(cmp_r2rm_v);
