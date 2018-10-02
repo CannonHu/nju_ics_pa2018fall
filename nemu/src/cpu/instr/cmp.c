@@ -1,5 +1,12 @@
 #include "cpu/instr.h"
 
+static void instr_execute_2op(){
+	operand_read(&opr_src);
+	operand_read(&opr_dest);
+	uint32_t tval = sign_ext(imm.val, imm.data_size);
+	alu_sub(tval, rm.val, data_size);
+}
+
 make_instr_func(cmp_i2rm_bv){
 	OPERAND rm, imm;
 	rm.data_size = data_size;
