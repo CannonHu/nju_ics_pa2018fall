@@ -37,7 +37,6 @@ make_instr_func(cmp_i2rm_bv){
 
 	uint32_t tval = sign_ext(imm.val, 8);
 	alu_sub(tval, rm.val, data_size);
-	printf("imm: %x rm: %x ZF: %x\n",tval, rm.val, cpu.eflags.ZF);
 	return 1 + len;
 		
 }
