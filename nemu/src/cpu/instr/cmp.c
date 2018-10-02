@@ -4,6 +4,7 @@ static void instr_execute_2op(){
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
 	alu_sub(opr_src.val, opr_dest.val, data_size);
+	printf("left: %x right: %x ZF: %x", opr_src.val, opr_dest.val, cpu.eflags.ZF);
 }
 
 make_instr_func(cmp_i2rm_bv){
