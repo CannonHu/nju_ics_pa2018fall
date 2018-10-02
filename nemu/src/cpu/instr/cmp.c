@@ -3,9 +3,7 @@
 static void instr_execute_2op(){
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
-	uint32_t tval = sign_ext(opr_src.val, opr_src.data_size);
-	alu_sub(tval, opr_dest.val, data_size);
-	printf("left: %x right: %x ZF: %x\n", tval, opr_dest.val, cpu.eflags.ZF);
+	alu_sub(opr_src.val, opr_dest.val, data_size);
 }
 
 make_instr_func(cmp_i2rm_bv){
