@@ -49,13 +49,13 @@ void print_asm_3(char * instr, char * suffix, uint8_t len, OPERAND * opr_1, OPER
 		instr_execute_2op(); \
 		return len; \
 	}
-#define make_instr_impl_2op_kind(inst_name, src_type, dest_type, suffic, kind) \
+#define make_instr_impl_2op_kind(inst_name, src_type, dest_type, suffic) \
 	make_instr_func(concat7(inst_name, _, src_type, 2, dest_type, _, suffix)) {\
 		int len = 1\
 		concat(decode_data_size_, suffix) \
 		concat3(decode_operand, _, concat3(src_type, 2, dest_type)) \
 		print_asm_2(#inst_name, opr_dest.data_size == 8 ? "b" : (opr_dest.data_size == 16 ? "w" : "l"), len, &opr_src, &opr_dest); \
-		concat3(instr_execute_2op, _, concat3(kind, (, ))) \
+		concat3(instr_execute_2op, _, concat3(inst_name, (, ))) \
 		return len; \
 	}
 
