@@ -103,7 +103,7 @@ static void instr_execute_2op(){
 make_instr_impl_2op(test,r,rm,b)
 make_instr_impl_2op(test,r,rm,v)
 
-/*make_instr_func(lea){
+make_instr_func(lea){
 	OPERAND r, rm;
 	r.data_size = rm.data_size = data_size;
 
@@ -115,4 +115,4 @@ make_instr_impl_2op(test,r,rm,v)
 	operand_write(&r);
 	return len + 1;
 
-}*/
+}
