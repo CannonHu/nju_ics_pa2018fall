@@ -2,8 +2,8 @@
 
 static void instr_execute_2op(){
 	operand_read(&opr_src);
-	opr_dest.val = opr_src.val + 1;
-	operand_write(&opr_dest);
+	opr_src.val += 1;
+	operand_write(&opr_src);
 }
 
-make_instr_impl_2op(inc, i, rm, v)
+make_instr_impl_1op(inc, rm, v)
