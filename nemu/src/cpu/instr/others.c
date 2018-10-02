@@ -46,7 +46,7 @@ make_instr_func(call_near){
 	operand_read(&addr);
 
 	eipval += addr.val;
-
+	printf("startaddr: %x add: %x destaddr: %x\n",cpu.eip, addr.val, eipval);
 
 	if(data_size == 16){
 		cpu.eip = eipval & 0xffff;	
