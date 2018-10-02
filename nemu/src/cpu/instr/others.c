@@ -71,7 +71,7 @@ make_instr_func(ret_near){
 		cpu.eip = top.val;
 		cpu.esp += 4;
 	}
-	return 1;
+	return 0;
 }
 
 static void instr_execute_2op(){
