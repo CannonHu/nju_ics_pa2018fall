@@ -1,17 +1,17 @@
 #include "cpu/instr.h"
 
-static void instr_execute_2op(){
+/*static void instr_execute_2op(){
 	operand_read(&opr_src);
 	opr_dest = alu_sub(opr_src.val, opr_dest.val ,data_size);
 	operand_write(&opr_dest);
-}
+}*/
 
 make_instr_func(sub_i2rm_bv){
 	OPERAND rm, imm;
 	rm.data_size = imm.data_size = data_size;
 
 	int len = 1;
-	len += mod_rm(eip + 1, &rm);
+	len += modrm_rm(eip + 1, &rm);
 
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
