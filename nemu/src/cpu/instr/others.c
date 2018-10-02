@@ -92,6 +92,7 @@ make_instr_func(lea){
 
 	operand_read(&rm);
 	r.val = rm.addr;
+	printf("addr: %x\n",rm.addr);
 	operand_write(&r);
 	return len;
 
