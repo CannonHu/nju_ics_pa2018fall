@@ -40,6 +40,7 @@ make_instr_func(test_r2rm_v);
 
 make_instr_func(je_short_);
 make_instr_func(jg_short_);
+make_instr_func(jna_short_);
 make_instr_func(jle_short_);
 make_instr_func(jne_short_);
 #endif
