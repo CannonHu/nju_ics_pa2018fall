@@ -10,10 +10,12 @@ make_instr_func(jmp_near) {
         operand_read(&rel);
 
 	int offset = sign_ext(rel.val, data_size);
+	printf("rel: %x offset: %x\n",rel,offset);
 	print_asm_1("jmp", "", 2, &rel);
 
 	cpu.eip += offset;
 
         return 1 + data_size / 8;
 }
+
 
