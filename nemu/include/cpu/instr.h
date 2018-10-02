@@ -38,6 +38,8 @@ make_instr_func(add_r2rm_v);
 make_instr_func(add_i2rm_v);
 make_instr_func(add_i2a_v);
 
+make_instr_func(adc_r2rm_v);
+
 make_instr_func(sub_i2rm_bv);
 
 make_instr_func(and_i2rm_bv);
