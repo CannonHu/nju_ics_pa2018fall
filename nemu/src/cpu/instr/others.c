@@ -37,7 +37,7 @@ make_instr_func(call_near){
 	dest.data_size = data_size;
 	dest.type = OPR_MEM;
 	dest.addr = cpu.esp;
-	dest.val = eipval + data_size / 8;
+	dest.val = eipval;
 	operand_write(&dest);
 
 	addr.data_size = data_size;
@@ -46,6 +46,8 @@ make_instr_func(call_near){
 	operand_read(&addr);
 
 	eipval += addr.val;
+
+
 	if(data_size == 16){
 		cpu.eip = eipval & 0xffff;	
 	}
