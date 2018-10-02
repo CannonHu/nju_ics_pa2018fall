@@ -90,7 +90,6 @@ make_instr_func(lea){
 	int len = 1;
 	len += modrm_r_rm(eip + 1, &r, &rm);
 
-	operand_read(&rm);
 	r.val = rm.addr;
 	printf("addr: %x\n",rm.addr);
 	operand_write(&r);
