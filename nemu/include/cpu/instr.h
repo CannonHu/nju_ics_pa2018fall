@@ -37,7 +37,7 @@ make_instr_func(add_i2rm_v);
 
 make_instr_func(sub_i2rm_bv);
 
-make_instr_func(inc_i2rm_v);
+make_instr_func(inc_rm_v);
 
 make_instr_func(test_r2rm_b);
 make_instr_func(test_r2rm_v);
