@@ -27,6 +27,7 @@ make_instr_func(push_r_v);
 
 make_instr_func(cmp_i2rm_bv);
 make_instr_func(jmp_near);
+make_instr_func(jump_short);
 make_instr_func(call_near);
 make_instr_func(ret_near);
 make_instr_func(add_i2rm_v);
