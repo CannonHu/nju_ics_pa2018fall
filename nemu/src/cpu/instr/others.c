@@ -22,7 +22,7 @@ make_instr_func(push_r_v){
 
 make_instr_func(push_rm_v){
 	OPERAND rm, dest;
-	dest.data_size = r.data_size = data_size;
+	dest.data_size = rm.data_size = data_size;
 	if(data_size == 16)
 		cpu.esp -= 2;
 	if(data_size == 32)
