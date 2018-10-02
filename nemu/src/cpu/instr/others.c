@@ -54,7 +54,7 @@ make_instr_func(call_near){
 	if(data_size == 32){
 		cpu.eip = eipval;
 	}
-	return 1 + data_size / 8;
+	return 0;
 }
 
 make_instr_func(ret_near){
