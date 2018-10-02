@@ -20,6 +20,30 @@ make_instr_func(push_r_v){
 	return 1;
 }
 
+make_instr_func(push_rm_v){
+	OPERAND rm, dest;
+	dest.data_size = r.data_size = data_size;
+	if(data_size == 16)
+		cpu.esp -= 2;
+	if(data_size == 32)
+		cpu.esp -= 4;
+
+	rm.type = OPR_MEM;
+	
+	int len = 1;
+	len += modrm_rm(eip + 1, &rm);
+
+	dest.type = OPR_MEM;
+	dest.addr = cpu.esp;
+	
+	operand_read(&rm);
+	if(data_size == 16)
+		dest.val = rm.val & 0xffff;
+	if(data_size == 32)
+		dest.val = rm.val;
+	operand_write(&dest);
+	return 1;
+}
 
 make_instr_func(call_near){
 	uint32_t eipval = 0;
