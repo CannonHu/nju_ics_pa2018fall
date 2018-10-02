@@ -33,7 +33,7 @@ make_instr_func(cmp_i2rm_bv);
 make_instr_func(call_near);
 make_instr_func(ret_near);
 
-//make_instr_func(add_i2rm_v);
+make_instr_func(add_i2rm_v);
 make_instr_func(sub_i2rm_bv);
 
 make_instr_func(test_r2rm_b);
