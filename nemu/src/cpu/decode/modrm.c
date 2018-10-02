@@ -13,7 +13,7 @@ int case_mod_00(uint32_t eip, MODRM modrm, OPERAND * opr) {
 		opr->type = OPR_MEM;
 		//len += parse_sib(eip + 1, modrm.mod, &opr->addr, &opr->sreg);
 		len += parse_sib(eip + 1, modrm.mod, opr);
-		printf("len: %x\n",len);
+
 		break;
 	case 5: // disp32
 		opr->type = OPR_MEM;
