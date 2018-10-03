@@ -164,7 +164,8 @@ make_instr_func(ret_near){
 		cpu.eip = top.val;
 		cpu.esp += 4;
 	}
-
+	
+	cpu.esp += imm.val;
 	
 	return 0;
 }
