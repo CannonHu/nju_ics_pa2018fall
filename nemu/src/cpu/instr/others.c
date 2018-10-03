@@ -146,7 +146,7 @@ make_instr_func(ret_near){
 	return 0;
 }
 
-make_instr_func(ret_near){
+make_instr_func(ret_near_imm16){
 	OPERAND top, imm;
 	top.type = OPR_MEM;
 	imm.type = OPR_IMM;
