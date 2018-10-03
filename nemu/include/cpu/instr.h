@@ -60,6 +60,8 @@ make_instr_func(or_rm2r_b);
 
 make_instr_func(xor_r2rm_v);
 
+make_instr_func(not_rm_v);
+
 make_instr_func(inc_rm_v);
 make_instr_func(inc_r_v);
 make_instr_func(dec_r_v);
