@@ -45,6 +45,26 @@ make_instr_func(pop_r_v){
 	return 1;
 }
 
+make_instr_func(push_i_b){
+	OPERAND imm, dest;
+	dest.data_size = data_size;
+	imm.data_size = 8;
+	if(data_size == 16)
+		cpu.esp -= 2;
+	if(data_size == 32)
+		cpu.esp -= 4;
+	
+	imm.type = OPR_IMM;
+	imm.addr = eip + 1;
+	
+	dest.type = OPR_MEM;
+	dest.addr = cpu.esp;
+
+	operand_read(&imm);
+	imm.val &= 0xff;
+	
+}
+
 make_instr_func(push_rm_v){
 	OPERAND rm, dest;
 	dest.data_size = rm.data_size = data_size;
