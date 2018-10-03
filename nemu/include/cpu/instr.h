@@ -85,5 +85,7 @@ make_instr_func(jna_near);
 make_instr_func(jl_near);
 make_instr_func(jle_near);
 
+make_instr_func(imul_rm2r_v);
+
 make_instr_func(setne_b);
 #endif
