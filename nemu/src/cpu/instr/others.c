@@ -144,3 +144,28 @@ make_instr_func(lea){
 	return len;
 
 }
+
+make_instr_func(leave){
+	OPERAND r, top;
+	r.data_size = top.data_size = data_size;
+	
+	r.type = OPR_REG;
+	r.addr = opcode & 0x7;
+
+	top.type = OPR_MEM;
+	top.addr = cpu.esp;
+
+	int tval = 0;
+	operand_read(&top);
+	if(data_size == 16){
+		tval = top.val & 0xffff;
+		cpu.esp += 2;
+	}
+	if(data_size == 32){
+		tval = top.val;
+		cpu.esp += 4;
+	}
+	r.val = tval;
+	operand_write(&r);
+	return 1;
+}
