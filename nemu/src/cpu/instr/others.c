@@ -127,7 +127,7 @@ static void instr_execute_2op(){
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
 	alu_and(opr_src.val, opr_dest.val, data_size);
-	CF = 0; OF = 0;
+	cpu.eflags.CF = cpu.eflags.OF = 0;
 	printf("src: %x dest: %x ZF: %x\n",opr_src.val, opr_dest.val, cpu.eflags.ZF);
 }
 
