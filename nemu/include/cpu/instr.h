@@ -53,6 +53,7 @@ make_instr_func(sub_r2rm_v);
 make_instr_func(sub_rm2r_v);
 
 make_instr_func(and_i2rm_bv);
+make_instr_func(and_r2rm_v);
 make_instr_func(and_rm2r_b);
 
 make_instr_func(or_r2rm_v);
