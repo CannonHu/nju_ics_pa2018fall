@@ -76,6 +76,8 @@ make_instr_func(dec_rm_v);
 
 make_instr_func(mul_rm2a_v);
 
+make_instr_func(cmps_v);
+
 make_instr_func(test_r2rm_b);
 make_instr_func(test_r2rm_v);
 make_instr_func(test_i2rm_v);
