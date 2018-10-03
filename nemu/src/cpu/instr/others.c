@@ -146,6 +146,29 @@ make_instr_func(ret_near){
 	return 0;
 }
 
+make_instr_func(ret_near){
+	OPERAND top, imm;
+	top.type = OPR_MEM;
+	imm.type = OPR_IMM;
+	top.data_size = data_size;
+	imm.data_size = 16;
+	top.addr = cpu.esp;
+	operand_read(&top);
+	operand_read(&imm);
+
+	if(data_size == 16){
+		cpu.eip = top.val & 0xffff;
+		cpu.esp += 2;
+	}
+	if(data_size == 32){
+		cpu.eip = top.val;
+		cpu.esp += 4;
+	}
+
+	
+	return 0;
+}
+
 static void instr_execute_2op(){
 	operand_read(&opr_src);
 	operand_read(&opr_dest);
