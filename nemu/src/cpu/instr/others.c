@@ -146,11 +146,15 @@ make_instr_func(lea){
 }
 
 make_instr_func(leave){
-	OPERAND r, top;
-	r.data_size = top.data_size = data_size;
+
+	OPERAND ebp, top;
+	ebp.data_size = top.data_size = data_size;
 	
-	r.type = OPR_REG;
-	r.addr = opcode & 0x7;
+	ebp.type = OPR_REG;
+	ebp.addr = 0x5;
+	operand_read(&ebp);
+
+	cpu.esp = ebp.val;
 
 	top.type = OPR_MEM;
 	top.addr = cpu.esp;
@@ -165,7 +169,7 @@ make_instr_func(leave){
 		tval = top.val;
 		cpu.esp += 4;
 	}
-	r.val = tval;
-	operand_write(&r);
+	ebp.val = tval;
+	operand_write(&ebp);
 	return 1;
 }
