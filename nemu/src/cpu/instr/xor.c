@@ -6,3 +6,5 @@ static void instr_execute_2op(){
 	opr_dest.val = alu_xor(opr_src.val, opr_dest.val, data_size);
 	operand_write(&opr_dest);
 }
+
+make_instr_impl_2op(cor, r, rm, v);
