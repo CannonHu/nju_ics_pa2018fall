@@ -54,6 +54,8 @@ make_instr_func(xor_r2rm_v);
 
 make_instr_func(inc_rm_v);
 
+make_instr_func(dec_rm_v);
+
 make_instr_func(test_r2rm_b);
 make_instr_func(test_r2rm_v);
 
