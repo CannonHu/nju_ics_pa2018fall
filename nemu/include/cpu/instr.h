@@ -98,5 +98,7 @@ make_instr_func(imul_rm2a_v);
 
 make_instr_func(idiv_rm2a_v);
 
+make_instr_func(stos_b);
+
 make_instr_func(setne_b);
 #endif
