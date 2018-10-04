@@ -44,6 +44,7 @@ make_instr_func(ret_near);
 make_instr_func(ret_near_imm16);
 
 make_instr_func(add_r2rm_v);
+make_instr_func(add_i2rm_b);
 make_instr_func(add_i2rm_v);
 make_instr_func(add_i2a_v);
 make_instr_func(add_i2rm_bv);
