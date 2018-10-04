@@ -186,7 +186,6 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	}
 
 	// fraction add
-	printf("sig_a: %x\n",sig_a);
 	if(fa.sign) { sig_a *= -1; }
 	if(fb.sign) { sig_b *= -1; }
 	
@@ -385,6 +384,7 @@ void fpu_sub(uint32_t val) {
 	uint32_t *d = (uint32_t *)&c;
 	fpu.regStack[fpu.status.top].val = *d;
 	*/
+	printf("val: %x\n",val);
 	fpu.regStack[fpu.status.top].val = internal_float_sub(val, fpu.regStack[fpu.status.top].val);
 }
 
