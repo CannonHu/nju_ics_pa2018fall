@@ -445,7 +445,7 @@ void fpu_cmp(uint32_t idx) {
 	float *a = (float*)&fpu.regStack[fpu.status.top].val;
 	float *b = (float*)&fpu.regStack[idx].val;
 
-
+	printf("a: %x b: %x\n",f2u(*a),f2u(*b));
 	if(*a > *b) {
 		fpu.status.c0 = fpu.status.c2 = fpu.status.c3 = 0;
 		//printf("f %f > %f\n", *a, *b);
