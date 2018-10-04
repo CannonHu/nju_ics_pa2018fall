@@ -224,6 +224,7 @@ uint32_t internal_float_sub(uint32_t b, uint32_t a) {
 	FLOAT fb;
 	fb.val = b;
 	fb.sign = ~fb.sign;
+	printf("val: %x\n",a);
 	return internal_float_add(fb.val, a);
 }
 
