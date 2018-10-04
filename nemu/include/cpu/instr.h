@@ -86,9 +86,11 @@ make_instr_func(test_i2rm_v);
 make_instr_func(test_i2a_b);
 make_instr_func(test_i2a_v);
 
+make_instr_func(jae_short_);
 make_instr_func(je_short_);
 make_instr_func(jg_short_);
 make_instr_func(jna_short_);
+make_instr_func(ja_short_);
 make_instr_func(jl_short_);
 make_instr_func(jge_short_);
 make_instr_func(jle_short_);
