@@ -190,7 +190,6 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	if(fa.sign) { sig_a *= -1; }
 	if(fb.sign) { sig_b *= -1; }
 	
-	printf("sig_a: %x sig_b: %x\n",sig_a,sig_b);
 	sig_res = sig_a + sig_b;
 
 
