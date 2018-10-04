@@ -5,10 +5,7 @@ FPU fpu;
 // special values
 FLOAT p_zero, n_zero, p_inf, n_inf, p_nan, n_nan;
 
-static uint32_t f2u(float val){
-	uint32_t *tmp = (uint32_t *)&val;
-	return *tmp;
-}
+
 
 // the last three bits of the significand are reserved for the GRS bits
 inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs) {
@@ -445,7 +442,6 @@ void fpu_cmp(uint32_t idx) {
 	float *a = (float*)&fpu.regStack[fpu.status.top].val;
 	float *b = (float*)&fpu.regStack[idx].val;
 
-	printf("a: %x b: %x\n",f2u(*a),f2u(*b));
 	if(*a > *b) {
 		fpu.status.c0 = fpu.status.c2 = fpu.status.c3 = 0;
 		//printf("f %f > %f\n", *a, *b);
