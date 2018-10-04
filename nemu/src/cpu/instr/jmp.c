@@ -22,7 +22,7 @@ make_instr_func(jmp_near_indirect) {
         rm.data_size = data_size;
 	
 	int len = 1;
-	len += modrm_rm(eip, &rm);
+	len += modrm_rm(eip + 1, &rm);
 
         operand_read(&rm);
 
