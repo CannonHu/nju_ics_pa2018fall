@@ -165,7 +165,7 @@ static inline bool inv_cc();
 
 
 #define condition_a \
-	inv_cc()
+	CF == 0 && ZF == 0
 
 #define condition_ae \
 	inv_cc()
