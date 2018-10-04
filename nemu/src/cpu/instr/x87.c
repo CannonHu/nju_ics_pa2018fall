@@ -38,7 +38,7 @@ make_instr_func(x87_flds) {
 	opr_src.data_size = 32;
 	len += modrm_rm(eip + 1, &opr_src);
 	operand_read(&opr_src);
-	printf("flds-src: %x\n",opr_src);
+	printf("flds-src: %x\n",opr_src.val);
 	print_asm_0("flds", "", len);
 	fpu_load(opr_src.val);
 	return len;
