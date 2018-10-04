@@ -5,6 +5,10 @@ FPU fpu;
 // special values
 FLOAT p_zero, n_zero, p_inf, n_inf, p_nan, n_nan;
 
+static uint32_t f2u(float val){
+	uint32_t *tmp = (uint32_t *)&val;
+	return *tmp;
+}
 
 // the last three bits of the significand are reserved for the GRS bits
 inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs) {
