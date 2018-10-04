@@ -384,7 +384,6 @@ void fpu_sub(uint32_t val) {
 	uint32_t *d = (uint32_t *)&c;
 	fpu.regStack[fpu.status.top].val = *d;
 	*/
-	printf("val: %x\n",val);
 	fpu.regStack[fpu.status.top].val = internal_float_sub(val, fpu.regStack[fpu.status.top].val);
 }
 
