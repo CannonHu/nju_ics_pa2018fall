@@ -25,7 +25,6 @@ make_instr_func(jmp_near_indirect) {
 	len += modrm_rm(eip + 1, &rm);
 
         operand_read(&rm);
-	printf("rm: %x", rm.val);
 	int offset = sign_ext(rm.val, data_size);
 
 	cpu.eip = offset;
@@ -33,7 +32,7 @@ make_instr_func(jmp_near_indirect) {
 	if(data_size == 16)
 		cpu.eip &= 0xffff;
 
-        return len;
+        return 0;
 }
 
 make_instr_func(jmp_short){
