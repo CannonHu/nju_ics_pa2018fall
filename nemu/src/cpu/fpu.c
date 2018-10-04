@@ -443,7 +443,7 @@ void fpu_cmp(uint32_t idx) {
 
 	FLOAT fa,fb;
 	fa.val = *a; fb.val = *b;
-	printf("a: %x b: %x\n",f2u(*a),f2u(*b));
+	printf("a: %x b: %x\n",fa.val,fb.val);
 	if(*a > *b) {
 		fpu.status.c0 = fpu.status.c2 = fpu.status.c3 = 0;
 		//printf("f %f > %f\n", *a, *b);
