@@ -26,15 +26,15 @@ make_instr_func(jmp_near_indirect) {
 
         operand_read(&rm);
 
-	int offset = sign_ext(rel.val, data_size);
+	int offset = sign_ext(rm.val, data_size);
 	print_asm_1("jmp", "", 2, &rel);
 
-	cpu.eip += offset;
+	cpu.eip = offset;
 
 	if(data_size == 16)
 		cpu.eip &= 0xffff;
 
-        return 1 + data_size / 8;
+        return len;
 }
 
 make_instr_func(jmp_short){
