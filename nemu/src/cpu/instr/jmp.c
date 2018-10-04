@@ -18,14 +18,13 @@ make_instr_func(jmp_near) {
 }
 
 make_instr_func(jmp_near_indirect) {
-        OPERAND rel;
-        rel.type = OPR_REG;
-	rel.sreg = SREG_CS;
-        rel.data_size = data_size;
+        OPERAND rm;
+        rm.data_size = data_size;
 	
 	int len = 1;
+	len += modrm_rm(eip + 1, &rm);
 
-        operand_read(&rel);
+        operand_read(&rm);
 
 	int offset = sign_ext(rel.val, data_size);
 	print_asm_1("jmp", "", 2, &rel);
