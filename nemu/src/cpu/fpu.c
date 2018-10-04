@@ -188,9 +188,10 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	// fraction add
 	if(fa.sign) { sig_a *= -1; }
 	if(fb.sign) { sig_b *= -1; }
-
+	
+	printf("sig_a: %x sig_b: %x\n",sig_a,sig_b);
 	sig_res = sig_a + sig_b;
-	printf("sig_res: %x\n",sig_res);	
+
 
 	if(sign(sig_res)){ f.sign = 1; sig_res *= -1; }
 	else { f.sign = 0; }
