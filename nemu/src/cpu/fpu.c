@@ -161,7 +161,6 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	sig_b = fb.fraction;
 	if(fb.exponent != 0) sig_b |= 0x800000; // the hidden 1
 	
-	printf("val: %x\n",sig_a);
 	// alignment shift for fa
 	uint32_t shift = 0;
 
