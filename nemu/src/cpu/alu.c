@@ -222,7 +222,7 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size) {
 	else{
 		cpu.eflags.CF = 0; cpu.eflags.OF = 0;
 	}
-return res;
+	return (res & (0xFFFFFFFFFFFFFFFF >> (64 - data_size * 2)));
 
 
 #endif
