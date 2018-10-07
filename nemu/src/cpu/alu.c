@@ -215,7 +215,14 @@ int64_t alu_imul(int32_t src, int32_t dest, size_t data_size) {
 #else
 	int64_t res = 0;
 	res = (int64_t)dest * (int64_t)src;
-	return res;
+	if((res >> data_size) != 0){
+		cpu.eflags.CF = 1;
+		cpu.eflags.OF = 1;
+	}
+	else{
+		cpu.eflags.CF = 0; cpu.eflags.OF = 0;
+	}
+return res;
 
 
 #endif
