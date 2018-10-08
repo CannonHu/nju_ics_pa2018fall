@@ -96,7 +96,7 @@ make_instr_func(popa){
 				continue;
 			operand_read(&top);
 			cpu.esp += 2;
-			cpu.grp[i]._16 = top.val & 0xffff;	
+			cpu.gpr[i]._16 = top.val & 0xffff;	
 		}
 	}
 	if(data_size == 32){
@@ -105,7 +105,7 @@ make_instr_func(popa){
 				continue;
 			operand_read(&top);
 			cpu.esp += 4;
-			cpu.grp[i]._32 = top.val;	
+			cpu.gpr[i]._32 = top.val;	
 		}
 	
 	}
