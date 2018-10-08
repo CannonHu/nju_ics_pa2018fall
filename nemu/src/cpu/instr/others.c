@@ -51,7 +51,7 @@ make_instr_func(pusha){
 			}
 			dest.addr = cpu.esp;
 			operand_write(&dest);
-	
+		}	
 	}
 	return 1;
 }
