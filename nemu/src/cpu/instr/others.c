@@ -45,6 +45,36 @@ make_instr_func(pop_r_v){
 	return 1;
 }
 
+make_instr_func(popa){
+	OPERAND top;
+	top.data_size = data_size;
+	
+	top.type = OPR_MEM;
+	top.addr = cpu.esp;
+	
+	int tval = 0;
+	if(data_size == 16){
+		for(int i = 0; i < 8; i++){
+			if(i == 4)
+				continue;
+			operand_read(&top);
+			cpu.esp += 2;
+			cpu.grp[i]._16 = top.val & 0xffff;	
+		}
+	}
+	if(data_size == 32){
+		for(int i = 0; i < 8; i++){
+			if(i == 4)
+				continue;
+			operand_read(&top);
+			cpu.esp += 4;
+			cpu.grp[i]._32 = top.val;	
+		}
+	
+	}
+	return 1;
+}
+
 make_instr_func(push_i_b){
 	OPERAND imm, dest;
 	dest.data_size = data_size;
