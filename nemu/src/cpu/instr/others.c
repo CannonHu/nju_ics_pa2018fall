@@ -21,11 +21,11 @@ make_instr_func(push_r_v){
 }
 
 make_instr_func(pusha){
-	OPERAND top;
-	top.data_size = data_size;
+	OPERAND dest;
+	dest.data_size = data_size;
 	
-	top.type = OPR_MEM;
-	top.addr = cpu.esp;
+	dest.type = OPR_MEM;
+	dest.addr = cpu.esp;
 	
 	int tval = 0;
 	int tmp = cpu.esp;
@@ -85,7 +85,7 @@ make_instr_func(popa){
 	
 	int tval = 0;
 	if(data_size == 16){
-		for(int i = 0; i < 8; i++){
+		for(int i = 7; i >= 0; i--){
 			if(i == 4)
 				continue;
 			operand_read(&top);
@@ -94,7 +94,7 @@ make_instr_func(popa){
 		}
 	}
 	if(data_size == 32){
-		for(int i = 0; i < 8; i++){
+		for(int i = 7; i >= 0; i--){
 			if(i == 4)
 				continue;
 			operand_read(&top);
