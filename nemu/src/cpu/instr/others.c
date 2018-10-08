@@ -25,21 +25,25 @@ make_instr_func(pusha){
 	dest.data_size = data_size;
 	
 	dest.type = OPR_MEM;
-	dest.addr = cpu.esp;
 	
 	int tval = 0;
 	int tmp = cpu.esp;
 	if(data_size == 16){
 		for(int i = 0; i < 8; i++){
-			if(i == 4)
-				continue;
-			operand_read(&top);
-			cpu.esp += 2;
-			cpu.grp[i]._16 = top.val & 0xffff;	
+			cpu.esp -= 2;
+			if(i == 4){
+				dest.val = temp & 0xffff;
+			}
+			else{
+				dest.val = cpu.grp[i]._16;	
+			}
+			dest.addr = cpu.esp;
+			operand_write(&dest);
 		}
 	}
 	if(data_size == 32){
 		for(int i = 0; i < 8; i++){
+			cpu.esp -= 4;
 			if(i == 4)
 				continue;
 			operand_read(&top);
