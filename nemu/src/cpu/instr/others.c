@@ -89,7 +89,6 @@ make_instr_func(popa){
 	top.type = OPR_MEM;
 	top.addr = cpu.esp;
 	
-	int tval = 0;
 	if(data_size == 16){
 		for(int i = 7; i >= 0; i--){
 			if(i == 4)
