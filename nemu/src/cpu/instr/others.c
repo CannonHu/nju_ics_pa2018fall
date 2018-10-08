@@ -44,12 +44,14 @@ make_instr_func(pusha){
 	if(data_size == 32){
 		for(int i = 0; i < 8; i++){
 			cpu.esp -= 4;
-			if(i == 4)
-				continue;
-			operand_read(&top);
-			cpu.esp += 4;
-			cpu.grp[i]._32 = top.val;	
-		}
+			if(i == 4){
+				dest.val = temp;
+			}
+			else{
+				dest.val = cpu.grp[i]._32;	
+			}
+			dest.addr = cpu.esp;
+			operand_write(&dest);
 	
 	}
 	return 1;
