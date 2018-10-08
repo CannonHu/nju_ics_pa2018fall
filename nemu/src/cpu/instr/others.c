@@ -35,7 +35,7 @@ make_instr_func(pusha){
 				dest.val = tmp & 0xffff;
 			}
 			else{
-				dest.val = cpu.grp[i]._16;	
+				dest.val = cpu.gpr[i]._16;	
 			}
 			dest.addr = cpu.esp;
 			operand_write(&dest);
@@ -48,7 +48,7 @@ make_instr_func(pusha){
 				dest.val = tmp;
 			}
 			else{
-				dest.val = cpu.grp[i]._16;	
+				dest.val = cpu.gpr[i]._16;	
 			}
 			dest.addr = cpu.esp;
 			operand_write(&dest);
