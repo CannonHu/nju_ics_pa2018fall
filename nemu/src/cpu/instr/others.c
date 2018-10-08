@@ -32,7 +32,7 @@ make_instr_func(pusha){
 		for(int i = 0; i < 8; i++){
 			cpu.esp -= 2;
 			if(i == 4){
-				dest.val = temp & 0xffff;
+				dest.val = tmp & 0xffff;
 			}
 			else{
 				dest.val = cpu.grp[i]._16;	
@@ -45,10 +45,10 @@ make_instr_func(pusha){
 		for(int i = 0; i < 8; i++){
 			cpu.esp -= 4;
 			if(i == 4){
-				dest.val = temp;
+				dest.val = tmp;
 			}
 			else{
-				dest.val = cpu.grp[i]._32;	
+				dest.val = cpu.grp[i]._16;	
 			}
 			dest.addr = cpu.esp;
 			operand_write(&dest);
