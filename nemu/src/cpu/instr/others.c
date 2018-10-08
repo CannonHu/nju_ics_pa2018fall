@@ -26,7 +26,6 @@ make_instr_func(pusha){
 	
 	dest.type = OPR_MEM;
 	
-	int tval = 0;
 	int tmp = cpu.esp;
 	if(data_size == 16){
 		for(int i = 0; i < 8; i++){
