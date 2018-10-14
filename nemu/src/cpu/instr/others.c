@@ -20,42 +20,6 @@ make_instr_func(push_r_v){
 	return 1;
 }
 
-make_instr_func(pusha){
-	OPERAND dest;
-	dest.data_size = data_size;
-	
-	dest.type = OPR_MEM;
-	
-	int tmp = cpu.esp;
-	if(data_size == 16){
-		for(int i = 0; i < 8; i++){
-			cpu.esp -= 2;
-			if(i == 4){
-				dest.val = tmp & 0xffff;
-			}
-			else{
-				dest.val = cpu.gpr[i]._16;	
-			}
-			dest.addr = cpu.esp;
-			operand_write(&dest);
-		}
-	}
-	if(data_size == 32){
-		for(int i = 0; i < 8; i++){
-			cpu.esp -= 4;
-			if(i == 4){
-				dest.val = tmp;
-			}
-			else{
-				dest.val = cpu.gpr[i]._16;	
-			}
-			dest.addr = cpu.esp;
-			operand_write(&dest);
-		}	
-	}
-	return 1;
-}
-
 make_instr_func(pop_r_v){
 	OPERAND r, top;
 	r.data_size = top.data_size = data_size;
@@ -81,35 +45,6 @@ make_instr_func(pop_r_v){
 	return 1;
 }
 
-make_instr_func(popa){
-	OPERAND top;
-	top.data_size = data_size;
-	
-	top.type = OPR_MEM;
-	top.addr = cpu.esp;
-	
-	if(data_size == 16){
-		for(int i = 7; i >= 0; i--){
-			if(i == 4)
-				continue;
-			operand_read(&top);
-			cpu.esp += 2;
-			cpu.gpr[i]._16 = top.val & 0xffff;	
-		}
-	}
-	if(data_size == 32){
-		for(int i = 7; i >= 0; i--){
-			if(i == 4)
-				continue;
-			operand_read(&top);
-			cpu.esp += 4;
-			cpu.gpr[i]._32 = top.val;	
-		}
-	
-	}
-	return 1;
-}
-
 make_instr_func(push_i_b){
 	OPERAND imm, dest;
 	dest.data_size = data_size;
@@ -131,27 +66,6 @@ make_instr_func(push_i_b){
 	dest.val = dval;
 	operand_write(&dest);
 	return 2;	
-}
-
-make_instr_func(push_i_v){
-	OPERAND imm, dest;
-	imm.data_size = dest.data_size = data_size;	
-	if(data_size == 16)
-		cpu.esp -= 2;
-	if(data_size == 32)
-		cpu.esp -= 4;
-	
-	imm.type = OPR_IMM;
-	imm.addr = eip + 1;
-	
-	dest.type = OPR_MEM;
-	dest.addr = cpu.esp;
-
-	operand_read(&imm);
-	int dval = sign_ext(imm.val, data_size);
-	dest.val = dval;
-	operand_write(&dest);
-	return 1 + data_size / 8;	
 }
 
 make_instr_func(push_rm_v){
