@@ -63,8 +63,10 @@ make_instr_func(push_i_b){
 	dest.type = OPR_MEM;
 	dest.addr = cpu.esp;
 
-	print_asm_1("push","b",2,&imm);	
+
 	operand_read(&imm);
+
+	print_asm_1("push","b",2,&imm);	
 	imm.val &= 0xff;
 	int dval = sign_ext(imm.val, 8);
 	dest.val = dval;
@@ -88,8 +90,9 @@ make_instr_func(push_rm_v){
 	dest.type = OPR_MEM;
 	dest.addr = cpu.esp;
 
-	print_asm_1("push","v",len,&rm);	
+
 	operand_read(&rm);
+	print_asm_1("push","v",len,&rm);	
 	if(data_size == 16)
 		dest.val = rm.val & 0xffff;
 	if(data_size == 32)
