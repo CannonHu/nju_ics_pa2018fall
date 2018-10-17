@@ -33,7 +33,7 @@ uint32_t loader() {
 	eph = ph + elf->e_phnum;
 	for(; ph < eph; ph ++) {
 		if(ph->p_type == PT_LOAD) {
-			printf("shepiguai\n");	
+
 			memcpy((void*)ph->p_vaddr, (void*)ph->p_offset, ph->p_filesz);	
 			/* TODO: copy the segment from the ELF file to its proper memory area */
 			memcpy((void*)(ph->p_vaddr + ph->p_filesz), 0, ph->p_memsz);		
