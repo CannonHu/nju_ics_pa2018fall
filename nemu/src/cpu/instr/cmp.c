@@ -14,7 +14,6 @@ make_instr_func(cmp_i2rm_bv){
 	int len = 1;
 	len += modrm_rm(eip + 1, &rm);
 
-	print_asm_2("cmp","bv",len,&imm,&rm);
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
 	operand_read(&imm);
