@@ -4,7 +4,6 @@
 
 	.globl start
 	start:
-		BREAK_POINT
 		jmp init				# never return
 
 #else
