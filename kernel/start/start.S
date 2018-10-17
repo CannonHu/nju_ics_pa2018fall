@@ -4,9 +4,7 @@
 
 	.globl start
 	start:
-		movl $0, %ebp
-		movl $(128 << 20), %esp
-
+		BREAK_POINT
 		jmp init				# never return
 
 #else
