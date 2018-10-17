@@ -129,7 +129,7 @@ make_instr_func(push_rm_v){
 
 make_instr_func(call_near){
 	uint32_t eipval = 0;
-	OPERAND dest,addr;
+	OPERAND dest,ret;
 
 	if(data_size == 16){
 		cpu.esp -= 2;
@@ -140,19 +140,18 @@ make_instr_func(call_near){
 		eipval = cpu.eip;
 	}
 
-	dest.data_size = data_size;
-	dest.type = OPR_MEM;
-	dest.addr = cpu.esp;
-	dest.val = eipval = eipval + 1 +data_size / 8;
-	operand_write(&dest);
+	ret.data_size = dest.data_size = data_size;
+	ret.type = OPR_MEM;
+	ret.addr = cpu.esp;
+	ret.val = eipval = eipval + 1 +data_size / 8;
+	operand_write(&ret);
 
-	addr.data_size = data_size;
-	addr.type = OPR_IMM;
-	addr.addr = eip + 1;
-	operand_read(&addr);
+	dest.type = OPR_IMM;
+	dest.addr = eip + 1;
+	operand_read(&dest);
 	print_asm_0("call","",1);
 
-	eipval += addr.val;
+	eipval += dest.val;
 
 	if(data_size == 16){
 		cpu.eip = eipval & 0xffff;	
@@ -161,6 +160,25 @@ make_instr_func(call_near){
 		cpu.eip = eipval;
 	}
 	return 0;
+}
+
+make_instr_func(call_near_indirect){
+	OPERNAD dest, cur;
+	if(data_size == 16){
+		cpu.esp -= 2;
+		eipval = cpu.eip & 0xffff;
+	}
+	if(data_size == 32){
+		cpu.esp -= 4;
+		eipval = cpu.eip;
+	}
+
+	cur.data_size = dest.data_size = data_size;
+	
+	int len = 1;
+	len += modrm_rm(eip + 1, &dest);
+
+	
 }
 
 make_instr_func(ret_near){
