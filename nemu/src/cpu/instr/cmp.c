@@ -14,12 +14,13 @@ make_instr_func(cmp_i2rm_bv){
 	int len = 1;
 	len += modrm_rm(eip + 1, &rm);
 
-	printf("eax: %d\n",rm.val);
-
 	print_asm_2("cmp","bv",len,&imm,&rm);
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
 	operand_read(&imm);
+	operand_read(&rm);
+
+	printf("eax: %d\n",rm.val);
 
 
 	uint32_t tval = sign_ext(imm.val, 8);
