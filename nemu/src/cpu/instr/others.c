@@ -75,6 +75,31 @@ make_instr_func(push_i_b){
 	return 2;	
 }
 
+
+make_instr_func(push_i_v){
+	OPERAND imm, dest;
+	imm.data_size = dest.data_size = data_size;
+	if(data_size == 16)
+		cpu.esp -= 2;
+	if(data_size == 32)
+		cpu.esp -= 4;
+	
+	imm.type = OPR_IMM;
+	imm.addr = eip + 1;
+	
+	dest.type = OPR_MEM;
+	dest.addr = cpu.esp;
+
+
+	operand_read(&imm);
+
+	print_asm_1("push","v",2,&imm);	
+
+	int dval = sign_ext(imm.val, data_size);
+	dest.val = dval;
+	operand_write(&dest);
+	return 1 + data_size / 8;	
+}
 make_instr_func(push_rm_v){
 	OPERAND rm, dest;
 	dest.data_size = rm.data_size = data_size;
