@@ -25,7 +25,8 @@ make_instr_func(and_i2rm_bv){
 	
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
-
+	
+	print_asm_2("and","bv",len,&imm, &rm);
 	operand_read(&imm);
 	operand_read(&rm);
 	int ival = sign_ext(imm.val, 8);
