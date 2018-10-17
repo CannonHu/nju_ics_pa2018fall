@@ -203,6 +203,7 @@ make_instr_func(leave){
 	top.type = OPR_MEM;
 	top.addr = cpu.esp;
 
+
 	int tval = 0;
 	operand_read(&top);
 	if(data_size == 16){
