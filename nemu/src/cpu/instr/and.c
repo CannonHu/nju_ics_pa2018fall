@@ -28,7 +28,7 @@ make_instr_func(and_i2rm_bv){
 	
 	operand_read(&imm);
 	operand_read(&rm);
-		print_asm_2("and","bv",len,&imm, &rm);
+	print_asm_2("and","bv",len, &imm, &rm);
 
 	int ival = sign_ext(imm.val, 8);
 	rm.val = alu_and(ival, rm.val, data_size);
