@@ -45,6 +45,7 @@ make_instr_func(lea);
 make_instr_func(leave);
 
 make_instr_func(call_near);
+make_instr_func(call_near_indirect);
 make_instr_func(ret_near);
 make_instr_func(ret_near_imm16);
 
