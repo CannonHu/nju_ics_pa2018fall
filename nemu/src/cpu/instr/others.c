@@ -13,7 +13,8 @@ make_instr_func(push_r_v){
 
 	dest.type = OPR_MEM;
 	dest.addr = cpu.esp;
-	
+
+	print_asm_1("push","v",1,&r);	
 	operand_read(&r);
 	dest.val = r.val;
 	operand_write(&dest);
