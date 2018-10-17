@@ -133,7 +133,7 @@ make_instr_func(call_near){
 	if(data_size == 32){
 		cpu.eip = eipval;
 	}
-	print_asm_0("call","",len);
+	print_asm_0("call","",1);
 	return 0;
 }
 
