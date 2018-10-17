@@ -18,5 +18,6 @@ make_instr_func(rep_repe) {
 			break;
 		}
 	}
+	printf("len: %d\n",len);
 	return len + 1;
 }
