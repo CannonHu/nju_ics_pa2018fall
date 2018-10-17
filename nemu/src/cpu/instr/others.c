@@ -31,6 +31,8 @@ make_instr_func(pop_r_v){
 	top.type = OPR_MEM;
 	top.addr = cpu.esp;
 
+	print_asm_1("pop","v",1,&r);
+
 	int tval = 0;
 	operand_read(&top);
 	if(data_size == 16){
