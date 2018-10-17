@@ -227,6 +227,8 @@ make_instr_func(not_rm_v){
 	len += modrm_rm(eip + 1, &rm);
 
 	operand_read(&rm);
+
+	print_asm_1("not","",len, &rm);
 	rm.val = ~rm.val;
 	operand_write(&rm);
 	return len;
