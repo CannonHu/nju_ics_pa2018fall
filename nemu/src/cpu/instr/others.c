@@ -50,7 +50,8 @@ make_instr_func(pop_r_v){
 
 make_instr_func(push_i_b){
 	OPERAND imm, dest;
-	imm.data_size = dest.data_size = data_size;
+	imm.data_size = 8;
+	dest.data_size = data_size;
 	if(data_size == 16)
 		cpu.esp -= 2;
 	if(data_size == 32)
@@ -71,7 +72,7 @@ make_instr_func(push_i_b){
 	int dval = sign_ext(imm.val, 8);
 	dest.val = dval;
 	operand_write(&dest);
-	return 1 + data_size / 8;	
+	return 2;	
 }
 
 make_instr_func(push_rm_v){
