@@ -20,7 +20,7 @@ make_instr_func(cmp_i2rm_bv){
 	operand_read(&rm);
 
 	printf("eax: %d\n",rm.val);
-	print_asm_2("cmp","bv",len,&imm,&rm);
+	print_asm_2("cmp","bv",len + 1,&imm,&rm);
 
 
 	uint32_t tval = sign_ext(imm.val, 8);
