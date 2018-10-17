@@ -192,10 +192,10 @@ static inline bool inv_cc();
 	cpu.eflags.CF == 1 || cpu.eflags.ZF == 1\
 
 #define condition_no \
-	cpu.eflags.OF == 0
+	inv_cc()
 
 #define condition_np \
-	cpu.eflags.PF == 0
+	inv_cc()
 
 #define condition_ns \
 	cpu.eflags.SF == 0
