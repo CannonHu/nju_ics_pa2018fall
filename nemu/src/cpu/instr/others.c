@@ -164,7 +164,7 @@ make_instr_func(call_near){
 
 make_instr_func(call_near_indirect){
 	uint32_t eipval = 0;
-	OPERNAD dest, ret;
+	OPERAND dest, ret;
 	if(data_size == 16){
 		cpu.esp -= 2;
 		eipval = cpu.eip & 0xffff;
