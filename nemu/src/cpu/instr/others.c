@@ -183,6 +183,7 @@ make_instr_func(call_near_indirect){
 	ret.addr = cpu.esp;
 	ret.val = eipval + len;
 	operand_write(&ret);
+	operand_read(&dest);
 
 	if(data_size == 16){
 		cpu.eip = dest.val & 0xffff;
