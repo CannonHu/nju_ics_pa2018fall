@@ -14,8 +14,7 @@ void ide_read(uint8_t *, uint32_t, uint32_t);
 void create_video_mapping();
 uint32_t get_ucr3();
 
-uint32_t loader() {
-	BREAK_POINT	
+uint32_t loader() {	
 	Elf32_Ehdr *elf;
 	Elf32_Phdr *ph, *eph;
 
