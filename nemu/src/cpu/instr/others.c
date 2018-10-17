@@ -124,6 +124,7 @@ make_instr_func(call_near){
 	addr.type = OPR_IMM;
 	addr.addr = eip + 1;
 	operand_read(&addr);
+	print_asm_0("call","",1);
 
 	eipval += addr.val;
 
@@ -133,7 +134,6 @@ make_instr_func(call_near){
 	if(data_size == 32){
 		cpu.eip = eipval;
 	}
-	print_asm_0("call","",1);
 	return 0;
 }
 
