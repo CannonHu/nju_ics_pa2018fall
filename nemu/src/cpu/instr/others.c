@@ -124,7 +124,7 @@ make_instr_func(call_near){
 	addr.type = OPR_IMM;
 	addr.addr = eip + 1;
 	operand_read(&addr);
-	print_asm_0("call","",1);
+	print_asm_1("call","",5, &dest);
 
 	eipval += addr.val;
 
