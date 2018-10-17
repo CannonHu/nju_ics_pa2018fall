@@ -65,8 +65,9 @@ make_instr_func(push_i_b){
 
 	operand_read(&imm);
 
-	print_asm_1("push","b",2,&imm);	
 	imm.val &= 0xff;
+	print_asm_1("push","b",2,&imm);	
+
 	int dval = sign_ext(imm.val, 8);
 	dest.val = dval;
 	operand_write(&dest);
