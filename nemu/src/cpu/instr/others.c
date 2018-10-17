@@ -182,7 +182,7 @@ make_instr_func(lea){
 
 	int len = 1;
 	len += modrm_r_rm(eip + 1, &r, &rm);
-
+	print_asm_2("lea","",len,&rm, &r);	
 	r.val = rm.addr;
 	operand_write(&r);
 	return len;
