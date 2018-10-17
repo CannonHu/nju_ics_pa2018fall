@@ -4,6 +4,7 @@ make_instr_func(rep_repe) {
 	int len = 1;
 	uint8_t op = instr_fetch(eip + 1, 1);
 	print_asm_0("rep", "", len + 1);
+	printf("op: %x\n",op);
 	if(op == 0xc3) {
 		// reference http://repzret.org/p/repzret/
 		opcode_entry[op](eip + 1, op);
