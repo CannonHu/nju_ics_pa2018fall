@@ -193,7 +193,7 @@ make_instr_func(call_near_indirect){
 
 	print_asm_1("call","", len, &dest);
 
-	
+	return 0;
 
 }
 
