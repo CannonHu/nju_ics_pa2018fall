@@ -30,7 +30,7 @@ instr_func opcode_entry[256] = {
 /* 0x68 - 0x6b*/	push_i_v, imul_irm2r_v, push_i_b, imul_i8rm2r_v,
 /* 0x6c - 0x6f*/	inv, inv, inv, inv,
 /* 0x70 - 0x73*/	jo_short_, jno_short_, jb_short_, jae_short_,
-/* 0x74 - 0x77*/	je_short_, __ref_jne_short_, jna_short_, ja_short_,
+/* 0x74 - 0x77*/	je_short_, jne_short_, jna_short_, ja_short_,
 /* 0x78 - 0x7b*/	js_short_, jns_short_, jp_short_, jnp_short_,
 /* 0x7c - 0x7f*/	jl_short_, jge_short_, jle_short_, jg_short_,
 /* 0x80 - 0x83*/	group_1_b, group_1_v, nemu_trap, group_1_bv,
@@ -77,7 +77,7 @@ instr_func group_1_v_entry[8] =
 
 /* 0x83 */
 instr_func group_1_bv_entry[8] =
-{add_i2rm_bv, inv, inv, inv, and_i2rm_bv, sub_i2rm_bv, inv, __ref_cmp_i2rm_bv};
+{__ref_add_i2rm_bv, inv, inv, inv, and_i2rm_bv, sub_i2rm_bv, inv, __ref_cmp_i2rm_bv};
 
 /* 0xc0 */
 instr_func group_2_b_entry[8] =
