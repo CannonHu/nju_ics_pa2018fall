@@ -163,7 +163,8 @@ make_instr_func(call_near){
 }
 
 make_instr_func(call_near_indirect){
-	OPERNAD dest, cur;
+	uint32_t eipval = 0;
+	OPERNAD dest, ret;
 	if(data_size == 16){
 		cpu.esp -= 2;
 		eipval = cpu.eip & 0xffff;
@@ -173,12 +174,27 @@ make_instr_func(call_near_indirect){
 		eipval = cpu.eip;
 	}
 
-	cur.data_size = dest.data_size = data_size;
+	ret.data_size = dest.data_size = data_size;
 	
 	int len = 1;
 	len += modrm_rm(eip + 1, &dest);
 
+	ret.type = OPR_MEM;
+	ret.addr = cpu.esp;
+	ret.val = eipval + len;
+	operand_write(&ret);
+
+	if(data_size == 16){
+		cpu.eip = dest.val & 0xffff;
+	}
+	if(data_size == 32){
+		cpu.eip = dest.val;
+	}
+
+	print_asm_1("call","", len, &dest);
+
 	
+
 }
 
 make_instr_func(ret_near){
