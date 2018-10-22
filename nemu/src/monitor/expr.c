@@ -76,7 +76,7 @@ int eval(int p, int q){
 	}
 	if(p == q){
 		printf("%c\n",tokens[p].str[0]);
-		return num;
+		return 0;
 	}
 	return 0;
 }
