@@ -77,6 +77,7 @@ int eval(int p, int q){
 	if(p == q){
 		return atoi(tokens[p].str);
 	}
+	return 0;
 }
 
 static bool make_token(char *e) {
