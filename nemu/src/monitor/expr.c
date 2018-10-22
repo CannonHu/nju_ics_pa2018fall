@@ -92,6 +92,7 @@ bool check_parentheses(int p,int q){
 	else{
 		return false;
 	}
+	return false;
 }
 
 int eval(int p, int q){
