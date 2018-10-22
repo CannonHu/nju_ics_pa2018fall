@@ -102,10 +102,12 @@ static bool make_token(char *e) {
 				/* TODO: Now a new token is recognized with rules[i]. 
 				 * Add codes to perform some actions with this token.
 				 */
+				if(rules[i].token_type == 256){
+					continue;
+				}	
 				
 				for(int j = 0; j < substr_len; j++){
 					tokens[nr_token].str[j] = substr_start[j];
-					printf("%c\n",substr_start[j]);
 				}
 
 				switch(rules[i].token_type) {
