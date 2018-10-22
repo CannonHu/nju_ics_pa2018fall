@@ -157,7 +157,8 @@ int eval(int p, int q){
 		return eval(p + 1, q - 1);
 	}
 	else{
-		
+		int opnum = findop(p, q);
+		printf("op: %c\n",tokens[opnum].str[0]);	
 	}
 	return 0;
 }
