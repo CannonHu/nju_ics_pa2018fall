@@ -70,7 +70,6 @@ Token tokens[32];
 int nr_token;
 
 int eval(int p, int q){
-	printf("%d\n",q);
 	if(p > q){
 		printf("BAD\n");
 		return 0;
