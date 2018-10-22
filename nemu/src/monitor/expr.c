@@ -69,6 +69,16 @@ typedef struct token {
 Token tokens[32];
 int nr_token;
 
+int eval(p, q){
+	if(p > q){
+		printf("BAD\n");
+		return 0;
+	}
+	if(p == q){
+		return atoi(tokens[p].str);
+	}
+}
+
 static bool make_token(char *e) {
 	int position = 0;
 	int i;
