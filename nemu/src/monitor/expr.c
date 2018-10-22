@@ -108,9 +108,9 @@ static struct op{
 	{'+', 4},
 	{'-', 4},
 	{EQ, 7}
-}
+};
 
-#define NR_OPT (sizeof(optable) / sizeof(optable[0]) )
+#define NR_OPT (sizeof(optable) / sizeof(optable[0]) );
 
 
 int findop(int p, int q){
