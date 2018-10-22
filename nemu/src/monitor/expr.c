@@ -69,6 +69,24 @@ typedef struct token {
 Token tokens[32];
 int nr_token;
 
+bool check_parentheses(int p,int q){
+	int c = 0;
+	if(tokens[p].type == '(' && tokens[q].type == ')'){
+		for(int i = p + 1; i < q; i++){
+			if(tokens[i].type == '('){c++;}
+			else if(tokens[i].type == ')'){c--;}
+			if(c < 0){
+				printf("BAD\n");
+				assert(0);
+			}
+		}
+		if(c != 0){
+			printf("BAD\n");
+			assert(0);
+		}
+	}
+}
+
 int eval(int p, int q){
 	if(p > q){
 		printf("BAD\n");
@@ -78,7 +96,7 @@ int eval(int p, int q){
 		int num = atoi(tokens[p].str);
 		return num;
 	}
-
+	
 	return 0;
 }
 
