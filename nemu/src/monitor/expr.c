@@ -11,7 +11,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ, NUM, REG, SYMB
+	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG
 	/* TODO: Add more token types */
 
 };
@@ -29,9 +29,10 @@ static struct rule {
 	{"\\+", '+'},
 	{"-", '-'},
 	{"\\*",'*'},
+	{"/",'/'},
+	{"%", '%'},
 	{"\\(",'('},
 	{"\\)",')'},
-
 	{"==", EQ},
 	{"[0-9]+", NUM},
 	{"$e[a,c,d,b]x", REG},
@@ -95,6 +96,21 @@ bool check_parentheses(int p,int q){
 	return false;
 }
 
+static struct op{
+	int type; int priority;
+}optable[] = {
+	{'(', 1},
+	{')', 1},
+	{NEG, 2},
+	{'*', 3},
+	{'/', 3},
+	{'%', 3}
+}
+
+int findop(int p, int q){
+	
+}
+
 int eval(int p, int q){
 	if(p > q){
 		printf("BAD\n");
@@ -106,6 +122,9 @@ int eval(int p, int q){
 	}
 	else if(check_parentheses(p,q)){
 		return eval(p + 1, q - 1);
+	}
+	else{
+		
 	}
 	return 0;
 }
