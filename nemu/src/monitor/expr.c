@@ -107,6 +107,7 @@ static struct op{
 	{'%', 3},
 	{'+', 4},
 	{'-', 4},
+	{EQ, 7}
 }
 
 int findop(int p, int q){
