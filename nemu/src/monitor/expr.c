@@ -103,7 +103,9 @@ int eval(int p, int q){
 		int num = atoi(tokens[p].str);
 		return num;
 	}
-	
+	else if(check_parentheses(p,q)){
+		return eval(p + 1, q - 1);
+	}
 	return 0;
 }
 
