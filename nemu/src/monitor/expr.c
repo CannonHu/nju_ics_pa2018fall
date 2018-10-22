@@ -158,7 +158,15 @@ int eval(int p, int q){
 	}
 	else{
 		int opnum = findop(p, q);
-		printf("op: %c\n",tokens[opnum].str[0]);	
+		int val1 = eval(p, opnum - 1);
+		int val2 = eval(opnum + 1, q);
+		switch(tokens[opnum].type){
+			case '+':return val1 + val2;
+			case '-':return val1 - val2;
+			case '*':return val1 * val2;
+			case '/':return val1 / val2;
+			default:assert(0);
+		}
 	}
 	return 0;
 }
