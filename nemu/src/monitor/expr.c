@@ -75,7 +75,8 @@ int eval(int p, int q){
 		return 0;
 	}
 	if(p == q){
-		return atoi(tokens[p].str);
+		int num = atoi(tokens[p].str);
+		return num;
 	}
 	return 0;
 }
