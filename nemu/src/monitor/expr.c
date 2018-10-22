@@ -75,8 +75,7 @@ int eval(int p, int q){
 		return 0;
 	}
 	if(p == q){
-		int num = atoi(tokens[p].str);
-		printf("num: %d\n",num);
+		printf("%c\n",tokens[p].str[0]);
 		return num;
 	}
 	return 0;
