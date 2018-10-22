@@ -162,7 +162,8 @@ uint32_t expr(char *e, bool *success) {
 		return 0;
 	}
 
-
-	return eval(0, nr_token-1);
+	int tmp = eval(0, nr_token-1);
+	printf("res: %d\n", tmp);
+	return tmp;
 }
 
