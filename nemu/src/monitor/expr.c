@@ -28,7 +28,11 @@ static struct rule {
 
 	{" +",	NOTYPE},				// white space
 	{"\\+", '+'},
-	{"\\-", '-'},
+	{"-", '-'},
+	{"\\*",'*'},
+	{"\\(",'('},
+	{"\\)",')'},
+
 	{"==", EQ},
 	{"[0-9]+", NUM},
 	{"$e[a,c,d,b]x", REG},
@@ -86,7 +90,10 @@ static bool make_token(char *e) {
 				/* TODO: Now a new token is recognized with rules[i]. 
 				 * Add codes to perform some actions with this token.
 				 */
-
+				
+				for(int j = 0; j < substr_len; j++){
+					tokens[nr_token].str[j] = substr_start[j];
+				}
 
 				switch(rules[i].token_type) {
 					default: tokens[nr_token].type = rules[i].token_type;
