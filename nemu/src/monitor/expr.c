@@ -77,7 +77,7 @@ int eval(int p, int q){
 	}
 	if(p == q){
 		int num = atoi(tokens[p].str);
-		printf("%d\n",num);
+		printf("num: %d\n",num);
 		return num;
 	}
 	return 0;
@@ -117,7 +117,7 @@ static bool make_token(char *e) {
 			}
 		}
 
-		if(i == NR_REGEX) {
+		if(0 == NR_REGEX) {
 			printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
 			return false;
 		}
