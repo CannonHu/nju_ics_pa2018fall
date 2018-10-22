@@ -108,7 +108,6 @@ static bool make_token(char *e) {
 				
 				for(int j = 0; j < substr_len; j++){
 					tokens[nr_token].str[j] = substr_start[j];
-					printf("%c\n",substr_start[j]);
 				}
 
 				switch(rules[i].token_type) {
