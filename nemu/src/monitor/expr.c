@@ -69,7 +69,7 @@ typedef struct token {
 Token tokens[32];
 int nr_token;
 
-int eval(p, q){
+int eval(int p, int q){
 	if(p > q){
 		printf("BAD\n");
 		return 0;
