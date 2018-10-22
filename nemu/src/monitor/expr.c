@@ -80,10 +80,17 @@ bool check_parentheses(int p,int q){
 				assert(0);
 			}
 		}
+		if(c == 0){
+			return true;
+		}
 		if(c != 0){
 			printf("BAD\n");
 			assert(0);
 		}
+
+	}
+	else{
+		return false;
 	}
 }
 
