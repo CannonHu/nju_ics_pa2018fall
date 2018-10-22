@@ -114,7 +114,34 @@ static struct op{
 
 
 int findop(int p, int q){
-	
+	int c = 0;
+	int maxp = 1;
+	int maxpnum = p;
+	for(int i = p; i <= q; i++){
+		if(tokens[i].type == '('){
+			c++;
+			continue;
+		}
+		else if(tokens[i].type == ')'){
+			c--;
+			continue;
+		}
+		else if(c != 0){
+			continue;
+		}
+		else{
+			for(int j = 0; j < NR_OPT; j++){
+				if(tokens[i].type == optable[j].type){
+					if(optable[j].priority > maxp){
+						maxp = optable[j].priority;
+						maxpnum = i;
+						break;
+					}
+				}
+			}
+		}
+	}
+	return maxpnum;
 }
 
 int eval(int p, int q){
