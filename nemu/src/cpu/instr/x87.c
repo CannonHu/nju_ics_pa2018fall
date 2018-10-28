@@ -234,7 +234,6 @@ make_instr_func(x87_fstps) {
 	len += modrm_rm(eip + 1, &opr_dest);
 	opr_dest.val = fpu_store();
 	operand_write(&opr_dest);
-	printf("dest: %x\n",opr_dest.val);
 	print_asm_0("fstps", "", len);
 	return len;
 }
