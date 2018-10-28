@@ -133,6 +133,7 @@ make_instr_func(inc_r_v);
 make_instr_func(dec_r_v);
 make_instr_func(dec_rm_v);
 
+make_instr_func(mul_rm2a_b);
 make_instr_func(mul_rm2a_v);
 
 make_instr_func(cmps_b);
