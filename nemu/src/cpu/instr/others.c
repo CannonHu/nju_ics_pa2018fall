@@ -166,7 +166,7 @@ make_instr_func(pusha){
 
 make_instr_func(popa){
 	OPERAND src;
-	src.typr = OPR_MEM;
+	src.type = OPR_MEM;
 	src.data_size = data_size;
 
 	if(data_size == 16){
