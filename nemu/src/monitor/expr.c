@@ -144,14 +144,21 @@ int findop(int p, int q){
 	return maxpnum;
 }
 
+int tokentoval(int id){
+	int num = 0;
+	if(tokens[id].type == NUM){
+		num = atoi(tokens[p].str);
+		return num;
+	}
+}
+
 int eval(int p, int q){
 	if(p > q){
 		printf("BAD\n");
 		return 0;
 	}
 	if(p == q){
-		int num = atoi(tokens[p].str);
-		return num;
+		return tokentoval(p);
 	}
 	else if(check_parentheses(p,q)){
 		return eval(p + 1, q - 1);
