@@ -160,6 +160,37 @@ make_instr_func(pusha){
 			operand_write(&dest);
 		}	
 	}
+	print_asm_0("push","a",1);
+	return 1;
+}
+
+make_instr_func(popa){
+	OPERAND src;
+	src.typr = OPR_MEM;
+	src.data_size = data_size;
+
+	if(data_size == 16){
+		for(int i = 0; i < 8; i++){
+			if(i != 4){
+				src.addr = cpu.esp;
+				operand_read(&src);
+				cpu.gpr[i]._16 = src.val;
+				cpu.esp += 2;
+			}
+		}		
+	}
+	if(data_size == 16){
+		for(int i = 0; i < 8;i++){
+			if(i != 4){
+				src.addr = cpu.esp;
+				operand_read(&src);
+				cpu.gpr[i]._32 = src.val;
+				cpu.esp += 4;
+			}
+		}
+	}
+	print_asm_0("pop","a",1);
+
 	return 1;
 }
 
