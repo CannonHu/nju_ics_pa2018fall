@@ -128,6 +128,9 @@ make_instr_func(xor_i2rm_bv);
 make_instr_func(not_rm_b);
 make_instr_func(not_rm_v);
 
+make_instr_func(neg_rm_b);
+make_instr_func(neg_rm_v);
+
 make_instr_func(inc_rm_v);
 make_instr_func(inc_r_v);
 make_instr_func(dec_r_v);
