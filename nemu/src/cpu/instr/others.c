@@ -127,6 +127,42 @@ make_instr_func(push_rm_v){
 	return len;
 }
 
+make_instr_func(pusha){
+	OPERAND dest;
+	dest.data_size = data_size;
+	dest.type = OPR_MEM;
+
+	if(data_size == 16){
+		uint16_t tmp = cpu.esp;
+		for(int i = 0; i < 8; i++){
+			cpu.esp -= 2;
+			dest.addr = cpu.esp;
+			if(i == 4){
+				dest.val = tmp;
+			}
+			else{
+				dest.val = cpu.gpr[i]._16;
+			}
+			operand_write(&dest);
+		}
+	}
+	else if(data_size == 32){
+		uint32_t tmp = cpu.esp;
+		for(int i = 0; i < 8; i++){
+			cpu.esp -= 4;
+			dest.addr = cpu.esp;
+			if(i == 4){
+				dest.val = tmp;
+			}
+			else{
+				dest.val = cpu.gpr[i]._32;
+			}
+			operand_write(&dest);
+		}	
+	}
+	return 1;
+}
+
 make_instr_func(call_near){
 	uint32_t eipval = 0;
 	OPERAND dest,ret;
