@@ -280,7 +280,7 @@ make_instr_func(ret_near){
 		cpu.eip = top.val;
 		cpu.esp += 4;
 	}
-	
+	print_asm_0("ret","",1);
 	return 0;
 }
 
