@@ -114,7 +114,7 @@ static struct op{
 #define NR_OPT (sizeof(optable) / sizeof(optable[0]) )
 
 bool isop(int id){
-	switch(tokens[i].type){
+	switch(tokens[id].type){
 		case '+':
 			return true;
 		case '-':
