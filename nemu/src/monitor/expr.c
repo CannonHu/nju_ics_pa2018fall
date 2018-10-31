@@ -12,7 +12,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG
+	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG, DEREF
 	/* TODO: Add more token types */
 
 };
@@ -258,6 +258,10 @@ uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {
 		*success = false;
 		return 0;
+	}
+	
+	for(int i = 0; i < nr_token; i++){
+		
 	}
 
 	int tmp = eval(0, nr_token-1);
