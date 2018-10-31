@@ -234,6 +234,10 @@ uint32_t expr(char *e, bool *success) {
 
 	int tmp = eval(0, nr_token-1);
 	printf("res: %d\n", tmp);
+	for(int i = 0; i < nr_token; i++)
+		for(int j = 0; j < 32; j++){
+			tokens[i].str[j] = '\0';
+		}
 	return tmp;
 }
 
