@@ -135,7 +135,6 @@ int findop(int p, int q){
 	int c = 0;
 	int maxp = 1;
 	int maxpnum = p;
-	printf("%d %d\n",p,q);
 	for(int i = p; i <= q; i++){
 		if(!isop(i)){
 			continue;
