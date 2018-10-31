@@ -150,6 +150,12 @@ int tokentoval(int id){
 		num = atoi(tokens[p].str);
 		return num;
 	}
+	if(tokens[id].type == REG){
+		switch(tokens[id].str){
+			case "$eax":
+				return cpu.eax;
+		}
+	}
 
 }
 
