@@ -127,6 +127,10 @@ bool isop(int id){
 			return true;
 		case EQ:
 			return true;
+		case NEG:
+			return true;
+		case DEREF:
+			return true;
 	};
 	return false;
 }
@@ -139,8 +143,6 @@ int findop(int p, int q){
 		if(!isop(i)){
 			continue;
 		}
-		printf("%d\n",maxpnum);
-
 		if(tokens[i].type == '('){
 			c++;
 			continue;
