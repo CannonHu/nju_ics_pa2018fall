@@ -151,8 +151,32 @@ int tokentoval(int id){
 		num = atoi(tokens[id].str);
 	}
 	else if(tokens[id].type == REG){
-		if(tokens[id].str[2] == 'a')
-			num = cpu.gpr[0]._32;
+		if(tokens[id].str[2] == 'a'){
+			num = cpu.eax;
+		}
+		else if(tokens[id].str[2] == 'c'){
+			num = cpu.ecx;
+		}
+		else if(tokens[id].str[2] == 'd' && tokens[id].str[3] == 'x'){
+			num = cpu.edx;
+		}
+		else if(tokens[id].str[2] == 'b' && tokens[id].str[3] == 'x'){
+			num = cpu.ebx;
+		}
+		else if(tokens[id].str[2] == 's' && tokens[id].str[3] == 'p'){
+			num = cpu.esp;
+		}
+		else if(tokens[id].str[2] == 'b' && tokens[id].str[3] == 'p'){
+			num = cpu.ebp;
+		}
+		else if(tokens[id].str[2] == 's' && tokens[id].str[3] == 'i'){
+			num = cpu.esi;
+		}
+		else if(tokens[id].str[2] == 'd' && tokens[id].str[3] == 'i'){
+			num = cpu.edi;
+		}
+
+
 	}
 	return num;
 }
