@@ -280,7 +280,10 @@ uint32_t expr(char *e, bool *success) {
 		if(tokens[i].type == '-' && (i == 0 || isop(i-1))){
 			tokens[i].type = NEG;
 		}
-				
+		if(tokens[i].type == '*' && (i == 0 || isop(i-1))){
+			tokens[i].type = DEREF;
+		}
+		
 	}
 
 	int tmp = eval(0, nr_token-1);
