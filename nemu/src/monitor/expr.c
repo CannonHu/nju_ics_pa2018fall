@@ -151,6 +151,7 @@ int tokentoval(int id){
 		num = atoi(tokens[id].str);
 	}
 	else if(tokens[id].type == REG){
+		printf("reg\n");
 		if(tokens[id].str[2] == 'a'){
 			num = cpu.eax;
 		}
