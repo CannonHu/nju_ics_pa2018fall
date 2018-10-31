@@ -136,10 +136,11 @@ int findop(int p, int q){
 	int maxp = 1;
 	int maxpnum = p;
 	for(int i = p; i <= q; i++){
-		printf("%d\n",maxpnum);
 		if(!isop(i)){
 			continue;
 		}
+		printf("%d\n",maxpnum);
+
 		if(tokens[i].type == '('){
 			c++;
 			continue;
