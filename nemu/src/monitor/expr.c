@@ -151,7 +151,7 @@ int tokentoval(int id){
 		return num;
 	}
 	if(tokens[id].type == REG){
-		if(tokens[id].str == "$eax")
+		if(tokens[id].str[2] == 'a')
 			return cpu.gpr[0];
 	}
 
