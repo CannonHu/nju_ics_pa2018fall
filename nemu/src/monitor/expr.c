@@ -152,7 +152,7 @@ int tokentoval(int id){
 	}
 	if(tokens[id].type == REG){
 		if(tokens[id].str == "$eax")
-			return cpu.eflags.eax;
+			return cpu.gpr[0];
 	}
 
 }
