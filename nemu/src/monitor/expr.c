@@ -113,6 +113,23 @@ static struct op{
 
 #define NR_OPT (sizeof(optable) / sizeof(optable[0]) )
 
+bool isop(int id){
+	switch(tokens[i].type){
+		case '+':
+			return true;
+		case '-':
+			return true;
+		case '*':
+			return true;
+		case '/':
+			return true;
+		case '%':
+			return true;
+		case EQ:
+			return true;
+	};
+	return false;
+}
 
 int findop(int p, int q){
 	int c = 0;
@@ -261,7 +278,7 @@ uint32_t expr(char *e, bool *success) {
 	}
 	
 	for(int i = 0; i < nr_token; i++){
-		
+		if(tokens[i].type == '-' && (i == 0 || 
 	}
 
 	int tmp = eval(0, nr_token-1);
