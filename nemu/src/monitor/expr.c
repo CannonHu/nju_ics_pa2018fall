@@ -147,7 +147,7 @@ int findop(int p, int q){
 int tokentoval(int id){
 	int num = 0;
 	if(tokens[id].type == NUM){
-		num = atoi(tokens[p].str);
+		num = atoi(tokens[id].str);
 		return num;
 	}
 	if(tokens[id].type == REG){
