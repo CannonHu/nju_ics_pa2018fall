@@ -35,9 +35,9 @@ static struct rule {
 	{"\\)",')'},
 	{"==", EQ},
 	{"[0-9]+", NUM},
-	{"$e[a,c,d,b]x", REG},
-	{"$esp", REG},
-	{"$esi", REG},
+	{"\\$e[a,c,d,b]x", REG},
+	{"\\$esp", REG},
+	{"\\$esi", REG},
 	{"[a-zA-Z]+[a-zA-Z0-9]*", SYMB},
 };
 
@@ -150,6 +150,7 @@ int tokentoval(int id){
 		num = atoi(tokens[p].str);
 		return num;
 	}
+
 }
 
 int eval(int p, int q){
