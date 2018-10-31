@@ -151,7 +151,7 @@ int tokentoval(int id){
 	}
 	else if(tokens[id].type == REG){
 		if(tokens[id].str[2] == 'a')
-			num = cpu.gpr[0];
+			num = cpu.gpr[0]._32;
 	}
 	return num;
 }
