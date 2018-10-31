@@ -211,14 +211,13 @@ int eval(int p, int q){
 	}
 	else{
 		int opnum = findop(p, q);
-		int val1 = eval(p, opnum - 1);
-		int val2 = eval(opnum + 1, q);
 		switch(tokens[opnum].type){
-			case '+':return val1 + val2;
-			case '-':return val1 - val2;
-			case '*':return val1 * val2;
-			case '/':return val1 / val2;
-			case '%':return val1 % val2;
+			case '+':return eval(p, opnum - 1) + eval(opnum + 1, q);
+			case '-':return eval(p, opnum - 1) - eval(opnum + 1, q);
+			case '*':return	eval(p, opnum - 1) * eval(opnum + 1, q);
+			case '/':return eval(p, opnum - 1) / eval(opnum + 1, q);
+			case '%':return eval(p, opnum - 1) % eval(opnum + 1, q);
+			case NEG:return 0 - eval(opnum + 1,q);
 			default:assert(0);
 		}
 	}
