@@ -219,6 +219,7 @@ int eval(int p, int q){
 			case '*':return val1 * val2;
 			case '/':return val1 / val2;
 			case '%':return val1 % val2;
+			case NEG:return val1 - val2;
 			default:assert(0);
 		}
 	}
@@ -278,7 +279,10 @@ uint32_t expr(char *e, bool *success) {
 	}
 	
 	for(int i = 0; i < nr_token; i++){
-		if(tokens[i].type == '-' && (i == 0 || 
+		if(tokens[i].type == '-' && (i == 0 || isop(i-1))){
+			tokens[i].type = NEG;
+		}
+				
 	}
 
 	int tmp = eval(0, nr_token-1);
