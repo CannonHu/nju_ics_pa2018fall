@@ -147,14 +147,13 @@ int findop(int p, int q){
 int tokentoval(int id){
 	int num = 0;
 	if(tokens[id].type == NUM){
-		num = atoi(tokens[id].str);
-		return num;
+		num = atoi(tokens[p].str);
 	}
-	if(tokens[id].type == REG){
+	else if(tokens[id].type == REG){
 		if(tokens[id].str[2] == 'a')
-			return cpu.gpr[0];
+			num = cpu.gpr[0];
 	}
-
+	return num;
 }
 
 int eval(int p, int q){
