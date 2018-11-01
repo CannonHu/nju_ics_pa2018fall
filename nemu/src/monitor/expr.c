@@ -144,7 +144,9 @@ int findop(int p, int q){
 	int maxp = 1;
 	int maxpnum = p;
 	for(int i = p; i <= q; i++){
-
+		if(tokens[i].type == NUM || tokens[i].type == REF || tokens[i].type == SYMB){
+			continue;
+		}
 
 		if(tokens[i].type == '('){
 			c++;
