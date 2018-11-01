@@ -171,8 +171,11 @@ int findop(int p, int q){
 
 uint32_t look_up_symtab(char *sym, bool *success);
 
-int tokentoval(int id, bool *success){
+
+
+int tokentoval(int id){
 	int num = 0;
+	success = true;
 	if(tokens[id].type == NUM){
 		num = atoi(tokens[id].str);
 	}
@@ -207,6 +210,12 @@ int tokentoval(int id, bool *success){
 	else if(tokens[id].type == SYMB){
 		vaddr_t addr;
 		addr = look_up_symtab(tokens[id].str, &success);
+		if(!success){
+			printf("SYMB '%s' not found\n",tokens[id].str);
+		}
+		else{
+			num = uint32_t(addr);
+		}
 	}
 	return num;
 }
