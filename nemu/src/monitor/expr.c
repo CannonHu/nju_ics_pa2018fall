@@ -173,7 +173,7 @@ uint32_t look_up_symtab(char *sym, bool *success);
 
 
 
-int tokentoval(int id){
+int tokentoval(int id, bool *success){
 	int num = 0;
 	success = true;
 	if(tokens[id].type == NUM){
@@ -209,6 +209,7 @@ int tokentoval(int id){
 	}
 	else if(tokens[id].type == SYMB){
 		vaddr_t addr;
+		bool success;
 		addr = look_up_symtab(tokens[id].str, &success);
 		if(!success){
 			printf("SYMB '%s' not found\n",tokens[id].str);
