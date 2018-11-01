@@ -149,6 +149,7 @@ int findop(int p, int q){
 			continue;
 		}
 		if(tokens[i].type == '('){
+			printf("shepiguai\n");
 			c++;
 			continue;
 		}
