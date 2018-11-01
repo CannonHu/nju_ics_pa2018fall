@@ -144,6 +144,7 @@ int findop(int p, int q){
 	int maxp = 1;
 	int maxpnum = p;
 	for(int i = p; i <= q; i++){
+		printf("c:%d\n",c);
 		if(!isop(i)){
 			continue;
 		}
