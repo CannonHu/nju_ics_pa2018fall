@@ -169,7 +169,9 @@ int findop(int p, int q){
 	return maxpnum;
 }
 
-int tokentoval(int id){
+uint32_t look_up_symtab(char *sym, bool *success);
+
+int tokentoval(int id, bool *success){
 	int num = 0;
 	if(tokens[id].type == NUM){
 		num = atoi(tokens[id].str);
@@ -202,6 +204,10 @@ int tokentoval(int id){
 
 
 	}
+	else if(tokens[id].type == SYMB){
+		vaddr_t addr;
+		addr = look_up_symtab(tokens[id].str, &success);
+	}
 	return num;
 }
 
@@ -226,7 +232,7 @@ int eval(int p, int q){
 			case '%':return eval(p, opnum - 1) % eval(opnum + 1, q);
 			case NEG:return 0 - eval(opnum + 1,q);
 			default:assert(0);
-		}
+		
 	}
 	return 0;
 }
