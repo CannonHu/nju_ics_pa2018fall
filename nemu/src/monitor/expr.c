@@ -173,9 +173,9 @@ uint32_t look_up_symtab(char *sym, bool *success);
 
 
 
-int tokentoval(int id, bool *success){
+int tokentoval(int id){
 	int num = 0;
-	success = true;
+
 	if(tokens[id].type == NUM){
 		num = atoi(tokens[id].str);
 	}
