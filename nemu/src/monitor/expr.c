@@ -160,7 +160,6 @@ int findop(int p, int q){
 			for(int j = 0; j < NR_OPT; j++){
 				if(tokens[i].type == optable[j].type){
 					if(optable[j].priority > maxp){
-						printf("num: %d\n",i);
 						maxp = optable[j].priority;
 						maxpnum = i;
 						break;
