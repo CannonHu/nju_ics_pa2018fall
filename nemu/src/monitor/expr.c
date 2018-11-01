@@ -151,14 +151,11 @@ int findop(int p, int q){
 			c++;
 			continue;
 		}
-		else if(tokens[i].type == ')'){
+		if(tokens[i].type == ')'){
 			c--;
 			continue;
 		}
-		else if(c != 0){
-			continue;
-		}
-		else{
+		if(c == 0){
 			for(int j = 0; j < NR_OPT; j++){
 				if(tokens[i].type == optable[j].type){
 					if(optable[j].priority > maxp){
@@ -168,6 +165,9 @@ int findop(int p, int q){
 					}
 				}
 			}
+		}
+		else{
+			continue;
 		}
 	}
 	return maxpnum;
