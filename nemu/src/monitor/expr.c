@@ -239,9 +239,7 @@ int eval(int p, int q){
 		return eval(p + 1, q - 1);
 	}
 	else{
-		printf("p: %d q: %d\n", p ,q);
 		int opnum = findop(p, q);
-		printf("opnum: %d\n",opnum);
 		switch(tokens[opnum].type){
 			case '+':return eval(p, opnum - 1) + eval(opnum + 1, q);
 			case '-':return eval(p, opnum - 1) - eval(opnum + 1, q);
