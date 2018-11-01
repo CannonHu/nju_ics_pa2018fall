@@ -243,7 +243,7 @@ int eval(int p, int q){
 			case NEG:return 0 - eval(opnum + 1,q);
 			case DEREF: return vaddr_read(eval(opnum + 1, q), SREG_CS, 4);
 			default:assert(0);
-		
+		}	
 	}
 	return 0;
 }
