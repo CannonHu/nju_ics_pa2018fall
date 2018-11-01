@@ -215,7 +215,7 @@ int tokentoval(int id){
 			printf("SYMB '%s' not found\n",tokens[id].str);
 		}
 		else{
-			num = uint32_t(addr);
+			num = addr;
 		}
 	}
 	return num;
