@@ -243,7 +243,7 @@ int eval(int p, int q){
 			case '%':return eval(p, opnum - 1) % eval(opnum + 1, q);
 			case NEG:return 0 - eval(opnum + 1,q);
 			case DEREF: 
-				 uint32_t vaddr = eval(opnum + 1,q);
+				 uint32_t addr = eval(opnum + 1,q);
 				 return vaddr_read(vaddr, SREG_CS, 4);
 			default:assert(0);
 		}	
