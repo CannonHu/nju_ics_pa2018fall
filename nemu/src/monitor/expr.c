@@ -217,7 +217,6 @@ int tokentoval(int id){
 		}
 		else{
 			num = addr;
-			printf("addr: %x\n",num);
 		}
 	}
 	return num;
