@@ -102,6 +102,7 @@ static struct op{
 }optable[] = {
 	{'(', 1},
 	{')', 1},
+	{DEREF, 2},
 	{NEG, 2},
 	{'*', 3},
 	{'/', 3},
