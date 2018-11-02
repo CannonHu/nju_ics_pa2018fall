@@ -14,7 +14,7 @@ void init_cache(){
 		for(int j = 0; j < LINE_IN_SLOT; j++){
 			cache[i][j].valid = 0;
 			cache[i][j].sign = 0;
-			memset(cache[i][j].data_cell, 0, 64);
+			memset(cache[i][j].data_cell, 0, line_data_size);
 		}
 	}
 }
