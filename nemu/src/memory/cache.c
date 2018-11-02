@@ -23,6 +23,10 @@ uint8_t get_slot(paddr_t paddr){
 	return id;
 }
 
+uint32_t get_line_sign(paddr_t paddr){
+	uint32_t sign = (paddr >> 13) & 0x7ffff;
+}
+
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	
 }
