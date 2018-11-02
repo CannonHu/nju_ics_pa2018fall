@@ -1,10 +1,11 @@
 #include "nemu.h"
 
+#define line_data_size = 64;
 
 typedef struct{
 	bool valid;
 	uint32_t sign;
-	uint8_t data_cell[64];
+	uint8_t data_cell[line_data_size];
 }CacheLine;
 
 void init_cache();
