@@ -67,28 +67,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	uint32_t line_sign = get_line_sign(paddr);
 	uint32_t cell_num = paddr & 0x3f;
 	if(cell_num + len < line_data_size){
-		for(int j = 0; j < LINE_IN_SLOT; j++){
-			if(cache[slot_id][j].sign == line_sign){
-				if(!cache[slot_id][j].valid){
-					memtocache(paddr, slot_id);
-				}
-				memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
-				return ret;
-			}
-		}
-		for(int j = 0; j < LINE_IN_SLOT; j++){
-			if(!cache[slot_id][j].valid){
-				memtocache(paddr, slot_id);
-				cache[slot_id][j].sign = line_sign;				
-			}
-			memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
-			return ret;
-		}	
-	        slot_id = rand(7);
-		memtocache(paddr, slot_id);
-		memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
-		return ret;
-	
+		return   cache_read_line(paddr, slot_id, line_sign, len);		
 	}
 	else{
 		
