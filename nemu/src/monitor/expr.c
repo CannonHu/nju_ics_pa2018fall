@@ -39,7 +39,7 @@ static struct rule {
 	{"&&", AND},
 	{"\\|\\|", OR},
 	{"[0-9]+", NUM},
-	{"0x[0-9a-fA-F]+", HNUM}
+	{"0x[0-9a-fA-F]+", HNUM},
 	{"\\$e[a,c,d,b]x", REG},
 	{"\\$esp", REG},
 	{"\\$esi", REG},
