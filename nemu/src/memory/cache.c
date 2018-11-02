@@ -66,7 +66,7 @@ uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, siz
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	uint32_t ret = 0;
 	paddr_t addrn = paddr;
-	uint32n_t slot_id = get_slot(addrn);
+	uint32_t slot_id = get_slot(addrn);
 	uint32_t line_sign = get_line_sign(addrn);
 	uint32_t cell_num = paddr & 0x3f;
 	if(cell_num + len < line_data_size){
