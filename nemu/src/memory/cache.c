@@ -28,6 +28,7 @@ uint8_t get_slot(paddr_t paddr){
 
 uint32_t get_line_sign(paddr_t paddr){
 	uint32_t sign = (paddr >> 13) & 0x7ffff;
+	return sign;
 }
 
 void memtocache(paddr_t paddr, uint8_t slot_id){
