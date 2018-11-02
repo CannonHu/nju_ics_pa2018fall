@@ -28,5 +28,9 @@ uint32_t get_line_sign(paddr_t paddr){
 }
 
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
-	
+	paddr_t addrn = paddr;
+	uint8_t slot_id = 0;
+	for(int i = 0; i < len; i++){
+		
+	}	
 }
