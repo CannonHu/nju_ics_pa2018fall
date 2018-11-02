@@ -31,9 +31,9 @@ uint32_t get_line_sign(paddr_t paddr){
 	return sign;
 }
 
-void memtocache(paddr_t paddr, uint8_t slot_id){
-	memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);
-	cache[slot_id][j].valid = 1;	
+void memtocache(paddr_t paddr, uint8_t slot_id, uint8_t line_id){
+	memcpy(cache[slot_id][line_id].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);
+	cache[slot_id][line_id].valid = 1;	
 }
 
 uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, size_t len){
@@ -42,7 +42,7 @@ uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, siz
 	for(int j = 0; j < LINE_IN_SLOT; j++){
 		if(cache[slot_id][j].sign == line_sign){
 			if(!cache[slot_id][j].valid){
-				memtocache(paddr, slot_id);
+				memtocache(paddr, slot_id, j);
 			}
 			memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
 			return ret;
@@ -50,14 +50,14 @@ uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, siz
 	}
 	for(int j = 0; j < LINE_IN_SLOT; j++){
 		if(!cache[slot_id][j].valid){
-			memtocache(paddr, slot_id);
+			memtocache(paddr, slot_id, j);
 			cache[slot_id][j].sign = line_sign;				
 		}
 		memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
 		return ret;
 	}	
-	slot_id = rand(7);
-	memtocache(paddr, slot_id);
+	line_id = rand(7);
+	memtocache(paddr, slot_id, line_id);
 	cache[slot_id][j].sign = line_sign;
 	memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
 	return ret;
