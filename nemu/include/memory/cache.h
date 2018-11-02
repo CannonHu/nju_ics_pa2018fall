@@ -1,6 +1,6 @@
 #include "nemu.h"
 
-#define line_data_size 64;
+#define line_data_size 64
 
 typedef struct{
 	bool valid;
