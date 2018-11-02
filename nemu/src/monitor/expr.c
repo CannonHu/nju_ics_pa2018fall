@@ -195,7 +195,7 @@ int ChartoInt(char t){
 	if(t >= 'A' && t <= 'F'){
 		return t - 'A' + 10;
 	}
-	printf("BAD\n");
+	printf("Char2Int BAD\n");
 	return 0;
 }
 
