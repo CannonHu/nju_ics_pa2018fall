@@ -3,6 +3,7 @@
 #include "memory/cache.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define LINE_IN_SLOT = 8
 #define SLOT_NUM = 128
@@ -53,6 +54,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 			memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
 			return ret;
 		}	
-		
+	    		
 	}	
 }
