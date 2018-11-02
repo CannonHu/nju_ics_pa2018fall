@@ -12,7 +12,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG, DEREF
+	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG, DEREF,NEQ
 	/* TODO: Add more token types */
 
 };
@@ -35,6 +35,7 @@ static struct rule {
 	{"\\(",'('},
 	{"\\)",')'},
 	{"==", EQ},
+	{"!=",NEQ};
 	{"[0-9]+", NUM},
 	{"\\$e[a,c,d,b]x", REG},
 	{"\\$esp", REG},
@@ -109,7 +110,8 @@ static struct op{
 	{'%', 3},
 	{'+', 4},
 	{'-', 4},
-	{EQ, 7}
+	{EQ, 7},
+	{NEQ, 7}
 };
 
 #define NR_OPT (sizeof(optable) / sizeof(optable[0]) )
@@ -130,6 +132,8 @@ bool isop(int id){
 		case '%':
 			return true;
 		case EQ:
+			return true;
+		case NEQ:
 			return true;
 		case NEG:
 			return true;
@@ -247,6 +251,7 @@ int eval(int p, int q){
 			case '/':return eval(p, opnum - 1) / eval(opnum + 1, q);
 			case '%':return eval(p, opnum - 1) % eval(opnum + 1, q);
 			case EQ:return eval(p, opnum - 1) == eval(opnum + 1, q);
+			case NEQ:return eval(p, opnum - 1) != eval(opnum + 1, q);
 			case NEG:return 0 - eval(opnum + 1,q);
 			case DEREF: 
 				 vaddr = eval(opnum + 1,q);
