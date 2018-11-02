@@ -76,7 +76,8 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 		ret = cache_read_line(addrn, slot_id, line_sign, firstlen);
 		addrn = (paddr & 0xffffffc0) + 0x40;
 		slot_id ++;
-		ret = (ret << (firstlen * 8)
+		ret = (ret << (seclen * 8)) + cache_read_line(addrn, slot_id, line_sign, seclen);
+		return ret;
 
 	}	
 
