@@ -20,7 +20,7 @@ void init_cache(){
 }
 
 bool slotisfull(uint8_t slot_id){
-	for(int i = 0; i < line_data_size; i++){
+	for(int i = 0; i < LINE_IN_SLOT; i++){
 		if(cache[slot_id][i].valid){
 			return false;
 		}
@@ -42,6 +42,15 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	uint8_t slot_id = 0;
 	uint32_t line_sign = 0;
 	for(int i = 0; i < len; i++){
-		if()
+		slot_id = get_slot(addrn);
+		if(!slotisfull(slot_id)){
+			line_sign = get_line_sign(addrn);
+			for(int j = 0; j < LINE_IN_SLOT; j++){
+				if(cache[slot_id][j].sign == line_sign){
+					
+				}
+			}
+				
+		}
 	}	
 }
