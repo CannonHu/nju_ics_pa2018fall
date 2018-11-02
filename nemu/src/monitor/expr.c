@@ -246,7 +246,7 @@ int eval(int p, int q){
 			case '*':return	eval(p, opnum - 1) * eval(opnum + 1, q);
 			case '/':return eval(p, opnum - 1) / eval(opnum + 1, q);
 			case '%':return eval(p, opnum - 1) % eval(opnum + 1, q);
-
+			case EQ:return eval(p, opnum - 1) == eval(opnum + 1, q);
 			case NEG:return 0 - eval(opnum + 1,q);
 			case DEREF: 
 				 vaddr = eval(opnum + 1,q);
