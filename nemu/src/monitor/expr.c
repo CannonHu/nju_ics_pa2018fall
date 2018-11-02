@@ -201,7 +201,7 @@ int ChartoInt(char t){
 
 int StrtoInt(char *str){
 	int val = 0;
-	for(int i = 2; str[i] != '\0' || i <= 31; i++){
+	for(int i = 2; str[i] != '\0' && i <= 31; i++){
 		printf("%c\n",str[i]);
 		val = val * 16 + ChartoInt(str[i]);
 	}
@@ -320,8 +320,7 @@ static bool make_token(char *e) {
 				for(int j = 0; j < substr_len; j++){
 					tokens[nr_token].str[j] = substr_start[j];
 				}
-				tokens[nr_token].str[substr_len] = '\0';
-
+				
 				switch(rules[i].token_type) {
 					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
