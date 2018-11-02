@@ -10,8 +10,8 @@
 CacheLine cache[SLOT_NUM][LINE_IN_SLOT];
 
 void init_cache(){
-	for(int i = 0; i < 128; i++){
-		for(int j = 0; j < 8 ;j++){
+	for(int i = 0; i < SLOT_NUM; i++){
+		for(int j = 0; j < LINE_IN_SLOT; j++){
 			cache[i][j].valid = 0;
 			cache[i][j].sign = 0;
 			memset(cache[i][j].data_cell, 0, 64);
@@ -19,14 +19,6 @@ void init_cache(){
 	}
 }
 
-bool slotisfull(uint8_t slot_id){
-	for(int i = 0; i < LINE_IN_SLOT; i++){
-		if(cache[slot_id][i].valid){
-			return false;
-		}
-	}
-	return true;
-}
 
 uint8_t get_slot(paddr_t paddr){
 	uint8_t id = (paddr >> 6) & 0x7f;
@@ -44,24 +36,23 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	uint32_t line_sign = 0;
 	int cell_num = paddr & 0x3f;
 	if(cell_num + len < line_data_size){
-		if(!slotisfull(slot_id)){
-			line_sign = get_line_sign(addrn);
-			for(int j = 0; j < LINE_IN_SLOT; j++){
-				if(cache[slot_id][j].sign == line_sign){
-					if(!cache[slot_id][j].valid){
-						memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);	
-					}
-					memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
-					return ret;
-				}
-			}
-			for(int j = 0; j < LINE_IN_SLOT; j++){
+		line_sign = get_line_sign(addrn);
+		for(int j = 0; j < LINE_IN_SLOT; j++){
+			if(cache[slot_id][j].sign == line_sign){
 				if(!cache[slot_id][j].valid){
 					memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);	
 				}
 				memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
 				return ret;
-			}	
+			}
 		}
+		for(int j = 0; j < LINE_IN_SLOT; j++){
+			if(!cache[slot_id][j].valid){
+				memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);	
+			}
+			memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
+			return ret;
+		}	
+		
 	}	
 }
