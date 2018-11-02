@@ -21,7 +21,7 @@ void init_cache(){
 
 bool slotisfull(uint8_t slot_id){
 	for(int i = 0; i < line_data_size; i++){
-		if(cache[slot_id][j].valid){
+		if(cache[slot_id][i].valid){
 			return false;
 		}
 	}
