@@ -59,7 +59,7 @@ uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, siz
 	uint8_t line_id = rand(7);
 	memtocache(paddr, slot_id, line_id);
 	cache[slot_id][line_id].sign = line_sign;
-	memcpy(&ret, cache[slot_id][j].data_cell + cell_num, len);
+	memcpy(&ret, cache[slot_id][line_id].data_cell + cell_num, len);
 	return ret;
 }
 
