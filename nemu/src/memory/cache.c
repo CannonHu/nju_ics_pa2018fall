@@ -1,5 +1,6 @@
 #include "nemu.h"
 #include "memory/memory.h"
+#include "memory/cache.h"
 
 #include <stdio.h>
 
@@ -18,6 +19,15 @@ void init_cache(){
 	}
 }
 
+bool slotisfull(uint8_t slot_id){
+	for(int i = 0; i < line_data_size; i++){
+		if(cache[slot_id][j].valid){
+			return false;
+		}
+	}
+	return true;
+}
+
 uint8_t get_slot(paddr_t paddr){
 	uint8_t id = (paddr >> 6) & 0x7f;
 	return id;
@@ -30,7 +40,8 @@ uint32_t get_line_sign(paddr_t paddr){
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	paddr_t addrn = paddr;
 	uint8_t slot_id = 0;
+	uint32_t line_sign = 0;
 	for(int i = 0; i < len; i++){
-		
+		if()
 	}	
 }
