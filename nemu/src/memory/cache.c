@@ -30,6 +30,10 @@ uint32_t get_line_sign(paddr_t paddr){
 	uint32_t sign = (paddr >> 13) & 0x7ffff;
 }
 
+void memtocache(paddr_t paddr){
+	memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);	
+}
+
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	uint32_t ret = 0;
 	paddr_t addrn = paddr;
@@ -41,7 +45,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 		for(int j = 0; j < LINE_IN_SLOT; j++){
 			if(cache[slot_id][j].sign == line_sign){
 				if(!cache[slot_id][j].valid){
-					memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);	
+					memtocache(paddr);
 				}
 				memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
 				return ret;
@@ -49,7 +53,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 		}
 		for(int j = 0; j < LINE_IN_SLOT; j++){
 			if(!cache[slot_id][j].valid){
-				memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);	
+				memtocache(paddr);				
 			}
 			memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
 			return ret;
