@@ -71,9 +71,11 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 		return   cache_read_line(addrn, slot_id, line_sign, len);		
 	}
 	else{
+		int firstlen = line_data_size - cell_num;
 		ret = cache_read_line(addrn, slot_id, line_sign, line_data_size - cell_num);
 		addrn = (paddr & 0xffffffc0) + 0x40;
-		slot_id = get_slot(addrn);
+		slot_id ++;
+		ret = (ret << 
 
 	}	
 
