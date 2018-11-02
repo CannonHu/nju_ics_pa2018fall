@@ -47,16 +47,21 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 		if(!slotisfull(slot_id)){
 			line_sign = get_line_sign(addrn);
 			for(int j = 0; j < LINE_IN_SLOT; j++){
-				if(cache[slot_id][j].sign == line_sign)
-					if(cache[slot_id][j].valid){
-						memcpy(&ret, cache[slot_id][j].data_cell + cell_num, len);
-						return ret;
+				if(cache[slot_id][j].sign == line_sign){
+					if(!cache[slot_id][j].valid){
+						memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);	
 					}
-					else{
-						
-					}
+					memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
+					return ret;
+				}
 			}
-				
+			for(int j = 0; j < LINE_IN_SLOT; j++){
+				if(!cache[slot_id][j].valid){
+					memcpy(cache[slot_id][j].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);	
+				}
+				memcpy(ret, cache[slot_id][j].data_cell + cell_num, len);
+				return ret;
+			}	
 		}
 	}	
 }
