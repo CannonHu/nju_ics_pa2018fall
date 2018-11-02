@@ -12,7 +12,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG, DEREF,NEQ
+	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG, DEREF, NEQ, AND, OR
 	/* TODO: Add more token types */
 
 };
@@ -35,7 +35,9 @@ static struct rule {
 	{"\\(",'('},
 	{"\\)",')'},
 	{"==", EQ},
-	{"\\!=",NEQ},
+	{"\\!=", NEQ},
+	{"&&", AND},
+	{"\\|\\|", OR},
 	{"[0-9]+", NUM},
 	{"\\$e[a,c,d,b]x", REG},
 	{"\\$esp", REG},
@@ -111,7 +113,9 @@ static struct op{
 	{'+', 4},
 	{'-', 4},
 	{EQ, 7},
-	{NEQ, 7}
+	{NEQ, 7},
+	{AND, 11},
+	{OR, 12}
 };
 
 #define NR_OPT (sizeof(optable) / sizeof(optable[0]) )
