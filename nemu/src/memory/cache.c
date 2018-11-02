@@ -49,7 +49,8 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 			for(int j = 0; j < LINE_IN_SLOT; j++){
 				if(cache[slot_id][j].sign == line_sign)
 					if(cache[slot_id][j].valid){
-						memcpy(&ret, cache[slot_id][j].data_cell[cell_num], len);
+						memcpy(&ret, cache[slot_id][j].data_cell + cell_num, len);
+						return ret;
 					}
 					else{
 						
