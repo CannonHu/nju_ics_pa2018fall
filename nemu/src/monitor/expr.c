@@ -202,7 +202,6 @@ int ChartoInt(char t){
 int StrtoInt(char *str){
 	int val = 0;
 	for(int i = 2; str[i] != '\0' && i <= 31; i++){
-		printf("%c\n",str[i]);
 		val = val * 16 + ChartoInt(str[i]);
 	}
 	return val;	
