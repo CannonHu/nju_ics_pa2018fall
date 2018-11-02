@@ -12,7 +12,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG, DEREF, NEQ, AND, OR
+	NOTYPE = 256, EQ, NUM, REG, SYMB, NEG, DEREF, NEQ, AND, OR, HNUM
 	/* TODO: Add more token types */
 
 };
@@ -39,6 +39,7 @@ static struct rule {
 	{"&&", AND},
 	{"\\|\\|", OR},
 	{"[0-9]+", NUM},
+	{"0x[0-9a-fA-F]+", HNUM}
 	{"\\$e[a,c,d,b]x", REG},
 	{"\\$esp", REG},
 	{"\\$esi", REG},
@@ -184,13 +185,30 @@ int findop(int p, int q){
 
 uint32_t look_up_symtab(char *sym, bool *success);
 
+int ChartoInt(char t){
+	if(t >= '0' && t <= '9'){
+		return t - '0';
+	}
+	if(t >= 'a' && t <= 'f'){
+		return t - 'a' + 10;
+	}
+	if(t >= 'A' && t <= 'F'){
+		return t - 'A' + 10;
+	}
+}
 
+int StrtoInt(char *str){
+	
+}
 
 int tokentoval(int id){
 	int num = 0;
 
 	if(tokens[id].type == NUM){
 		num = atoi(tokens[id].str);
+	}
+	else if(tokens[id].type == HNUM){
+		
 	}
 	else if(tokens[id].type == REG){
 		if(tokens[id].str[2] == 'a'){
