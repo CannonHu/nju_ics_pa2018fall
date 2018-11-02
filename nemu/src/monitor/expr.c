@@ -199,7 +199,7 @@ int ChartoInt(char t){
 
 int StrtoInt(char *str){
 	int val = 0;
-	for(int i = 0; str[i] != '\0' || i <= 7; i++){
+	for(int i = 0; str[i] != '\0' || i <= 31; i++){
 		val = val * 16 + ChartoInt(str[i]);
 	}
 	return val;	
@@ -212,7 +212,7 @@ int tokentoval(int id){
 		num = atoi(tokens[id].str);
 	}
 	else if(tokens[id].type == HNUM){
-		
+		num = StrtoInt(tokens[id].str);	
 	}
 	else if(tokens[id].type == REG){
 		if(tokens[id].str[2] == 'a'){
