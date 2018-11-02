@@ -3,13 +3,26 @@
 
 #include <stdio.h>
 
-CacheLine cache[128][8];
+#define LINE_IN_SLOT = 8
+#define SLOT_NUM = 128
 
-init_cache(){
-	for(int i = 0; i < 128; i++)
+CacheLine cache[SLOT_NUM][LINE_IN_SLOT];
+
+void init_cache(){
+	for(int i = 0; i < 128; i++){
 		for(int j = 0; j < 8 ;j++){
 			cache[i][j].valid = 0;
 			cache[i][j].sign = 0;
 			memset(cache[i][j].data_cell, 0, 64);
 		}
+	}
+}
+
+uint8_t get_slot(paddr_t paddr){
+	uint8_t id = (paddr >> 6) & 0x7f;
+	return id;
+}
+
+uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
+	
 }
