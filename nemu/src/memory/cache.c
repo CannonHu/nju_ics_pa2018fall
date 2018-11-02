@@ -36,7 +36,7 @@ void memtocache(paddr_t paddr, uint8_t slot_id){
 }
 
 uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, size_t len){
-	int cell_num = paddr & 0x3f;
+	uint32_t cell_num = paddr & 0x3f;
 	for(int j = 0; j < LINE_IN_SLOT; j++){
 		if(cache[slot_id][j].sign == line_sign){
 			if(!cache[slot_id][j].valid){
@@ -65,7 +65,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	paddr_t addrn = paddr;
 	uint8_t slot_id = get_slot(paddr);
 	uint32_t line_sign = get_line_sign(paddr);
-	int cell_num = paddr & 0x3f;
+	uint32_t cell_num = paddr & 0x3f;
 	if(cell_num + len < line_data_size){
 		for(int j = 0; j < LINE_IN_SLOT; j++){
 			if(cache[slot_id][j].sign == line_sign){
