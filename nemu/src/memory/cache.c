@@ -39,10 +39,9 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 	uint32_t ret = 0;
 	paddr_t addrn = paddr;
 	uint8_t slot_id = get_slot(paddr);
-	uint32_t line_sign = 0;
+	uint32_t line_sign = get_line_sign(paddr);
 	int cell_num = paddr & 0x3f;
 	if(cell_num + len < line_data_size){
-		line_sign = get_line_sign(paddr);
 		for(int j = 0; j < LINE_IN_SLOT; j++){
 			if(cache[slot_id][j].sign == line_sign){
 				if(!cache[slot_id][j].valid){
