@@ -89,6 +89,7 @@ void cache_write_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, uint32
 	for(int j = 0; j < LINE_IN_SLOT; j++){
 		if(cache[slot_id][j].sign == line_sign){
 			memcpy(cache[slot_id][j].data_cell + cell_num, &data, len);
+			printf("cwl: %x\n", cache[slot_id][j].data_cell[cell_num]);
 			return;
 		}
 	}
