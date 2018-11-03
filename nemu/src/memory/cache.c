@@ -114,5 +114,5 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache){
 		slot_id ++;
 		cache_write_line(addrn, slot_id, lign_sign, data >> (firstlen * 8), seclen);
 	}
-	paddr_write(paddr_t paddr, len, data);
+	hw_mem_write(paddr_t paddr, len, data);
 }
