@@ -33,6 +33,7 @@ void memtocache(paddr_t paddr, uint8_t slot_id, uint8_t line_id){
 }
 
 uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, size_t len){
+
 	uint32_t cell_num = paddr & 0x3f;
 	uint32_t ret = 0;
 	for(int j = 0; j < LINE_IN_SLOT; j++){
@@ -60,6 +61,7 @@ uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, siz
 }
 
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
+	printf("paddr: %x\n", paddr);
 	uint32_t ret = 0;
 	paddr_t addrn = paddr;
 	uint32_t slot_id = get_slot(addrn);
