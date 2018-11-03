@@ -86,7 +86,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache){
 }
 
 
-void cache_write_line(paddr_t paddr, uint8_t slot_id, uint32_t lign_sign, uint32_t data, size_t len){
+void cache_write_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, uint32_t data, size_t len){
 	uint32_t cell_num = paddr & 0x3f;
 	for(int j = 0; j < LINE_IN_SLOT; j++){
 		if(cache[slot_id][j].sign == line_sign){
@@ -101,18 +101,18 @@ void cache_write_line(paddr_t paddr, uint8_t slot_id, uint32_t lign_sign, uint32
 void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache){
 	paddr_t addrn = paddr;
 	uint32_t slot_id = get_slot(addrn);
-	uint32_t lign_sign = get_line_sign(addrn);
+	uint32_t line_sign = get_line_sign(addrn);
 	uint32_t cell_num = paddr & 0x3f;
 	if(cell_num + len < line_data_size){
-		cache_write_line(addrn, slot_id, lign_sign, data, len);
+		cache_write_line(addrn, slot_id, line_sign, data, len);
 	}
 	else{
 		int firstlen = line_data_size - cell_num;i
 		int seclen = len - firstlen;
-		cache_write_line(addrn, slot_id, lign_sign, data, firstlen);
+		cache_write_line(addrn, slot_id, line_sign, data, firstlen);
 		addrn = (paddr & 0xffffffc0) + 0x40;
 		slot_id ++;
-		cache_write_line(addrn, slot_id, lign_sign, data >> (firstlen * 8), seclen);
+		cache_write_line(addrn, slot_id, line_sign, data >> (firstlen * 8), seclen);
 	}
 	hw_mem_write(paddr_t paddr, len, data);
 }
