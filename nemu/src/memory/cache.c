@@ -50,9 +50,9 @@ uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, siz
 		if(!cache[slot_id][j].valid){
 			memtocache(paddr, slot_id, j);
 			cache[slot_id][j].sign = line_sign;				
+			memcpy(&ret, cache[slot_id][j].data_cell + cell_num, len);
+			return ret;
 		}
-		memcpy(&ret, cache[slot_id][j].data_cell + cell_num, len);
-		return ret;
 	}	
 	uint8_t line_id = rand() % 8;
 	memtocache(paddr, slot_id, line_id);
