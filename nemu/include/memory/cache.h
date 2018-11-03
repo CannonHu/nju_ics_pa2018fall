@@ -8,7 +8,7 @@ typedef struct{
 	uint8_t data_cell[line_data_size];
 }CacheLine;
 
-extern CacheLine cache[][];
+
 
 void init_cache();
 
