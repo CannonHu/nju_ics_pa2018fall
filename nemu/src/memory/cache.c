@@ -107,7 +107,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache){
 		cache_write_line(addrn, slot_id, line_sign, data, len);
 	}
 	else{
-		int firstlen = line_data_size - cell_num;i
+		int firstlen = line_data_size - cell_num;
 		int seclen = len - firstlen;
 		cache_write_line(addrn, slot_id, line_sign, data, firstlen);
 		addrn = (paddr & 0xffffffc0) + 0x40;
