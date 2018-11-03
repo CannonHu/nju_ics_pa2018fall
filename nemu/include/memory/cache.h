@@ -8,7 +8,10 @@ typedef struct{
 	uint8_t data_cell[line_data_size];
 }CacheLine;
 
-extern CacheLine* cache;
+#define LINE_IN_SLOT 8
+#define SLOT_NUM 128
+
+CacheLine cache[SLOT_NUM][LINE_IN_SLOT];
 
 void init_cache();
 

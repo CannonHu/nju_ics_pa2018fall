@@ -5,12 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LINE_IN_SLOT 8
-#define SLOT_NUM 128
-
-
-
-CacheLine cache[SLOT_NUM][LINE_IN_SLOT];
 
 void init_cache(){
 	for(int i = 0; i < SLOT_NUM; i++){
