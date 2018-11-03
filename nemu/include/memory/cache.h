@@ -8,6 +8,8 @@ typedef struct{
 	uint8_t data_cell[line_data_size];
 }CacheLine;
 
+extern CacheLine cache[];
+
 void init_cache();
 
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache);
