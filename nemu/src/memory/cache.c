@@ -8,7 +8,6 @@
 #define LINE_IN_SLOT 8
 #define SLOT_NUM 128
 
-hw_mem_write(paddr_t paddr, size_t len, uint32_t data);
 
 
 CacheLine cache[SLOT_NUM][LINE_IN_SLOT];
@@ -117,5 +116,5 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache){
 		slot_id ++;
 		cache_write_line(addrn, slot_id, line_sign, data >> (firstlen * 8), seclen);
 	}
-	hw_mem_write(paddr, len, data);
+	memcpy(hw_mem + paddr, &data, len);
 }
