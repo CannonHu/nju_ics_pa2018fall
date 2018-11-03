@@ -98,12 +98,21 @@ void cache_write_line(paddr_t paddr, uint8_t slot_id, uint32_t lign_sign, uint32
 }
 
 
-void cache_write(paddr_t paddr, size_t len. uint32_t data, CacheLine* cache){
+void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache){
 	paddr_t addrn = paddr;
 	uint32_t slot_id = get_slot(addrn);
 	uint32_t lign_sign = get_line_sign(addrn);
 	uint32_t cell_num = paddr & 0x3f;
 	if(cell_num + len < line_data_size){
-	
+		cache_write_line(addrn, slot_id, lign_sign, data, len);
 	}
+	else{
+		int firstlen = line_data_size - cell_num;i
+		int seclen = len - firstlen;
+		cache_write_line(addrn, slot_id, lign_sign, data, firstlen);
+		addrn = (paddr & 0xffffffc0) + 0x40;
+		slot_id ++;
+		cache_write_line(addrn, slot_id, lign_sign, data >> (firstlen * 8), seclen);
+	}
+	paddr_write(paddr_t paddr, len, data);
 }
