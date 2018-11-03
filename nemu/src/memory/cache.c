@@ -8,6 +8,9 @@
 #define LINE_IN_SLOT 8
 #define SLOT_NUM 128
 
+hw_mem_write(paddr_t paddr, size_t len, uint32_t data);
+
+
 CacheLine cache[SLOT_NUM][LINE_IN_SLOT];
 
 void init_cache(){
