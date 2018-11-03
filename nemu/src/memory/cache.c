@@ -28,6 +28,7 @@ uint32_t get_line_sign(paddr_t paddr){
 }
 
 void memtocache(paddr_t paddr, uint8_t slot_id, uint8_t line_id){
+	printf("memory2cache\n");
 	memcpy(cache[slot_id][line_id].data_cell, hw_mem + (paddr & 0xffffffc0), line_data_size);
 	cache[slot_id][line_id].valid = 1;	
 }
