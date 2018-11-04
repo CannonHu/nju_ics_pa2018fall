@@ -355,7 +355,7 @@ uint32_t expr(char *e, bool *success) {
 	}
 
 	int tmp = eval(0, nr_token-1);
-	*sucess = true;
+	*success = true;
 	for(int i = 0; i < nr_token; i++)
 		for(int j = 0; j < 32; j++){
 			tokens[i].str[j] = '\0';
