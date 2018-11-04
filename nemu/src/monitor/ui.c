@@ -95,6 +95,17 @@ cmd_handler(cmd_x){
 	while(*args == ' '){
 		args++;
 	}
+
+	for(int i = 0; i < 8 && *args != ' '; i++){
+		if(*args >= '0' && *args <= '9'){
+			print_num[i] = *args;
+			args++;
+		}
+		else{
+			printf("invalid expression: '%s'\n", args);
+			return 0;
+		}
+	}
 }
 
 uint32_t look_up_fun_symtab(char *, bool *);
