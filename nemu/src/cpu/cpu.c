@@ -12,7 +12,7 @@ FPU fpu;
 int nemu_state;
 uint8_t data_size = 32;
 
-uint32_t mem_count = 0;
+
 
 #define sign(x) ((uint32_t)(x) >> 31)
 
@@ -54,7 +54,7 @@ void exec(uint32_t n) {
 
 	nemu_state = NEMU_RUN;
 	while( n > 0 && nemu_state == NEMU_RUN) {
-		mem_count = 0;
+
 		instr_len = exec_inst();
 		cpu.eip += instr_len;
 		n--;
