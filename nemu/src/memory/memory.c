@@ -25,6 +25,7 @@ uint32_t paddr_read(paddr_t paddr, size_t len) {
 	ret = cache_read(paddr, len, cache[0]);
 #else
 	ret = hw_mem_read(paddr, len);
+	mem_count += 10;
 #endif
 	return ret;
 }
@@ -34,6 +35,7 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data) {
 	cache_write(paddr, len, data, cache[0]);
 #else
 	hw_mem_write(paddr, len, data);
+	mem_count += 10;
 #endif
 
 }
