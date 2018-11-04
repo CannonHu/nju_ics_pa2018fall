@@ -91,12 +91,14 @@ cmd_handler(cmd_x){
 	vaddr_t addr;
 	char print_num[8];
 	int N = 0;
+	uint32_t val = 0;
 
 	while(*args == ' '){
 		args++;
 	}
 
-	for(int i = 0; i < 8 && *args != ' '; i++){
+	int i = 0;
+	for(; i < 8 && *args != ' '; i++){
 		if(*args >= '0' && *args <= '9'){
 			print_num[i] = *args;
 			args++;
@@ -106,6 +108,19 @@ cmd_handler(cmd_x){
 			return 0;
 		}
 	}
+	print_num[i] = '\0';
+	N = atoi(print_num);
+
+	addr = expr(args, &success);
+	if(!success){
+		printf("invalid expression: '%s'\n", args);
+		return 0;
+	}
+	for(i = 0; i < N; i++){
+		
+	}
+
+
 }
 
 uint32_t look_up_fun_symtab(char *, bool *);
