@@ -85,7 +85,16 @@ p_error:
 }
 
 cmd_handler(cmd_x){
+	if(args == NULL) { goto p_error; }
 	
+	bool success;
+	vaddr_t addr;
+	char print_num[8];
+	int N = 0;
+
+	while(*args == ' '){
+		args++;
+	}
 }
 
 uint32_t look_up_fun_symtab(char *, bool *);
