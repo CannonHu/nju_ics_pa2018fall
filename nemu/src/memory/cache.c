@@ -36,6 +36,8 @@ uint32_t cache_read_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, siz
 	uint32_t cell_num = paddr & 0x3f;
 	uint32_t ret = 0;
 
+	mem_count++;
+
 	for(int j = 0; j < LINE_IN_SLOT; j++){
 		if(cache[slot_id][j].sign == line_sign){
 			if(!cache[slot_id][j].valid){
