@@ -12,6 +12,8 @@ FPU fpu;
 int nemu_state;
 uint8_t data_size = 32;
 
+uint32_t mem_count = 0;
+
 #define sign(x) ((uint32_t)(x) >> 31)
 
 void init_cpu(const uint32_t init_eip) {
