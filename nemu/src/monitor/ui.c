@@ -84,6 +84,10 @@ p_error:
 	return 0;
 }
 
+cmd_handler(cmd_x){
+	
+}
+
 uint32_t look_up_fun_symtab(char *, bool *);
 
 //static void cmd_b(char *e, char *cmd_end) {
@@ -177,9 +181,10 @@ static struct {
         { "c", "Continue the execution of the program", cmd_c },
         { "q", "Exit NEMU", cmd_q },
         { "p", "Evaluate an expression", cmd_p },
+	{ "x", "Print the value in the memory", cmd_x }.
         { "b", "Set breakpoint", cmd_b },
         { "w", "Set watchpoint", cmd_w },
-		{ "d", "Delete breakpoint(s).", cmd_d},
+	{ "d", "Delete breakpoint(s).", cmd_d},
         { "exit", "Exit NEMU", cmd_q },
 
         /* TODO: Add more commands */
@@ -189,7 +194,6 @@ static struct {
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
-
 
 cmd_handler(cmd_help) {
 	/* extract the first argument */
