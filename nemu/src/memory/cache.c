@@ -94,7 +94,7 @@ void cache_write_line(paddr_t paddr, uint8_t slot_id, uint32_t line_sign, uint32
 }
 
 
-void cache_write(paddr_t paddr, size_t len, uint32_t data){
+void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache){
 	paddr_t addrn = paddr;
 	uint32_t slot_id = get_slot(addrn);
 	uint32_t line_sign = get_line_sign(addrn);
