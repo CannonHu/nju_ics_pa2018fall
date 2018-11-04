@@ -117,9 +117,11 @@ cmd_handler(cmd_x){
 		return 0;
 	}
 	for(i = 0; i < N; i++){
-		
+		val = vaddr_read(addr, SREG_CS, 4);
+		printf("address: %x, val: %x\n", addr, val);
+		addr += 4;	
 	}
-
+	return 0;
 
 }
 
