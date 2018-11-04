@@ -262,7 +262,7 @@ cmd_handler(cmd_help) {
 
 // the main loop of accepting user commands
 void ui_mainloop(bool autorun) {
-	mem_count = 0;
+
 
 	if(autorun) {
 		cmd_c("");
@@ -272,6 +272,7 @@ void ui_mainloop(bool autorun) {
 	}
 	
 	while(true) {
+		mem_count = 0;
 		// read user command
 		char * user_cmd = rl_gets();
 		char * user_cmd_end = user_cmd + strlen(user_cmd);
@@ -310,5 +311,7 @@ void ui_mainloop(bool autorun) {
 		if(nemu_state == NEMU_STOP) {
 			break;
 		}
+
+		printf("memtime: %d\n",mem_count);
 	}
 }
