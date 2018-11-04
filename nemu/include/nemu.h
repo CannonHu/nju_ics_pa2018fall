@@ -11,6 +11,8 @@
 
 enum {NEMU_STOP, NEMU_RUN, NEMU_READY, NEMU_BREAK};
 
+uint32_t mem_count;
+
 extern int nemu_state;
 
 typedef uint8_t bool;
