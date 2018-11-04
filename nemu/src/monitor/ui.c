@@ -223,7 +223,7 @@ static struct {
         { "c", "Continue the execution of the program", cmd_c },
         { "q", "Exit NEMU", cmd_q },
         { "p", "Evaluate an expression", cmd_p },
-	{ "x", "Print the value in the memory", cmd_x }.
+	{ "x", "Print the value in the memory", cmd_x },
         { "b", "Set breakpoint", cmd_b },
         { "w", "Set watchpoint", cmd_w },
 	{ "d", "Delete breakpoint(s).", cmd_d},
