@@ -119,7 +119,7 @@ cmd_handler(cmd_x){
 	}
 	for(i = 0; i < N; i++){
 		val = vaddr_read(addr, SREG_CS, 4);
-		printf("address: %x, val: %x\n", addr, val);
+		printf("address: %x, val: 0x%x\n", addr, val);
 		addr += 4;	
 	}
 	return 0;
