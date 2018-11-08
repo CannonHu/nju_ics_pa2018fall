@@ -133,6 +133,9 @@ CORNER_CASE_RULE corner_add[] = {
 // a + b
 uint32_t internal_float_add(uint32_t b, uint32_t a) {
 
+	printf("a: %x\n",a);
+	printf("b: %x\n",b);
+
 	// corner cases
 	int i = 0;
 	for(; i < sizeof(corner_add) / sizeof(CORNER_CASE_RULE); i++) {
@@ -191,7 +194,6 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	if(fb.sign) { sig_b *= -1; }
 	
 	sig_res = sig_a + sig_b;
-
 
 	if(sign(sig_res)){ f.sign = 1; sig_res *= -1; }
 	else { f.sign = 0; }
