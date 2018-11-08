@@ -133,9 +133,6 @@ CORNER_CASE_RULE corner_add[] = {
 // a + b
 uint32_t internal_float_add(uint32_t b, uint32_t a) {
 
-	printf("a: %x\n",a);
-	printf("b: %x\n",b);
-
 	// corner cases
 	int i = 0;
 	for(; i < sizeof(corner_add) / sizeof(CORNER_CASE_RULE); i++) {
@@ -226,7 +223,6 @@ uint32_t internal_float_sub(uint32_t b, uint32_t a) {
 	FLOAT fb;
 	fb.val = b;
 	fb.sign = ~fb.sign;
-	printf("sub res: %x\n",internal_float_add(fb.val, a));
 	return internal_float_add(fb.val, a);
 }
 
