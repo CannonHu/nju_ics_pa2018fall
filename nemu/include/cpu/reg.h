@@ -67,8 +67,8 @@ typedef struct {
 				uint32_t rpl :2;
 				uint32_t ti :1;
 				uint32_t index :13;
-			}
-		}
+			};
+		};
 
 		//invisible part
 		struct{
@@ -77,8 +77,9 @@ typedef struct {
 			uint32_t type :5;
 			uint32_t privilege_level :2;
 			uint32_t soft_use :1;
-		}
-	}
+		};
+	}SegReg;
+
 	union {
 		SegReg segReg[6];
 		struct { SegReg es, cs, ss, ds, fs, gs; };
