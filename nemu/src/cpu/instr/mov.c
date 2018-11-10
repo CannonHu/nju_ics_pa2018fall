@@ -304,7 +304,7 @@ make_instr_func(mov_c2r_l){
 	cr.type = OPR_CREG;
 	cr.addr = modrm.reg_opcode;
 
-	r.type = OPR_SREG;
+	r.type = OPR_REG;
 	r.addr = modrm.rm;
 
 	operand_read(&cr);
@@ -327,7 +327,7 @@ make_instr_func(mov_r2c_l){
 	cr.type = OPR_CREG;
 	cr.addr = modrm.reg_opcode;
 
-	r.type = OPR_SREG;
+	r.type = OPR_REG;
 	r.addr = modrm.rm;
 
 	operand_read(&r);
