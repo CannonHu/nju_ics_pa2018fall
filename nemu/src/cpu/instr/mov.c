@@ -18,6 +18,8 @@ make_instr_impl_2op(mov, a, o, b)
 make_instr_impl_2op(mov, a, o, v)
 make_instr_impl_2op(mov, o, a, b)
 make_instr_impl_2op(mov, o, a, v)
+make_instr_impl_2op(mov, c, r, l)
+make_instr_impl_2op(mov, r, c, l)
 
 /*
 make_instr_func(mov_r2rm_b) {
