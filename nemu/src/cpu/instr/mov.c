@@ -1,4 +1,5 @@
 #include "cpu/instr.h"
+#include "cpu/modrm.h"
 
 static void instr_execute_2op() {
 	operand_read(&opr_src);
