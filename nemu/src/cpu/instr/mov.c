@@ -314,3 +314,26 @@ make_instr_func(mov_c2r_l){
 	print_asm_2("mov", "", len, &cr, &r); 
 	return 3;
 }
+
+make_instr_func(mov_r2c_l){
+	OPERAND cr, r;
+	MODRM modrm;
+	modrm.val = instr_fetch(eip + 1, 1);
+
+	assert(modrm.mod == 3);
+
+	cr.data_size = r.data_size = 32;
+
+	cr.type = OPR_CREG;
+	cr.addr = modrm.reg_opcode;
+
+	r.type = OPR_REG;
+	r.addr = modrm.rm;
+
+	operand_read(&cr);
+	r.val = cr.val;
+	operand_write(&r);
+
+	print_asm_2("mov", "", len, &cr, &r);
+	return 3;
+}
