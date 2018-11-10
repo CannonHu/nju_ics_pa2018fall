@@ -296,6 +296,8 @@ make_instr_func(mov_c2r_l){
 	MODRM modrm;
 	modrm.val = instr_fetch(eip + 1, 1);
 
+	assert(modrm.mod == 3);
+
 	cr.data_size = r.data_size = 32;
 
 	cr.type = OPR_CREG;
