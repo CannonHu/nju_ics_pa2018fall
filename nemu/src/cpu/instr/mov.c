@@ -330,10 +330,13 @@ make_instr_func(mov_r2c_l){
 	r.type = OPR_REG;
 	r.addr = modrm.rm;
 
-	operand_read(&cr);
-	r.val = cr.val;
-	operand_write(&r);
+	operand_read(&r);
+	cr.val = r.val;
+	operand_write(&cr);
 
-	print_asm_2("mov", "", len, &cr, &r);
+	print_asm_2("mov", "", len, &r, &cr);
 	return 3;
 }
+
+
+
