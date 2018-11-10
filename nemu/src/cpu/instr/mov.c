@@ -294,7 +294,7 @@ make_instr_func(mov_srm162r_l) {
 make_instr_func(mov_c2r_l){
 	OPERAND cr, r;
 	MODRM modrm;
-	modrm.val = instr_fetch(eip + 1);
+	modrm.val = instr_fetch(eip + 1, 1);
 
 	cr.data_size = r.data_size = 32;
 
