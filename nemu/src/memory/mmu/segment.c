@@ -18,8 +18,9 @@ void load_sreg(uint8_t sreg) {
 	SegDesc* sdt = segDesc_addr;
 	cpu.segReg[sreg].base = (sdt->base_15_0) | (sdt->base_23_16 << 16) | (sdt->base_31_24 << 24);
 	cpu.segReg[sreg].limit = (sdt->limit_15_0) | (sdt->limit_19_16 << 16); 
-	cpu.segReg[sreg].type = sdt->type;
+	0cpu.segReg[sreg].type = sdt->type;
 	cpu.segReg[sreg].privilege_level = sdt->privilege_level;
 	cpu.segReg[sreg].soft_use = sdt->soft_use;
+
 }
 
