@@ -177,7 +177,7 @@ make_instr_func(lgdt){
 
 	mem_base.addr = mem_lim.addr + 2;
 	operand_read(&mem_base);
-	cpu.gdtr.base = mem_base.val
+	cpu.gdtr.base = mem_base.val;
 
 	print_asm_0("lgdt","","");
 	return 7;
