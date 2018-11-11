@@ -161,18 +161,22 @@ make_instr_func(leave){
 
 
 make_instr_func(lgdt){
+	int len = 2;
+
 	OPERAND mem_lim, mem_base;
 	mem_lim.data_size = 16;
 	mem_lim.type = mem_base.type = OPR_MEM;
 	if(data_size == 16){
 		mem_base.data_size = 24;
 		mem_lim.addr = instr_fetch(eip + 2, 2);
+		len += 2;
 	}
 	else if(data_size == 32){
 		mem_base.data_size = 32;
-	}
+		mem_lim.addr = instr_fetch(eip + 2, 4);
+		len += 4;
 
-	mem_lim.addr = instr_fetch(eip + 2, 4);
+	}
 
 	operand_read(&mem_lim);
 	cpu.gdtr.limit = mem_lim.val;
@@ -182,5 +186,5 @@ make_instr_func(lgdt){
 	cpu.gdtr.base = mem_base.val;
 
 	print_asm_0("lgdt","",1);
-	return 6;
+	return len;
 }
