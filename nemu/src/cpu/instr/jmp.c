@@ -58,8 +58,12 @@ make_instr_func(jmp_short){
 }
 
 make_instr_func(jmp_far_imm){
-	//OPERAND ptr_sec, ptr_off;
-	//ptr_sec.type = OPR_IMM;
-//	ptr_sec.data_size = 16;
+	int len = 1;
+	OPERAND ptr_sec, ptr_off;
+	ptr_sec.type = ptr_off.type = OPR_IMM;
+	ptr_sec.data_size = 16;
+	ptr_off.data_size = data_size;
+
+
 	return 0;
 }
