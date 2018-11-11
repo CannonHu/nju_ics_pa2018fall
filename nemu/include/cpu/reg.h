@@ -43,7 +43,7 @@ typedef union{
 		uint32_t pg :1;
 	};
 	uint32_t val;
-}cr0;
+}CR0;
 
 
 typedef struct {
