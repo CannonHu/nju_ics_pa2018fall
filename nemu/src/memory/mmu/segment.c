@@ -16,7 +16,7 @@ void load_sreg(uint8_t sreg) {
 	 */
 	assert(cpu.segReg[sreg].ti == 0);
 
-	if(cpu.segRef[sreg].ti == 0){
+	if(cpu.segReg[sreg].ti == 0){
 		uint32_t segDesc_addr = (cpu.segReg[sreg].index * 64) + cpu.gdtr.base;
 		SegDesc* sdt = segDesc_addr;
 		
