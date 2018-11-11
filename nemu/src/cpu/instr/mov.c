@@ -312,7 +312,7 @@ make_instr_func(mov_c2r_l){
 	operand_write(&r);
 
 	print_asm_2("mov", "", 3, &cr, &r); 
-	return 3;
+	return 2;
 }
 
 make_instr_func(mov_r2c_l){
@@ -335,7 +335,7 @@ make_instr_func(mov_r2c_l){
 	operand_write(&cr);
 
 	print_asm_2("mov", "", 3, &r, &cr);
-	return 3;
+	return 2;
 }
 
 
