@@ -159,3 +159,15 @@ make_instr_func(leave){
 	return 1;
 }
 
+
+make_instr_func(lgdt){
+	OPERAND mem_lim, mem_base;
+	mem_lim.data_size = 16;
+	mem_lim.type = mem_base.type = OPR_MEM;
+	if(data_size == 16){
+		mem_base.data_size = 24;
+	}
+	else if(data_size == 32){
+		mem_base.data_size = 32;
+	}
+}
