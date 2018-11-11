@@ -166,6 +166,14 @@ make_instr_func(lgdt){
 	mem_lim.type = mem_base.type = OPR_MEM;
 	if(data_size == 16){
 		mem_base.data_size = 24;
+
+		mem_lim.addr = instr_fetch(eip + 3, 4);
+		operand_read(&mem_lim);
+		cpu.gdtr.limit = mem_lim.val;
+
+		mem_base.addr = mem_lim.addr + 2;
+		operand_read(&mem_base);
+		cpu.gdtr.base = mem_base.val
 	}
 	else if(data_size == 32){
 		mem_base.data_size = 32;
