@@ -16,5 +16,5 @@ void load_sreg(uint8_t sreg) {
 	 */
 	uint32_t segDesc_addr = (cpu.segReg[sreg].index * 64) + cpu.gdtr.base;
 	SegDesc* sdt = segDesc_addr;
-	sdt
+	cpu.segReg[sreg].base = sdt->base_15_0 | (sdt->base_23_16 >> 16) | sdt->base_31_24;
 }
