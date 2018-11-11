@@ -181,5 +181,5 @@ make_instr_func(lgdt){
 	cpu.gdtr.base = mem_base.val;
 
 	print_asm_0("lgdt","",1);
-	return 7;
+	return 6;
 }
