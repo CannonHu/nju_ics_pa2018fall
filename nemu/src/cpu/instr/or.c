@@ -18,7 +18,8 @@ make_instr_impl_2op(or, i, rm, v);
 
 make_instr_func(or_i2rm_bv){
 	OPERAND rm, imm;
-	rm.data_size = imm.data_size = data_size;
+	imm.data_size = 8;
+	rm.data_size = data_size;
 
 	int len = 1;
 	len += modrm_rm(eip + 1, &rm);
