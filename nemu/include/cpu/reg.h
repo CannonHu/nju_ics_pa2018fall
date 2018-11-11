@@ -7,9 +7,30 @@
 // define the structure of registers
 
 typedef struct{
-		uint32_t limit:16;
-		uint32_t base:32;	
-	}GDTR;
+	uint32_t limit:16;
+	uint32_t base:32;	
+}GDTR;
+
+typedef struct{
+	//16bit visible
+	union{
+		uint16_t val;
+		struct{
+			uint32_t rpl :2;
+			uint32_t ti :1;
+			uint32_t index :13;
+		};
+	};
+
+	//invisible part
+	struct{
+		uint32_t base;
+		uint32_t limit;
+		uint32_t type :5;
+		uint32_t privilege_level :2;
+		uint32_t soft_use :1;
+	};
+}SegReg;
 
 
 typedef struct {
@@ -64,26 +85,6 @@ typedef struct {
 	GDTR gdtr; // GDTR, todo: define type GDTR
 	// segment registers, todo: define type SegReg
 	
-	typedef struct{
-		//16bit visible
-		union{
-			uint16_t val;
-			struct{
-				uint32_t rpl :2;
-				uint32_t ti :1;
-				uint32_t index :13;
-			};
-		};
-
-		//invisible part
-		struct{
-			uint32_t base;
-			uint32_t limit;
-			uint32_t type :5;
-			uint32_t privilege_level :2;
-			uint32_t soft_use :1;
-		};
-	}SegReg;
 
 	union {
 		SegReg segReg[6];
