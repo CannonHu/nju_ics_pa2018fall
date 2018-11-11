@@ -3,7 +3,15 @@
 
 #include "nemu.h"
 
+
 // define the structure of registers
+
+typedef struct{
+		uint32_t limit:16;
+		uint32_t base:32;	
+	}GDTR;
+
+
 typedef struct {
 
 	// general purpose registers
@@ -53,10 +61,6 @@ typedef struct {
 
 #ifdef IA32_SEG
 
-	typedef struct{
-		uint32_t limit:16;
-		uint32_t base:32;	
-	}GDTR;
 	GDTR gdtr; // GDTR, todo: define type GDTR
 	// segment registers, todo: define type SegReg
 	
