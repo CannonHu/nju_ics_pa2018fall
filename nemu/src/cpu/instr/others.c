@@ -171,7 +171,7 @@ make_instr_func(lgdt){
 		mem_base.data_size = 36;
 	}
 
-	mem_lim.addr = instr_fetch(eip + 3, 4);
+	mem_lim.addr = instr_fetch(eip + 2, 4);
 	printf("reach! addr: 0x%x\n",mem_lim.addr);	
 
 	operand_read(&mem_lim);
