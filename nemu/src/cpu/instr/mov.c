@@ -311,7 +311,7 @@ make_instr_func(mov_c2r_l){
 	r.val = cr.val;
 	operand_write(&r);
 
-	print_asm_2("mov", "", len, &cr, &r); 
+	print_asm_2("mov", "", 3, &cr, &r); 
 	return 3;
 }
 
@@ -334,7 +334,7 @@ make_instr_func(mov_r2c_l){
 	cr.val = r.val;
 	operand_write(&cr);
 
-	print_asm_2("mov", "", len, &r, &cr);
+	print_asm_2("mov", "", 3, &r, &cr);
 	return 3;
 }
 
