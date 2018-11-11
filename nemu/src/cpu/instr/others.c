@@ -168,7 +168,7 @@ make_instr_func(lgdt){
 		mem_base.data_size = 24;
 	}
 	else if(data_size == 32){
-		mem_base.data_size = 36;
+		mem_base.data_size = 32;
 	}
 
 	mem_lim.addr = instr_fetch(eip + 2, 4);
