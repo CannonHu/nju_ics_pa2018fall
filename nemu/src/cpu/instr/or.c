@@ -28,9 +28,12 @@ make_instr_func(or_i2rm_bv){
 
 	operand_read(&imm);
 	operand_read(&rm);
-	print_asm_2("or","bv",len, &imm, &rm);
+
 	int iv = sign_ext(imm.val, 8);
 	rm.val = alu_or(iv, rm.val, data_size);
 	operand_write(&rm);
+	
+	print_asm_2("or","bv",len, &imm, &rm);
+
 	return 1 + len;
 }
