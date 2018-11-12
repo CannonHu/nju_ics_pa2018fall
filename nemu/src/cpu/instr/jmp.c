@@ -63,6 +63,8 @@ make_instr_func(jmp_far_imm){
 	ptr_sec.type = ptr_off.type = OPR_IMM;
 	ptr_sec.data_size = 16;
 	ptr_off.data_size = data_size;
+
+	printf("reached\n");
 	
 	ptr_sec.addr = eip + 1;
 	operand_read(&ptr_sec);
