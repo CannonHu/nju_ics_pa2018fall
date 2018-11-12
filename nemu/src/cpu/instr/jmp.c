@@ -58,7 +58,7 @@ make_instr_func(jmp_short){
 }
 
 make_instr_func(jmp_far_imm){
-	int len = 1;
+
 	OPERAND ptr_sec, ptr_off;
 	ptr_sec.type = ptr_off.type = OPR_IMM;
 	ptr_sec.data_size = 16;
@@ -78,7 +78,7 @@ make_instr_func(jmp_far_imm){
 		}
 	}
 	else{
-		SegDesc* sdt = (SegDesc*)(cpu.gtdr.base + ((ptr_sec.val >> 3) & 0xffff) * 8);
+		SegDesc* sdt = (SegDesc*)(cpu.gdtr.base + ((ptr_sec.val >> 3) & 0xffff) * 8);
 		assert(sdt->present == 1);
 
 		uint32_t limit = (sdt->limit_15_0) | (sdt->limit_19_16 << 16);
