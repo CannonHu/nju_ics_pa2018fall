@@ -339,4 +339,9 @@ make_instr_func(mov_r2c_l){
 }
 
 
+make_instr_func(mov_rm2s_w){
+	OPERAND rm, s;
+	rm.data_size = s.data_size = 16;
 
+
+}
