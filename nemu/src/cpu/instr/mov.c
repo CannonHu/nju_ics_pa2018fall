@@ -332,6 +332,8 @@ make_instr_func(mov_r2c_l){
 	r.type = OPR_REG;
 	r.addr = modrm.rm;
 
+	printf("reached\n");
+
 	operand_read(&r);
 	cr.val = r.val;
 	operand_write(&cr);
