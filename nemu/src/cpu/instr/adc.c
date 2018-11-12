@@ -25,7 +25,7 @@ make_instr_func(adc_i2rm_bv){
 
 	imm.type = OPR_IMM;
 	imm.addr = eip + len;
-	imm.reg = rm.reg = SREG_CS;
+	imm.sreg = rm.sreg = SREG_CS;
 
 	operand_read(&imm);
 	operand_read(&rm);
