@@ -6,7 +6,8 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
 	/* TODO: perform segment translation from virtual address to linear address
 	 * by reading the invisible part of the segment register 'sreg'
 	 */
-	return 0;
+	uint32_t laddr = cpu.segReg[sreg].base + offset;
+	return laddr;
 }
 
 // load the invisible part of a segment register
