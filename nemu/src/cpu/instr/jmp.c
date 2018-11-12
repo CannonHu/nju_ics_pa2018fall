@@ -83,8 +83,8 @@ make_instr_func(jmp_far_imm){
 	{
 		uint32_t addr = cpu.gdtr.base + ((ptr_sec.val >> 3) & 0xffff) * 8;
 		SegDesc sdt;
-		sdt.val[0] = vaddr(addr, SREG_CS, 4);
-		sdt.val[1] = vaddr(addr + 4, SREG_CS, 4);
+		sdt.val[0] = vaddr_read(addr, SREG_CS, 4);
+		sdt.val[1] = vaddr_read(addr + 4, SREG_CS, 4);
 
 		assert(sdt.present == 1);
 
