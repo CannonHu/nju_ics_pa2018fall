@@ -78,7 +78,7 @@ make_instr_func(jmp_far_imm){
 		}
 	}
 	else{
-		
+		SegDesc* sdt = (SegDesc*)(cpu.gtdr.base + ((ptr_sec.val >> 3) & 0xffff) * 8);
 	}
 	
 	return 1 + 2 + data_size / 8;
