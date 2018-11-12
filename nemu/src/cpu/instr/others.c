@@ -163,6 +163,9 @@ make_instr_func(leave){
 make_instr_func(lgdt){
 	int len = 2;
 
+	OPERAND mem_addr;
+	mem_addr.type = OPR_IMM;
+
 	OPERAND mem_lim, mem_base;
 	mem_lim.data_size = 16;
 	mem_lim.type = mem_base.type = OPR_MEM;
