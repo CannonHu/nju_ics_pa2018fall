@@ -324,8 +324,7 @@ make_instr_func(mov_r2c_l){
 	assert(modrm.mod == 3);
 
 	cr.data_size = r.data_size = 32;
-	cr.sreg = r.sreg = SREG_CS;
-
+	
 	cr.type = OPR_CREG;
 	cr.addr = modrm.reg_opcode;
 
@@ -335,6 +334,8 @@ make_instr_func(mov_r2c_l){
 	operand_read(&r);
 	cr.val = r.val;
 	operand_write(&cr);
+
+	printf("reached\n");
 
 	print_asm_2("mov", "", 3, &r, &cr);
 	return 2;
