@@ -83,9 +83,10 @@ make_instr_func(jmp_far_imm){
 	{
 		uint32_t addr = cpu.gdtr.base + ((ptr_sec.val >> 3) & 0xffff) * 8;
 		SegDesc* sdt = (SegDesc*)addr;
-		printf("Addr: %x\n",addr);
-
+	
 		assert(sdt->present == 1);
+
+		printf("reached\n");
 
 		uint32_t limit = (sdt->limit_15_0) | (sdt->limit_19_16 << 16);
 		assert(limit >= ptr_off.val);
