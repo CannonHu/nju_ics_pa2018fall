@@ -58,7 +58,7 @@ make_instr_func(jmp_short){
 }
 
 make_instr_func(jmp_far_imm){
-	int len = 1;
+/*	int len = 1;
 	OPERAND ptr_sec, ptr_off;
 	ptr_sec.type = ptr_off.type = OPR_IMM;
 	ptr_sec.data_size = 16;
@@ -69,6 +69,8 @@ make_instr_func(jmp_far_imm){
 
 	ptr_off.addr = eip + 3;
 	operand_read(&ptr_off);
+
+*/
 
 	return 1 + 2 + data_size / 8;
 }
