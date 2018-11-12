@@ -69,11 +69,8 @@ make_instr_func(jmp_far_imm){
 	ptr_sec.addr = eip + 1;
 	operand_read(&ptr_sec);
 
-	printf("reached\n");
-
 	ptr_off.addr = eip + 3;
 	operand_read(&ptr_off);
-	printf("reached\n");
 
 	if(cpu.cr0.pe == 0){
 		cpu.segReg[SREG_CS].val = ptr_sec.val;
