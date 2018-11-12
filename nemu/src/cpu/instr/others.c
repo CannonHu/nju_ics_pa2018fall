@@ -189,7 +189,7 @@ make_instr_func(lgdt){
 	mem_base.addr = mem_lim.addr + 2;
 	operand_read(&mem_base);
 	cpu.gdtr.base = mem_base.val;
-	printf("%x\n",mem_base.val);
+	printf("%x\n",mem_addr.val);
 
 	print_asm_0("lgdt","",1);
 	return len;
