@@ -101,5 +101,5 @@ make_instr_func(jmp_far_imm){
 	}
 	
 	printf("reached\n");
-	return 1 + 2 + data_size / 8;
+	return 0; 
 }
