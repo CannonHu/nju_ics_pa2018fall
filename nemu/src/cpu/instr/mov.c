@@ -352,6 +352,9 @@ make_instr_func(mov_rm2s_w){
 	rm.type = OPR_MEM;
 	modrm_rm(eip + 1, &rm);
 
+	operand_read(&rm);
+	s.val = rm.val;
+	operand_write(&s);
 
 	print_asm_2("mov", "w", 3, &rm, &s);
 	return 2;
