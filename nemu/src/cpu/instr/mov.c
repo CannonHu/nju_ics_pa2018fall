@@ -300,6 +300,7 @@ make_instr_func(mov_c2r_l){
 	assert(modrm.mod == 3);
 
 	cr.data_size = r.data_size = 32;
+	cr.sreg = r.sreg = SREG_CS;
 
 	cr.type = OPR_CREG;
 	cr.addr = modrm.reg_opcode;
