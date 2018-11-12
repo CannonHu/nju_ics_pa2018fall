@@ -62,6 +62,7 @@ make_instr_func(jmp_far_imm){
 
 	OPERAND ptr_sec, ptr_off;
 	ptr_sec.type = ptr_off.type = OPR_IMM;
+	ptr_sec.sreg = ptr_off.sreg = SREG_CS;
 	ptr_sec.data_size = 16;
 	ptr_off.data_size = data_size;
 
