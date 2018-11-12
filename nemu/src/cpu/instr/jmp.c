@@ -102,6 +102,6 @@ make_instr_func(jmp_far_imm){
 		load_sreg(SREG_CS);
 	}
 	
-	print_asm_2("ljmp", "", );
+	print_asm_2("ljmp", "", len, &ptr_off, &ptr_sec);
 	return 0; 
 }
