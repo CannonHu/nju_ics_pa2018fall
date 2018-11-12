@@ -18,16 +18,16 @@ void load_sreg(uint8_t sreg) {
 
 	if(cpu.segReg[sreg].ti == 0){
 		uint32_t segDesc_addr = (cpu.segReg[sreg].index * 8) + cpu.gdtr.base;
-		SegDesc* sdt = (SegDesc*)segDesc_addr;
+		SegDesc sdt = (SegDesc*)segDesc_addr;
 		
-		assert(sdt->present == 1);
-		assert(sdt->granularity == 1);
+		assert(sdt.present == 1);
+		assert(sdt.granularity == 1);
 
-		cpu.segReg[sreg].base = (sdt->base_15_0) | (sdt->base_23_16 << 16) | (sdt->base_31_24 << 24);
-		cpu.segReg[sreg].limit = (sdt->limit_15_0) | (sdt->limit_19_16 << 16); 
-		cpu.segReg[sreg].type = sdt->type;
-		cpu.segReg[sreg].privilege_level = sdt->privilege_level;
-		cpu.segReg[sreg].soft_use = sdt->soft_use;
+		cpu.segReg[sreg].base = (sdt.base_15_0) | (sdt.base_23_16 << 16) | (sdt.base_31_24 << 24);
+		cpu.segReg[sreg].limit = (sdt.limit_15_0) | (sdt.limit_19_16 << 16); 
+		cpu.segReg[sreg].type = sdt.type;
+		cpu.segReg[sreg].privilege_level = sdt.privilege_level;
+		cpu.segReg[sreg].soft_use = sdt.soft_use;
 	}
 }
 
