@@ -79,8 +79,11 @@ make_instr_func(jmp_far_imm){
 			cpu.eip &= 0xffff;
 		}
 	}
-	else{
-		SegDesc* sdt = (SegDesc*)(cpu.gdtr.base + ((ptr_sec.val >> 3) & 0xffff) * 8);
+	else
+	{
+		uint32_t addr = cpu.gdtr.base + ((ptr_sec.val >> 3) & 0xffff) * 8;
+		printf("addr: %x\n", addr);
+		SegDesc* sdt = (SegDesc*)addr;
 
 		assert(sdt->present == 1);
 
