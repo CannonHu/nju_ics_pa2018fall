@@ -72,6 +72,8 @@ make_instr_func(jmp_far_imm){
 	ptr_off.addr = eip + 1;
 	operand_read(&ptr_off);
 
+	len = len + 2 + data_size / 8;
+
 	if(cpu.cr0.pe == 0){
 		cpu.segReg[SREG_CS].val = ptr_sec.val;
 		cpu.eip = ptr_off.val;
