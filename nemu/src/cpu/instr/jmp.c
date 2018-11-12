@@ -91,11 +91,13 @@ make_instr_func(jmp_far_imm){
 		uint32_t limit = (sdt.limit_15_0) | (sdt.limit_19_16 << 16);
 		assert(limit >= ptr_off.val);
 
-		load_sreg(SREG_CS);
 		cpu.eip = cpu.segReg[SREG_CS].base + ptr_off.val;
 		if(data_size == 16){
 			cpu.eip &= 0xffff;
 		}
+		printf("reached\n");
+
+		load_sreg(SREG_CS);
 	}
 	
 	printf("reached\n");
