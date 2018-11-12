@@ -95,7 +95,7 @@ make_instr_func(jmp_far_imm){
 		if(data_size == 16){
 			cpu.eip &= 0xffff;
 		}
-		printf("reached\n");
+		printf("reached %x %x\n", sdt.val[0], sdt.val[1]);
 
 		load_sreg(SREG_CS);
 	}
