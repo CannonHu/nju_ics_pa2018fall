@@ -82,11 +82,13 @@ make_instr_func(jmp_far_imm){
 	else
 	{
 		uint32_t addr = cpu.gdtr.base + ((ptr_sec.val >> 3) & 0xffff) * 8;
-		SegDesc* sdt = (SegDesc*)addr;
+		SegDesc sdt;
+		sdt.val[0] = vaddr(addr, SREG_CS, 4);
+		sdt.val[1] = vaddr(addr + 4, SREG_CS, 4);
 
-		assert(sdt->present == 1);
+		assert(sdt.present == 1);
 
-		uint32_t limit = (sdt->limit_15_0) | (sdt->limit_19_16 << 16);
+		uint32_t limit = (sdt.limit_15_0) | (sdt.limit_19_16 << 16);
 		assert(limit >= ptr_off.val);
 
 		load_sreg(SREG_CS);
