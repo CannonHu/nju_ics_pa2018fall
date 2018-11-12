@@ -167,6 +167,7 @@ make_instr_func(lgdt){
 	mem_addr.type = OPR_IMM;
 	mem_addr.data_size = data_size;
 	mem_addr.addr = eip + 2;
+	operand_read(&mem_addr);
 
 	OPERAND mem_lim, mem_base;
 	mem_lim.data_size = 16;
@@ -180,6 +181,7 @@ make_instr_func(lgdt){
 		len += 4;
 	}
 
+	mem_lim.addr = mem_addr.val;
 	operand_read(&mem_lim);
 	cpu.gdtr.limit = mem_lim.val;
 
