@@ -5,6 +5,7 @@ make_instr_func(mov_r2rm_b);
 make_instr_func(mov_r2rm_v);
 make_instr_func(mov_rm2r_b);
 make_instr_func(mov_rm2r_v);
+make_instr_func(mov_rm2s_w);
 make_instr_func(mov_i2rm_b);
 make_instr_func(mov_i2rm_v);
 make_instr_func(mov_i2r_b);
