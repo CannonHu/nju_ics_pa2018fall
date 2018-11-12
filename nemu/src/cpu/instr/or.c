@@ -20,6 +20,7 @@ make_instr_func(or_i2rm_bv){
 	OPERAND rm, imm;
 	imm.data_size = 8;
 	rm.data_size = data_size;
+	imm.sreg = rm.sreg = SREG_CS;
 
 	int len = 1;
 	len += modrm_rm(eip + 1, &rm);
