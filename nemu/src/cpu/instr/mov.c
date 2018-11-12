@@ -312,6 +312,7 @@ make_instr_func(mov_c2r_l){
 	operand_write(&r);
 
 	print_asm_2("mov", "", 3, &cr, &r); 
+	printf("reached\n");
 	return 2;
 }
 
