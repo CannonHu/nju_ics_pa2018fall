@@ -1,5 +1,6 @@
 #include "cpu/instr.h"
 
+
 make_instr_func(jmp_near) {
         OPERAND rel;
         rel.type = OPR_IMM;
