@@ -59,7 +59,7 @@ make_instr_func(jmp_short){
 }
 
 make_instr_func(jmp_far_imm){
-
+	int len = 1;
 	OPERAND ptr_sec, ptr_off;
 	ptr_sec.type = ptr_off.type = OPR_IMM;
 	ptr_sec.sreg = ptr_off.sreg = SREG_CS;
@@ -100,6 +100,6 @@ make_instr_func(jmp_far_imm){
 		load_sreg(SREG_CS);
 	}
 	
-	printf("reached\n");
+	print_asm_2("ljmp", "", );
 	return 0; 
 }
