@@ -81,6 +81,7 @@ make_instr_func(jmp_far_imm){
 	}
 	else{
 		SegDesc* sdt = (SegDesc*)(cpu.gdtr.base + ((ptr_sec.val >> 3) & 0xffff) * 8);
+		printf("reached\n");
 		assert(sdt->present == 1);
 
 
