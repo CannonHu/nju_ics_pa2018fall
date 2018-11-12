@@ -19,8 +19,8 @@ void load_sreg(uint8_t sreg) {
 	if(cpu.segReg[sreg].ti == 0){
 		uint32_t segDesc_addr = (cpu.segReg[sreg].index * 8) + cpu.gdtr.base;
 		SegDesc sdt;
-		sdt.val[0] = vaddr(segDesc_addr, SREG_CS, 4);
-		sdt.val[1] = vaddr(segDesc_addr + 4, SREG_CS, 4);
+		sdt.val[0] = vaddr_read(segDesc_addr, SREG_CS, 4);
+		sdt.val[1] = vaddr_read(segDesc_addr + 4, SREG_CS, 4);
 		
 		assert(sdt.present == 1);
 		assert(sdt.granularity == 1);
