@@ -161,8 +161,9 @@ make_instr_func(leave){
 
 
 make_instr_func(lgdt){
-	int len = 2;
 
+	int len = 2;
+/*
 	OPERAND mem_addr;
 	mem_addr.type = OPR_IMM;
 	mem_addr.data_size = data_size;
@@ -191,5 +192,6 @@ make_instr_func(lgdt){
 	cpu.gdtr.base = mem_base.val;
 
 	print_asm_0("lgdt","",1);
+	*/
 	return len;
 }
