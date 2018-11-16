@@ -9,11 +9,9 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
 
 	//printf("offset: %x\n", offset);	
 	//assert(offset <= cpu.segReg[sreg].limit);
-	/*
+	
 	uint32_t laddr = cpu.segReg[sreg].base + offset;
 	return laddr;
-	*/
-	return 0;
 }
 
 // load the invisible part of a segment register
@@ -21,7 +19,7 @@ void load_sreg(uint8_t sreg) {
 	/* TODO: load the invisibile part of the segment register 'sreg' by reading the GDT.
 	 * The visible part of 'sreg' should be assigned by mov or ljmp already.
 	 */
-	/*
+
 	assert(cpu.segReg[sreg].ti == 0);
 
 	if(cpu.segReg[sreg].ti == 0){
@@ -39,6 +37,6 @@ void load_sreg(uint8_t sreg) {
 		cpu.segReg[sreg].privilege_level = sdt.privilege_level;
 		cpu.segReg[sreg].soft_use = sdt.soft_use;
 	}
-	*/
+	
 }
 
