@@ -59,7 +59,7 @@ make_instr_func(jmp_short){
 }
 
 make_instr_func(jmp_far_imm){
-	/*
+	
 	int len = 1;
 	OPERAND ptr_sec, ptr_off;
 	ptr_sec.type = ptr_off.type = OPR_IMM;
@@ -104,6 +104,6 @@ make_instr_func(jmp_far_imm){
 	}
 	
 	print_asm_2("ljmp", "", len, &ptr_off, &ptr_sec);
-	*/
+
 	return 0; 
 }
