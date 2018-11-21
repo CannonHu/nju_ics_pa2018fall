@@ -349,6 +349,7 @@ make_instr_func(mov_rm2s_w){
 	modrm.val = instr_fetch(eip + 1, 1);
 	
 	s.addr = modrm.reg_opcode;
+	printf("s_addr: %x\n", s.addr);
 
 	rm.type = OPR_MEM;
 	modrm_rm(eip + 1, &rm);
