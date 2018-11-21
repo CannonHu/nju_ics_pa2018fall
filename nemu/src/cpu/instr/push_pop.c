@@ -78,6 +78,8 @@ make_instr_func(push_i_b){
 
 make_instr_func(push_i_v){
 	OPERAND imm, dest;
+	imm.sreg = SREG_CS;
+	dest.sreg = SREG_SS;
 	imm.data_size = dest.data_size = data_size;
 	if(data_size == 16)
 		cpu.esp -= 2;
@@ -102,8 +104,8 @@ make_instr_func(push_i_v){
 }
 make_instr_func(push_rm_v){
 	OPERAND rm, dest;
-	rm.type = SREG_CS;
-	dest.type = SREG_SS;
+	rm.sreg = SREG_CS;
+	dest.sreg = SREG_SS;
 	dest.data_size = rm.data_size = data_size;
 	if(data_size == 16)
 		cpu.esp -= 2;
@@ -133,6 +135,7 @@ make_instr_func(pusha){
 	OPERAND dest;
 	dest.data_size = data_size;
 	dest.type = OPR_MEM;
+	dest.sreg = SREG_SS;
 
 	if(data_size == 16){
 		uint16_t tmp = cpu.esp;
