@@ -37,7 +37,7 @@ void operand_read(OPERAND * opr) {
 		case OPR_SREG:
 #ifdef IA32_SEG
 			opr->val = cpu.segReg[opr->addr].val;
-			printf("opr_val: %x\n", opr->val);
+
 #endif
 			break;
 	}
