@@ -9,7 +9,7 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
 
 	if(sreg == SREG_CS && offset > cpu.segReg[sreg].limit){
 		printf("offset: %x\n", offset);
-		printf("sreg: %d %x\n", sreg, cpu.segReg[sreg].val);
+		printf("sreg: %d %x\n", sreg, cpu.segReg[sreg].limit);
 		printf("Warning! offset > limit\n");
 	}
 
