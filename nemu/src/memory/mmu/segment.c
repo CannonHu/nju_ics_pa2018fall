@@ -7,8 +7,6 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
 	 * by reading the invisible part of the segment register 'sreg'
 	 */
 
-	//printf("offset: %x\n", offset);	
-	//assert(offset <= cpu.segReg[sreg].limit);
 	if(offset > cpu.segReg[sreg].limit){
 		printf("Warning! offset > limit\n");
 	}
