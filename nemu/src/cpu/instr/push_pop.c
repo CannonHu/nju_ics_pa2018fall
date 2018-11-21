@@ -102,6 +102,8 @@ make_instr_func(push_i_v){
 }
 make_instr_func(push_rm_v){
 	OPERAND rm, dest;
+	rm.type = SREG_CS;
+	dest.type = SREG_SS;
 	dest.data_size = rm.data_size = data_size;
 	if(data_size == 16)
 		cpu.esp -= 2;
