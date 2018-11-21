@@ -66,8 +66,7 @@ set_segment(SegDesc *ptr, uint32_t pl, uint32_t type) {
 /* This is similar with the one in start.S. However the previous
  * one cannot be accessed in user process, because its virtual address
  * below 0xC0000000, and is not in the user process' address space. */
-void
-init_segment(void) {
+void init_segment(void) {
 	memset(gdt, 0, sizeof(gdt));
 	set_segment(&gdt[SEG_KERNEL_CODE], DPL_KERNEL, SEG_EXECUTABLE | SEG_READABLE);
 	set_segment(&gdt[SEG_KERNEL_DATA], DPL_KERNEL, SEG_WRITABLE );
