@@ -23,6 +23,8 @@ make_instr_func(push_r_v){
 
 make_instr_func(pop_r_v){
 	OPERAND r, top;
+	r.sreg = SREG_CS;
+	top.sreg = SREG_SS;
 	r.data_size = top.data_size = data_size;
 	
 	r.type = OPR_REG;
