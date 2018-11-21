@@ -2,6 +2,8 @@
 
 make_instr_func(push_r_v){
 	OPERAND r,dest;
+	r.sreg = SREG_CS;
+	dest.sreg = SREG_SS;
 	dest.data_size = r.data_size = data_size;
 	if(data_size == 16)
 		cpu.esp -= 2;
