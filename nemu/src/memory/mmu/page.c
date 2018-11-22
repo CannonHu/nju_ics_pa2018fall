@@ -10,6 +10,6 @@ paddr_t page_translate(laddr_t laddr) {
 	PTE cur_pte = paddr_read(pte_addr, 4);
 	return (cur_pte.page_frame << 12) + (laddr & 0xfff); 
 #else	
-	return tlb_read(laddr) | (laddr & PAGE_MASK);;
+	return tlb_read(laddr) | (laddr & PAGE_MASK);
 #endif
 }
