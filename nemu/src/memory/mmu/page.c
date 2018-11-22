@@ -6,7 +6,7 @@ paddr_t page_translate(laddr_t laddr) {
 #ifndef TLB_ENABLED
 	printf("used page! %x\n", laddr);
 	uint32_t pde_addr = (cpu.cr3.pdbr << 12) + (laddr >> 22);
-	printf("pde: %x\n", pde_addr);
+	printf("pde: %x %x\n", cpu.cr3.pdbr, pde_addr);
 	PDE cur_pde;
        	cur_pde.val = paddr_read(pde_addr, 4);
 	assert(cur_pde.present == 1);
