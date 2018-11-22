@@ -52,6 +52,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			paddr = page_translate(paddr);
 			ret_val = paddr_read(paddr, len1);
 			paddr = laddr + len1;
+			paddr = page_translate(paddr);
 			ret_val |= paddr_read(paddr, len - len1) << (len1 * 8)
 		}
 		else{
@@ -70,14 +71,21 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 #ifdef IA32_PAGE
 	laddr_t paddr = laddr;
 	if(cpu.cr0.pg){
-		if(((paddr + len) >> 12) != (paddr >> 12)){
-			
+		size_t len1 = ((paddr + len) >> 12 << 12) - paddr;
+		if(len1 < len){
+			uint32_t ret_val = 0;
+			paddr = page_translate(paddr);
+			ret_val = paddr_write(paddr, len1, data);
+			paddr = laddr + len1;
+			paddr = page_translate(paddr);
+			ret_val |= paddr_read(paddr, len - len1) << (len1 * 8)
 		}
 		else{
 			paddr = page_translate(paddr);
-			paddr_write(paddr, len, data);
+			return paddr_read(paddr, len);
 		}
 	}
+
 #else
 	paddr_write(laddr, len, data);
 #endif
