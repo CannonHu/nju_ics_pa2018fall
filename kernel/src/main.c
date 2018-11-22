@@ -1,5 +1,6 @@
 #include "common.h"
 #include "memory.h"
+#include <stdio.h>
 
 void init_page();
 void init_serial();
