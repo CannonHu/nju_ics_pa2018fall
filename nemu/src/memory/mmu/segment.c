@@ -7,11 +7,12 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
 	 * by reading the invisible part of the segment register 'sreg'
 	 */
 
-	if(sreg == SREG_CS && offset > cpu.segReg[sreg].limit){
+	/*if(sreg == SREG_CS && offset > cpu.segReg[sreg].limit){
 		printf("offset: %x\n", offset);
 		printf("sreg: %d %x\n", sreg, cpu.segReg[sreg].limit);
 		printf("Warning! offset > limit\n");
 	}
+	*/
 
 	uint32_t laddr = cpu.segReg[sreg].base + offset;
 	return laddr;
