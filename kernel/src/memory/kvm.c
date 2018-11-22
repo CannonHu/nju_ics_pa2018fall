@@ -28,7 +28,6 @@ void init_page(void) {
 			ptable->val = make_pte(pframe_idx << 12);
 			pframe_idx ++;
 			ptable ++;
-
 		}
 	}
 
