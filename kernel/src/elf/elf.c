@@ -32,6 +32,8 @@ uint32_t loader() {
 	ph = (void *)elf + elf->e_phoff;
 	eph = ph + elf->e_phnum;
 	for(; ph < eph; ph ++) {
+		mm_malloc(ph->p_vaddr, ph->p_memsz);
+
 		if(ph->p_type == PT_LOAD) {
 			//memset((void*)ph->p_vaddr, 0, ph->p_memsz);
 			memcpy((void*)ph->p_vaddr, (void*)elf + ph->p_offset, ph->p_filesz);	
