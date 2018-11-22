@@ -33,6 +33,7 @@ void init() {
 	/* Jump to init_cond() to continue initialization. */
 	// need to plus the offset 0xc0000000 if using gcc-6, strange
 #ifdef IA32_PAGE
+	BREAK_POINT
 	asm volatile("jmp *%0" : : "r"(init_cond + 0xc0000000));
 #else
 	asm volatile("jmp *%0" : : "r"(init_cond));
