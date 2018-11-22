@@ -3,6 +3,7 @@
 #include "memory.h"
 #include <string.h>
 
+#include <stdio.h>
 PDE kpdir[NR_PDE] align_to_page;				// kernel page directory
 PTE kptable[PHY_MEM / PAGE_SIZE] align_to_page;		// kernel page tables
 
@@ -31,6 +32,7 @@ void init_page(void) {
 
 		}
 	}
+	printf("idx: %x %x\n", pdir_idx, pdir_idx + KOFFSET / PT_SIZE);
 
 	/* make CR3 to be the entry of page directory */
 	cr3.val = 0;
