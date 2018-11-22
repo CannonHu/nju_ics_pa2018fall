@@ -4,6 +4,7 @@
 // translate from linear address to physical address
 paddr_t page_translate(laddr_t laddr) {
 #ifndef TLB_ENABLED
+	printf("used page!\n");
 	uint32_t pde_addr = (cpu.cr3.pdbr << 12) + (laddr >> 22);
 	PDE cur_pde;
        	cur_pde.val = paddr_read(pde_addr, 4);
