@@ -6,7 +6,7 @@ paddr_t page_translate(laddr_t laddr) {
 #ifndef TLB_ENABLED
 	uint32_t pde_addr = (cpu.cr3.pdbr << 12) + (laddr >> 22);
 	PDE cur_pde = paddr_read(pde_addr, 4);
-	assert(cur_pde.present == 1)
+	assert(cur_pde.present == 1);
 	uint32_t pte_addr = (cur_pde.page_frame << 12) + (laddr << 10 >> 22);
 	PTE cur_pte = paddr_read(pte_addr, 4);
 	assert(cur_pte.present == 1);
