@@ -28,7 +28,7 @@ uint32_t loader() {
 	Log("ELF loading from ram disk.");
 #endif
 
-	/* Load each program segment */
+/* Load each program segment */
 	ph = (void *)elf + elf->e_phoff;
 	eph = ph + elf->e_phnum;
 	for(; ph < eph; ph ++) {
@@ -37,8 +37,8 @@ uint32_t loader() {
 			Log("mm_malloc_addr: %x vaddr: %x\n", paddr, ph->p_vaddr);		
 			BREAK_POINT
 			//memset((void*)ph->p_vaddr, 0, ph->p_memsz);
-			char* taddr = ph->p_vaddr;
-			printf("taddr: %x addr_val: %x\n", taddr, *taddr);
+			char* taddr = (char*)ph->p_vaddr;
+			Log("taddr: %x addr_val: %x\n", taddr, *taddr);
 
 			memcpy((void*)ph->p_vaddr, (void*)elf + ph->p_offset, ph->p_filesz);	
 			/* TODO: copy the segment from the ELF file to its proper memory area */
