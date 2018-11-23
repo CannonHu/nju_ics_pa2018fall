@@ -33,7 +33,8 @@ uint32_t loader() {
 	eph = ph + elf->e_phnum;
 	for(; ph < eph; ph ++) {
 		if(ph->p_type == PT_LOAD) {
-			mm_malloc(ph->p_vaddr, ph->p_memsz);
+			uint32_t paddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
+			Log("mm_malloc_addr: %x vaddr: %x\n",
 			BREAK_POINT
 			//memset((void*)ph->p_vaddr, 0, ph->p_memsz);
 			memcpy((void*)ph->p_vaddr, (void*)elf + ph->p_offset, ph->p_filesz);	
