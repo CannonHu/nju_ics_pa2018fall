@@ -167,7 +167,10 @@ make_instr_func(jle_short_);
 make_instr_func(jne_short_);
 
 make_instr_func(jo_near);
-
+make_instr_func(jno_near);
+make_instr_func(jb_near);
+make_instr_func(jp_near);
+make_instr_func(jnp_near);
 make_instr_func(jae_near);
 make_instr_func(je_near);
 make_instr_func(jne_near);
