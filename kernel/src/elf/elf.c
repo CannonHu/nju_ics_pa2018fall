@@ -35,7 +35,7 @@ uint32_t loader() {
 		BREAK_POINT
 		Log("mm_malloc loading begin.");
 		mm_malloc(ph->p_vaddr, ph->p_memsz);
-
+		BREAK_POINT
 		if(ph->p_type == PT_LOAD) {
 			//memset((void*)ph->p_vaddr, 0, ph->p_memsz);
 			memcpy((void*)ph->p_vaddr, (void*)elf + ph->p_offset, ph->p_filesz);	
