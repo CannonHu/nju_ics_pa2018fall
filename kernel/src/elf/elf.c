@@ -32,6 +32,7 @@ uint32_t loader() {
 	ph = (void *)elf + elf->e_phoff;
 	eph = ph + elf->e_phnum;
 	for(; ph < eph; ph ++) {
+		BREAK_POINT
 		Log("mm_malloc loading begin.");
 		mm_malloc(ph->p_vaddr, ph->p_memsz);
 
