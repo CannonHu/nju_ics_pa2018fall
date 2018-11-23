@@ -47,8 +47,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 	laddr_t paddr = laddr;
 	if(cpu.cr0.pg){
 		size_t len1 = ((paddr + len) >> 12 << 12) - paddr;
-		printf("len1: %x\n", len1);
-		if(len1 < len){
+		if(len1 != 0 && len1 < len){
 			printf("special twin-page: %x\n", laddr);
 			uint32_t ret_val = 0;
 			paddr = page_translate(paddr);
