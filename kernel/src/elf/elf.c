@@ -38,7 +38,7 @@ uint32_t loader() {
 			BREAK_POINT
 			//memset((void*)ph->p_vaddr, 0, ph->p_memsz);
 			char* taddr = ph->p_vaddr;
-			printf("taddr_val: %x\n", *taddr);
+			printf("taddr: %x addr_val: %x\n", taddr, *taddr);
 
 			memcpy((void*)ph->p_vaddr, (void*)elf + ph->p_offset, ph->p_filesz);	
 			/* TODO: copy the segment from the ELF file to its proper memory area */
