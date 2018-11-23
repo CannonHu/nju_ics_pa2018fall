@@ -35,6 +35,7 @@ uint32_t loader() {
 		if(ph->p_type == PT_LOAD) {
 			mm_malloc(ph->p_vaddr, ph->p_memsz);
 			BREAK_POINT
+			Log("p_vaddr: %x\n",ph->p_vaddr);
 			//memset((void*)ph->p_vaddr, 0, ph->p_memsz);
 			memcpy((void*)ph->p_vaddr, (void*)elf + ph->p_offset, ph->p_filesz);	
 			/* TODO: copy the segment from the ELF file to its proper memory area */
