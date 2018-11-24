@@ -38,6 +38,7 @@ uint32_t loader() {
 			BREAK_POINT
 			
 			Log("test pde: %x\n", *(uint32_t *)0x92000);
+			BREAK_POINT
 
 			memcpy((void*)paddr, (void*)elf + ph->p_offset, ph->p_filesz);	
 			/* TODO: copy the segment from the ELF file to its proper memory area */
