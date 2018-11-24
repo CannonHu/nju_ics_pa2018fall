@@ -35,7 +35,7 @@ uint32_t loader() {
 		if(ph->p_type == PT_LOAD) {
 			uint32_t paddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
 			Log("mm_malloc_addr: %x vaddr: %x\n", paddr, ph->p_vaddr);		
-			//BREAK_POINT
+			BREAK_POINT
 			
 			Log("test pde: %x\n", *(uint32_t *)0x92000);
 
