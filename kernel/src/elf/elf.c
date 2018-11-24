@@ -36,7 +36,8 @@ uint32_t loader() {
 			uint32_t paddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
 			Log("mm_malloc_addr: %x vaddr: %x\n", paddr, ph->p_vaddr);		
 			//BREAK_POINT
-	
+			
+			Log("test pde: %x\n", *(uint32_t *)0x92000);
 
 			memcpy((void*)paddr, (void*)elf + ph->p_offset, ph->p_filesz);	
 			/* TODO: copy the segment from the ELF file to its proper memory area */
@@ -44,9 +45,9 @@ uint32_t loader() {
 			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
 
 #ifdef IA32_PAGE
-			BREAK_POINT
+			/*BREAK_POINT
 			char* t = (void*)ph->p_vaddr;
-			Log("test page: %x", *t);
+			Log("test page: %x", *t);*/
 			/* Record the program break for future use */
 			extern uint32_t brk;
 			uint32_t new_brk = ph->p_vaddr + ph->p_memsz - 1;
