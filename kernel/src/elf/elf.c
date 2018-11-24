@@ -44,6 +44,9 @@ uint32_t loader() {
 			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
 
 #ifdef IA32_PAGE
+			BREAK_POINT
+			char* t = (void*)ph->p_vaddr;
+			Log("test page: %x", *t);
 			/* Record the program break for future use */
 			extern uint32_t brk;
 			uint32_t new_brk = ph->p_vaddr + ph->p_memsz - 1;
