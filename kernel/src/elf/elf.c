@@ -37,7 +37,7 @@ uint32_t loader() {
 			Log("mm_malloc_addr: %x vaddr: %x\n", paddr, ph->p_vaddr);		
 			BREAK_POINT
 			
-			Log("test pde: %x\n", *(uint32_t *)0x92000);
+			Log("test pde: %x\n", *(uint32_t *)0x92080);
 			BREAK_POINT
 
 			memcpy((void*)paddr, (void*)elf + ph->p_offset, ph->p_filesz);	
