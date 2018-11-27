@@ -139,6 +139,7 @@ make_instr_func(leave){
 
 	OPERAND ebp, top;
 	ebp.data_size = top.data_size = data_size;
+	ebp.sreg = top.sreg = SREG_SS;
 	
 	ebp.type = OPR_REG;
 	ebp.addr = 0x5;
