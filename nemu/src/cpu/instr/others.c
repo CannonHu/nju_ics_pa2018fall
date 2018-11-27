@@ -102,6 +102,7 @@ make_instr_func(ret_near_imm16){
 	imm.type = OPR_IMM;
 	top.data_size = data_size;
 	imm.data_size = 16;
+	top.sreg = SREG_SS;
 	top.addr = cpu.esp;
 	operand_read(&top);
 	operand_read(&imm);
