@@ -181,7 +181,7 @@ make_instr_func(lgdt){
 
 	OPERAND mem_lim, mem_base;
 	mem_lim.data_size = 16;
-	mam_lim.sreg = mem_base.sreg = SREG_SS;
+	mem_lim.sreg = mem_base.sreg = SREG_SS;
 	mem_lim.type = mem_base.type = OPR_MEM;
 	if(data_size == 16){
 		mem_base.data_size = 24;
