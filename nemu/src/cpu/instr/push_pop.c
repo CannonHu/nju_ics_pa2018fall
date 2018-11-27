@@ -109,7 +109,7 @@ make_instr_func(push_i_v){
 }
 make_instr_func(push_rm_v){
 	OPERAND rm, dest;
-	rm.sreg = SREG_CS;
+	rm.sreg = SREG_SS;
 	dest.sreg = SREG_SS;
 	dest.data_size = rm.data_size = data_size;
 	if(data_size == 16)
