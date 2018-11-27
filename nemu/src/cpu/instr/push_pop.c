@@ -66,6 +66,7 @@ make_instr_func(push_i_b){
 	
 	dest.type = OPR_MEM;
 	dest.addr = cpu.esp;
+	dest.sreg = SREG_SS;
 
 
 	operand_read(&imm);
