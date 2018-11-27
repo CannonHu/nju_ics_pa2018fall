@@ -17,11 +17,13 @@ make_instr_func(call_near){
 	ret.data_size = dest.data_size = data_size;
 	ret.type = OPR_MEM;
 	ret.addr = cpu.esp;
+	ret.sreg = SREG_SS;
 	ret.val = eipval = eipval + 1 +data_size / 8;
 	operand_write(&ret);
 
 	dest.type = OPR_IMM;
 	dest.addr = eip + 1;
+	dest.sreg = SREG_CS;
 	operand_read(&dest);
 	eipval += dest.val;
 
