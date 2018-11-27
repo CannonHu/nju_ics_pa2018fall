@@ -51,6 +51,8 @@ make_instr_func(call_near_indirect){
 	}
 
 	ret.data_size = dest.data_size = data_size;
+	ret.sreg = SREG_SS;
+	dest.sreg = SREG_CS;
 	
 	int len = 1;
 	len += modrm_rm(eip + 1, &dest);
@@ -79,6 +81,7 @@ make_instr_func(ret_near){
 	top.type = OPR_MEM;
 	top.data_size = data_size;
 	top.addr = cpu.esp;
+	top.sreg = SREG_SS;
 	operand_read(&top);
 
 	if(data_size == 16){
