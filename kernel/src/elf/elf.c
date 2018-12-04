@@ -34,7 +34,7 @@ uint32_t loader() {
 	for(; ph < eph; ph ++) {
 		if(ph->p_type == PT_LOAD) {
 			uint32_t paddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
-			Log("mm_malloc_addr: %x vaddr: %x\n", paddr, ph->p_vaddr);		
+			//Log("mm_malloc_addr: %x vaddr: %x\n", paddr, ph->p_vaddr);		
 		
 			memcpy((void*)paddr, (void*)elf + ph->p_offset, ph->p_filesz);	
 			/* TODO: copy the segment from the ELF file to its proper memory area */
