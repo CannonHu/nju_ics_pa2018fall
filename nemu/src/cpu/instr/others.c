@@ -215,7 +215,6 @@ make_instr_func(lidt){
 	mem_addr.sreg = SREG_SS;
 	operand_read(&mem_addr);
 
-
 	OPERAND mem_lim, mem_base;
 	mem_lim.data_size = 16;
 	mem_lim.sreg = mem_base.sreg = SREG_SS;
