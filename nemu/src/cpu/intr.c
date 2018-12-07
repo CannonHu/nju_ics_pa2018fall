@@ -15,7 +15,29 @@ void raise_intr(uint8_t intr_no) {
 	top.addr = cpu.esp;
 	top.val = cpu.eflags.val;
         operand_write(&top);
-		
+	
+	cpu.esp -= 2;
+	top.data_size = 16;
+	top.addr = cpu.esp;
+	top.val = cpu.cs.val;
+	operand_write(&top);
+
+	cpu.esp -= 4;
+	top.data_size = 32;
+	top.addr = cpu.esp;
+	top.val = cpu.cs.base;
+	operand_write(&top);
+
+	cpu.esp -= 4;
+	top.addr = cpu.esp;
+	top.val = cpu.cs.limit;
+	operand_write(&top);
+
+	cpu.esp -= 1;
+	top.data_size = 8;
+	top.addr = cpu.esp;
+	top.val = cpu.cs.type + cpu.cs.privilege_level << 5 + cpu.cs.soft_use << 7;
+	operand_write(&top);
 	
 #endif
 }
