@@ -203,3 +203,40 @@ make_instr_func(lgdt){
 	print_asm_0("lgdt","",1);
 	return len;
 }
+
+make_instr_func(lidt){
+
+	int len = 2;
+
+	OPERAND mem_addr;
+	mem_addr.type = OPR_IMM;
+	mem_addr.data_size = data_size;
+	mem_addr.addr = eip + 2;
+	mem_addr.sreg = SREG_SS;
+	operand_read(&mem_addr);
+
+
+	OPERAND mem_lim, mem_base;
+	mem_lim.data_size = 16;
+	mem_lim.sreg = mem_base.sreg = SREG_SS;
+	mem_lim.type = mem_base.type = OPR_MEM;
+	if(data_size == 16){
+		mem_base.data_size = 24;
+		len += 2;
+	}
+	else if(data_size == 32){
+		mem_base.data_size = 32;
+		len += 4;
+	}
+
+	mem_lim.addr = mem_addr.val;
+	operand_read(&mem_lim);
+	cpu.gdtr.limit = mem_lim.val;
+
+	mem_base.addr = mem_lim.addr + 2;
+	operand_read(&mem_base);
+	cpu.gdtr.base = mem_base.val;
+
+	print_asm_0("lgdt","",1);
+	return len;
+}
