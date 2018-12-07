@@ -54,9 +54,9 @@ typedef union{
 }CR3;
 
 typedef union{
-	uint32_t base;
 	uint16_t limit;
-}IDTR
+	uint32_t base;
+}IDTR;
 
 
 typedef struct {
