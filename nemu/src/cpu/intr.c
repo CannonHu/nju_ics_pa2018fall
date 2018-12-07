@@ -12,8 +12,10 @@ void raise_intr(uint8_t intr_no) {
 	top.sreg = SREG_SS;
 	top.data_size = 32;
 	cpu.esp -= 4;
-	top.addr = esp;
-	top.val = 
+	top.addr = cpu.esp;
+	top.val = cpu.eflags.val;
+        operand_write(&top);
+		
 	
 #endif
 }
