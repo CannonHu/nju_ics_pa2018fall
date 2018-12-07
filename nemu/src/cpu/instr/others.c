@@ -231,12 +231,12 @@ make_instr_func(lidt){
 
 	mem_lim.addr = mem_addr.val;
 	operand_read(&mem_lim);
-	cpu.gdtr.limit = mem_lim.val;
+	cpu.idtr.limit = mem_lim.val;
 
 	mem_base.addr = mem_lim.addr + 2;
 	operand_read(&mem_base);
-	cpu.gdtr.base = mem_base.val;
+	cpu.idtr.base = mem_base.val;
 
-	print_asm_0("lgdt","",1);
+	print_asm_0("lidt","",1);
 	return len;
 }
