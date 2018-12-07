@@ -25,7 +25,7 @@ void raise_intr(uint8_t intr_no) {
 	top.val = cpu.cs.val;
 	operand_write(&top);
 	
-	//push sreg cs invisible part
+	push sreg cs invisible part
 	cpu.esp -= 4;
 	top.data_size = 32;
 	top.addr = cpu.esp;
@@ -43,13 +43,27 @@ void raise_intr(uint8_t intr_no) {
 	top.val = cpu.cs.type + cpu.cs.privilege_level << 5 + cpu.cs.soft_use << 7;
 	operand_write(&top);
 
+	//push eip
 	cpu.esp -= 4;
 	top.addr = cpu.esp;
 	top.data_size = 32;
 	top.val = cpu.eip;
 	operand_write(&top);
 	
+	//find IDT entry
+	uint32_t idt_addr = cpu.idtr.base + intr_no * 8;
+	GateDesc cur_gd;
+	cur_gd.val[0] = paddr_read(idt_addr, 4);
+	cur_gd.val[1] = paddr_read(idt_addr + 32, 4);
+
+	assert(cur_gd.present == 1);
+	if(cur_gd.type == 0xe){
+		cpu.eflags.IF = 0;
+	}
 	
+	cpu.cs.val = cur_gd.selector;
+	cpu.eip = cur_gd.offset_15_0 + (cur_gd.offset_31_16 << 16);
+
 #endif
 }
 
