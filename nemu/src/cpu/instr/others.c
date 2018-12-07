@@ -1,5 +1,5 @@
 #include "cpu/instr.h"
-#include <stdio.h>
+
 
 make_instr_func(call_near){
 	uint32_t eipval = 0;
