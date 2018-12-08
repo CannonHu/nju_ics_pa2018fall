@@ -156,7 +156,7 @@ make_instr_func(cli);
 make_instr_func(sti);
 
 make_instr_func(lgdt);
-make_instr_func(lidt)
+make_instr_func(lidt);
 
 make_instr_func(jo_short_);
 make_instr_func(jno_short_);
