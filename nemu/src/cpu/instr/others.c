@@ -1,6 +1,5 @@
 #include "cpu/instr.h"
 
-
 make_instr_func(call_near){
 	uint32_t eipval = 0;
 	OPERAND dest,ret;
@@ -198,7 +197,7 @@ make_instr_func(lgdt){
 	operand_read(&mem_base);
 	cpu.gdtr.base = mem_base.val;
 
-	print_asm_0("lgdt","",1);
+	print_asm_1("lgdt","",2, &mem_addr);
 	return len;
 }
 
