@@ -218,11 +218,9 @@ make_instr_func(lidt){
 	mem_lim.type = mem_base.type = OPR_MEM;
 	if(data_size == 16){
 		mem_base.data_size = 24;
-		len += 2;
 	}
 	else if(data_size == 32){
 		mem_base.data_size = 32;
-		len += 4;
 	}
 
 	mem_lim.addr = mem_addr.val;
