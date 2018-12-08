@@ -25,7 +25,7 @@ void raise_intr(uint8_t intr_no) {
 	top.val = cpu.cs.val;
 	operand_write(&top);
 	
-	push sreg cs invisible part
+	/*push sreg cs invisible part
 	cpu.esp -= 4;
 	top.data_size = 32;
 	top.addr = cpu.esp;
@@ -41,7 +41,7 @@ void raise_intr(uint8_t intr_no) {
 	top.data_size = 8;
 	top.addr = cpu.esp;
 	top.val = cpu.cs.type + cpu.cs.privilege_level << 5 + cpu.cs.soft_use << 7;
-	operand_write(&top);
+	operand_write(&top);*/
 
 	//push eip
 	cpu.esp -= 4;
