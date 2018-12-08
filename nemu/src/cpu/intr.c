@@ -20,8 +20,8 @@ void raise_intr(uint8_t intr_no) {
         operand_write(&top);
 
 	//push sreg cs visible part
-	cpu.esp -= 2;
-	top.data_size = 16;
+	cpu.esp -= 4;
+	top.data_size = 32;
 	top.addr = cpu.esp;
 	top.val = cpu.cs.val;
 	operand_write(&top);
