@@ -5,10 +5,6 @@ make_instr_func(push_r_v){
 	r.sreg = SREG_CS;
 	dest.sreg = SREG_SS;
 	dest.data_size = r.data_size = data_size;
-	if(data_size == 16)
-		cpu.esp -= 2;
-	if(data_size == 32)
-		cpu.esp -= 4;
 
 	r.type = OPR_REG;
 	r.addr = opcode & 0x7;
