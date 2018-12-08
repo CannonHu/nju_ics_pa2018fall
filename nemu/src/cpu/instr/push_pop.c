@@ -18,6 +18,12 @@ make_instr_func(push_r_v){
 
 	print_asm_1("push","v",1,&r);	
 	operand_read(&r);
+
+	if(data_size == 16)
+		cpu.esp -= 2;
+	if(data_size == 32)
+		cpu.esp -= 4;
+
 	dest.val = r.val;
 	operand_write(&dest);
 	return 1;
