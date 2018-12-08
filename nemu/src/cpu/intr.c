@@ -13,6 +13,8 @@ void raise_intr(uint8_t intr_no) {
 	top.sreg = SREG_SS;
 	top.data_size = 32;
 
+	printf("cpu-esp: %x\n",cpu.esp);
+
 	//push eflags
 	cpu.esp -= 4;
 	top.addr = cpu.esp;
