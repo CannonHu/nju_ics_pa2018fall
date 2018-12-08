@@ -39,5 +39,4 @@ asm_do_irq:
 	addl $4, %esp
 	popal
 	addl $8, %esp
-	BREAK_POINT
 	iret
