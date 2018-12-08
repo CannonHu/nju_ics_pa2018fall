@@ -207,7 +207,6 @@ make_instr_func(lidt){
 	mem_addr.data_size = data_size;
 	mem_addr.sreg = SREG_SS;
 	len += modrm_rm(eip + 1, &mem_addr);
-	operand_read(&mem_addr);
 
 	OPERAND mem_lim, mem_base;
 	mem_lim.data_size = 16;
@@ -220,7 +219,7 @@ make_instr_func(lidt){
 		mem_base.data_size = 32;
 	}
 
-	mem_lim.addr = mem_addr.val;
+	mem_lim.addr = mem_addr.addr;
 	operand_read(&mem_lim);
 	cpu.idtr.limit = mem_lim.val;
 
