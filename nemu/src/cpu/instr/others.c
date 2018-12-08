@@ -187,8 +187,7 @@ make_instr_func(lgdt){
 		mem_base.data_size = 32;
 	
 	}
-	printf("mem_addr: %x\n", mem_addr.addr);
-	mem_lim.addr = mem_addr.val;
+	mem_lim.addr = mem_addr.addr;
 	operand_read(&mem_lim);
 	cpu.gdtr.limit = mem_lim.val;
 
