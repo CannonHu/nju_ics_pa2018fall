@@ -57,7 +57,8 @@ void raise_intr(uint8_t intr_no) {
 	GateDesc cur_gd;
 	cur_gd.val[0] = paddr_read(idt_addr, 4);
 	cur_gd.val[1] = paddr_read(idt_addr + 32, 4);
-
+	
+	printf("hello\n");
 	assert(cur_gd.present == 1);
 	if(cur_gd.type == 0xe){
 		cpu.eflags.IF = 0;
@@ -65,7 +66,6 @@ void raise_intr(uint8_t intr_no) {
 	
 	cpu.cs.val = cur_gd.selector;
 	cpu.eip = cur_gd.offset_15_0 + (cur_gd.offset_31_16 << 16);
-	printf("cur-eip: %x\n",cpu.eip);
 #endif
 }
 
