@@ -174,7 +174,7 @@ make_instr_func(lgdt){
 	OPERAND mem_addr;
 	mem_addr.data_size = data_size;
 	mem_addr.sreg = SREG_SS;
-	len += modrm_rm(eip + 2, &mem_addr);
+	len += modrm_rm(eip + 1, &mem_addr);
 	operand_read(&mem_addr);
 
 
@@ -210,7 +210,7 @@ make_instr_func(lidt){
 	OPERAND mem_addr;
 	mem_addr.data_size = data_size;
 	mem_addr.sreg = SREG_SS;
-	len += modrm_rm(eip + 2, &mem_addr);
+	len += modrm_rm(eip + 1, &mem_addr);
 	operand_read(&mem_addr);
 
 	OPERAND mem_lim, mem_base;
