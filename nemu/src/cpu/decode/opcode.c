@@ -116,7 +116,7 @@ instr_func group_5_indirect_entry[8] =
 {__ref_inc_rm_v, __ref_dec_rm_v, __ref_call_near_indirect, inv, __ref_jmp_near_indirect, inv, __ref_push_rm_v, inv};
 
 instr_func group_7_entry[8] = 
-{inv, inv, __ref_lgdt, inv, inv, inv, inv, inv};
+{inv, inv, __ref_lgdt, __ref_lidt, inv, inv, inv, inv};
 
 /* 0xd8 */
 instr_func group_x87_d8_entry[8] =
