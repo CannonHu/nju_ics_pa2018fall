@@ -151,6 +151,7 @@ make_instr_func(test_i2a_b);
 make_instr_func(test_i2a_v);
 
 make_instr_func(int_);
+make_instr_func(iret);
 make_instr_func(cli);
 make_instr_func(sti);
 
