@@ -58,7 +58,6 @@ void raise_intr(uint8_t intr_no) {
 	cur_gd.val[0] = paddr_read(idt_addr, 4);
 	cur_gd.val[1] = paddr_read(idt_addr + 32, 4);
 	
-	printf("hello\n");
 	assert(cur_gd.present == 1);
 	if(cur_gd.type == 0xe){
 		cpu.eflags.IF = 0;
