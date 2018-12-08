@@ -55,8 +55,8 @@ void raise_intr(uint8_t intr_no) {
 	uint32_t idt_addr = cpu.idtr.base + intr_no * 8;
 	printf("cpu-idtr: %x idt_addr: %x\n", cpu.idtr.base, idt_addr);
 	GateDesc cur_gd;
-	cur_gd.val[0] = paddr_read(idt_addr, 4);
-	cur_gd.val[1] = paddr_read(idt_addr + 4, 4);
+	cur_gd.val[0] = laddr_read(idt_addr, 4);
+	cur_gd.val[1] = laddr_read(idt_addr + 4, 4);
 	
 	assert(cur_gd.present == 1);
 	if(cur_gd.type == 0xe){
