@@ -10,7 +10,6 @@ make_instr_func(push_r_v){
 	r.addr = opcode & 0x7;
 
 	dest.type = OPR_MEM;
-	dest.addr = cpu.esp;
 
 	print_asm_1("push","v",1,&r);	
 	operand_read(&r);
@@ -20,6 +19,7 @@ make_instr_func(push_r_v){
 	if(data_size == 32)
 		cpu.esp -= 4;
 
+	dest.addr = cpu.esp;
 	dest.val = r.val;
 	operand_write(&dest);
 	return 1;
