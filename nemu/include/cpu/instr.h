@@ -7,6 +7,7 @@
 #include "cpu/modrm.h"
 #include "cpu/operand.h"
 #include "cpu/instr_helper.h"
+#include "cpu/intr.h"
 #include "memory/memory.h"
 #include <cpu-ref/instr_ref.h>
 
