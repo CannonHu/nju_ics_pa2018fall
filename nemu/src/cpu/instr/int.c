@@ -13,3 +13,8 @@ make_instr_func(int_){
 	raise_sw_intr(intr_no);
 	return 0;
 }
+
+make_instr_func(iret){
+	assert("here is iret");
+	return 2;
+}
