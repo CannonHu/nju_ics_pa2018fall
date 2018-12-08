@@ -203,7 +203,7 @@ make_instr_func(lgdt){
 
 make_instr_func(lidt){
 
-	int len = 2;
+	int len = 1;
 
 	OPERAND mem_addr;
 	mem_addr.data_size = data_size;
@@ -230,6 +230,6 @@ make_instr_func(lidt){
 	operand_read(&mem_base);
 	cpu.idtr.base = mem_base.val;
 
-	print_asm_0("lidt","",1);
+	print_asm_1("lidt","",2, &mem_addr);
 	return len;
 }
