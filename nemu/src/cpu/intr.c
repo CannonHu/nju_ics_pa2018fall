@@ -53,7 +53,7 @@ void raise_intr(uint8_t intr_no) {
 	
 	//find IDT entry
 	uint32_t idt_addr = cpu.idtr.base + intr_no * 8;
-	printf("cpu-idtr: %x idt_addr: %x\n", cpu.idtr.base, idt_addr);
+	printf("intr_no: %x cpu-idtr: %x idt_addr: %x\n", intr_no, cpu.idtr.base, idt_addr);
 	GateDesc cur_gd;
 	cur_gd.val[0] = laddr_read(idt_addr, 4);
 	cur_gd.val[1] = laddr_read(idt_addr + 4, 4);
