@@ -97,6 +97,7 @@ void exec(uint32_t n) {
 			assert(intr_no != I8259_NO_INTR);
 			i8259_ack_intr(); // tell the PIC interrupt info received
 			raise_intr(intr_no); // raise intrrupt to turn into kernel handler
+			printf("cpu intr_no: %x\n", intr_no);
 		}
 #endif
 	}
