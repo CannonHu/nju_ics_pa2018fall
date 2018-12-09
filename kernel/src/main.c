@@ -51,7 +51,7 @@ void init_cond() {
 	/* Set the IDT by setting up interrupt and exception handlers.
 	 * Note that system call is the only exception implemented in NEMU.
 	 */
-	BREAK_POINT
+	//BREAK_POINT
 	init_idt();
 
 	/* Enable interrupts. */
