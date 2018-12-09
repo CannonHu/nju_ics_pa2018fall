@@ -51,11 +51,11 @@ void init_cond() {
 	/* Set the IDT by setting up interrupt and exception handlers.
 	 * Note that system call is the only exception implemented in NEMU.
 	 */
-	//BREAK_POINT
 	init_idt();
 
 	/* Enable interrupts. */
 	sti();
+	BREAK_POINT
 #endif
 
 #ifdef HAS_DEVICE_IDE
