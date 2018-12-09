@@ -84,6 +84,7 @@ void init_idt() {
 	set_intr(idt+32 + 14, SEG_KERNEL_CODE << 3, (uint32_t)irq14, DPL_KERNEL); // ide
 
 	/* the ``idt'' is its virtual address */
+	BREAK_POINT
 	write_idtr(idt, sizeof(idt));
 	sti();
 }
