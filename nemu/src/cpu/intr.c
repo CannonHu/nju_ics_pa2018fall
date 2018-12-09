@@ -13,16 +13,11 @@ void raise_intr(uint8_t intr_no) {
 	top.sreg = SREG_SS;
 	top.data_size = 32;
 
-	printf("cpu-esp: %x\n",cpu.esp);
-
 	//push eflags
 	cpu.esp -= 4;
 	top.addr = cpu.esp;
 	top.val = cpu.eflags.val;
         operand_write(&top);
-
-	printf("cpu-esp: %x\n",cpu.esp);
-
 
 	//push sreg cs visible part
 	cpu.esp -= 4;
@@ -31,9 +26,6 @@ void raise_intr(uint8_t intr_no) {
 	top.val = cpu.cs.val;
 	operand_write(&top);
 
-	printf("cpu-esp: %x\n",cpu.esp);
-
-	
 	/*push sreg cs invisible part
 	cpu.esp -= 4;
 	top.data_size = 32;
@@ -59,9 +51,6 @@ void raise_intr(uint8_t intr_no) {
 	top.val = cpu.eip;
 	operand_write(&top);
 	
-	printf("cpu-esp: %x\n",cpu.esp);
-
-
 	//find IDT entry
 	uint32_t idt_addr = cpu.idtr.base + intr_no * 8;
 	printf("cpu-idtr: %x idt_addr: %x\n", cpu.idtr.base, idt_addr);

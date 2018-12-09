@@ -21,8 +21,26 @@ make_instr_func(iret){
 	top.sreg = SREG_SS;
 	top.data_size = 32;
 	top.addr = cpu.esp;
+	
+	//pop eip
 	if(data_size == 32){
-		
+		operand_read(&top);
+		cpu.esp += 4;
+		cpu.eip = top.val;
+	}
+
+	//pop cs
+	top.addr = cpu.esp;
+	operand_read(&top);
+	cpu.esp += 4;
+	cpu.cs.val = top.val;
+
+	//pop eflags
+	if(data_size == 32){
+		top.addr = cpu.esp;
+		operand_read(&top);
+		cpu.esp += 4;
+		cpu.eflags.val = top.val;
 	}
 	return 2;
 }
