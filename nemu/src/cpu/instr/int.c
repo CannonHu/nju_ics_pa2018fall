@@ -16,6 +16,13 @@ make_instr_func(int_){
 }
 
 make_instr_func(iret){
-	assert("here is iret");
+	OPERAND top;
+	top.type = OPR_MEM;
+	top.sreg = SREG_SS;
+	top.data_size = 32;
+	top.addr = cpu.esp;
+	if(data_size == 32){
+		
+	}
 	return 2;
 }
