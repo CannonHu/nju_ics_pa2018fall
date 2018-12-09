@@ -52,7 +52,7 @@ void init_cond() {
 	 * Note that system call is the only exception implemented in NEMU.
 	 */
 	init_idt();
-
+	BREAK_POINT
 	/* Enable interrupts. */
 	sti();
 	BREAK_POINT
