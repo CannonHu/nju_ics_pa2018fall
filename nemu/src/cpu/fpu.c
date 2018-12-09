@@ -77,13 +77,13 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
 	if(!overflow) {
 		/* TODO: round up and remove the GRS bits */
-		if((sig_grs & 7) > 4){
+		/*if((sig_grs & 7) > 4){
 			sig_grs += 8;
 		}
 		else if((sig_grs & 7) == 4){
 			if((sig_grs & 8) != 0)
 				sig_grs += 8;
-		}
+		}*/
 		
 		if((sig_grs >> (23 + 3)) > 1) {
 		// normalize toward right
@@ -104,6 +104,15 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			sig_grs = 0;
 			overflow = true;
 		}
+	
+		if((sig_grs & 7) > 4){
+			sig_grs += 8;
+		}
+		else if((sig_grs & 7) == 4){
+			if((sig_grs & 8) != 0)
+				sig_grs += 8;
+		}
+
 		}
 		sig_grs >>= 3;
 	}
