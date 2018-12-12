@@ -160,7 +160,7 @@ make_instr_func(pusha){
 	}
 	else if(data_size == 32){
 		uint32_t tmp = cpu.esp;
-		for(int i = 7; i >= 0; i--){
+		for(int i = 0; i < 8; i++){
 			cpu.esp -= 4;
 			dest.addr = cpu.esp;
 			if(i == 4){
@@ -182,7 +182,7 @@ make_instr_func(popa){
 	src.data_size = data_size;
 
 	if(data_size == 16){
-		for(int i = 0; i < 8; i++){
+		for(int i = 7; i >= 0; i--){
 			if(i != 4){
 				src.addr = cpu.esp;
 				operand_read(&src);
@@ -191,8 +191,8 @@ make_instr_func(popa){
 			}
 		}		
 	}
-	if(data_size == 16){
-		for(int i = 0; i < 8;i++){
+	if(data_size == 32){
+		for(int i = 7; i >= 0;i--){
 			if(i != 4){
 				src.addr = cpu.esp;
 				operand_read(&src);
