@@ -28,8 +28,7 @@ make_instr_func(iret){
 		cpu.esp += 4;
 		cpu.eip = top.val;
 	}
-	printf("esp: %x cpu-eip: %x\n",cpu.esp - 4, top.val);
-
+	
 	//pop cs
 	top.addr = cpu.esp;
 	operand_read(&top);
