@@ -42,5 +42,7 @@ make_instr_func(iret){
 		cpu.esp += 4;
 		cpu.eflags.val = top.val;
 	}
+	
+	print_asm_0("iret","", 1)
 	return 2;
 }
