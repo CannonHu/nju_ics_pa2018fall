@@ -187,8 +187,8 @@ make_instr_func(popa){
 				src.addr = cpu.esp;
 				operand_read(&src);
 				cpu.gpr[i]._16 = src.val;
-				cpu.esp += 2;
 			}
+			cpu.esp += 2;
 		}		
 	}
 	if(data_size == 32){
@@ -197,8 +197,8 @@ make_instr_func(popa){
 				src.addr = cpu.esp;
 				operand_read(&src);
 				cpu.gpr[i]._32 = src.val;
-				cpu.esp += 4;
 			}
+			cpu.esp += 4;
 		}
 	}
 	print_asm_0("pop","a",1);
