@@ -21,7 +21,8 @@ make_instr_impl_2op(add, i, a, v)
 
 make_instr_func(add_i2rm_bv){
 	OPERAND rm, imm;
-	rm.data_size = imm.data_size = data_size;
+	rm.data_size = data_size;
+	imm.data_size = 8;
 
 	int len = 1;
 	len += modrm_rm(eip + 1, &rm);
