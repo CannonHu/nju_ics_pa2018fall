@@ -160,7 +160,7 @@ make_instr_func(pusha){
 	}
 	else if(data_size == 32){
 		uint32_t tmp = cpu.esp;
-		for(int i = 0; i < 8; i++){
+		for(int i = 7; i >= 0; i--){
 			cpu.esp -= 4;
 			dest.addr = cpu.esp;
 			if(i == 4){
