@@ -64,6 +64,6 @@ uint32_t loader() {
 #endif
 	write_cr3(get_ucr3());
 #endif
-	BREAK_POINT
+	//BREAK_POINT
 	return entry;
 }
