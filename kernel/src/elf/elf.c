@@ -38,7 +38,7 @@ uint32_t loader() {
 			
 			Log("%d",ph->p_filesz);	
 			ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
-			BREAK_POINT
+			//BREAK_POINT
 			//elf = (void*)buf;
 			//memcpy((void*)paddr, (void*)elf, ph->p_filesz);	
 			/* TODO: copy the segment from the ELF file to its proper memory area */
