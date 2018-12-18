@@ -43,7 +43,7 @@ uint32_t loader() {
 			//BREAK_POINT
 			//elf = (void*)buf;
 #else
-			memcpy((void*)paddr, (void*)elf + ph->p_filesz, ph->p_filesz);	
+			memcpy((void*)paddr, (void*)elf + ph->p_offset, ph->p_filesz);	
 #endif
 			/* TODO: copy the segment from the ELF file to its proper memory area */
 			memset((void*)(paddr + ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);		
