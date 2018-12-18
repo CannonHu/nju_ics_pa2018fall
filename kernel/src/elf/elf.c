@@ -20,8 +20,8 @@ uint32_t loader() {
 
 #ifdef HAS_DEVICE_IDE
 	BREAK_POINT
-	uint8_t buf[4096];
-	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
+	uint8_t buf[130000];
+	ide_read(buf, ELF_OFFSET_IN_DISK, 130000);
 	elf = (void*)buf;
 	Log("ELF loading from hard disk.");
 #else
@@ -39,8 +39,8 @@ uint32_t loader() {
 			
 			//Log("%d",ph->p_filesz);	
 #ifdef HAS_DEVICE_IDE
-			ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
-
+			//ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
+			memcpy((void*)paddr, (void*)elf + ph->p_offset, ph->p_filesz);
 			//BREAK_POINT
 			//elf = (void*)buf;
 #else
