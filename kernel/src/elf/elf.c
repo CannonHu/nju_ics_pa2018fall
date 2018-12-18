@@ -44,7 +44,8 @@ uint32_t loader() {
 			for(int i = 0; i < ph->p_filesz; i++){
 				uint8_t tmp;
 				ide_read(&tmp, ELF_OFFSET_IN_DISK + ph->p_offset + i, 1);
-				*(paddr + i) = tmp;
+				char* ptr = (void*)(paddr + i);
+				*ptr = tmp;
 			}
 			//BREAK_POINT
 			//elf = (void*)buf;
