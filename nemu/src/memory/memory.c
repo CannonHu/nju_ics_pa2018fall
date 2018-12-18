@@ -64,7 +64,9 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			ret_val = paddr_read(paddr, len1);
 			paddr = laddr + len1;
 			paddr = page_translate(paddr);
-			ret_val |= paddr_read(paddr, len - len1) << (len1 * 8);
+			uint32_t np_val = paddr_read(paddr, 4);
+			np_val |= ((1 << (len1 * 8)) - 1);
+			ret_val |= np_val << (len1 * 8);
 			return ret_val;
 		}
 		else{
