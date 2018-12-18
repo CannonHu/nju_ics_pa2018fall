@@ -6,7 +6,6 @@
 #define SCR_SIZE (320 * 200)
 #define NR_PT ((SCR_SIZE + PT_SIZE - 1) / PT_SIZE)  // number of page tables to cover the vmem
 
-PDE mpdir[2] align_to_page;
 PTE mptable[NR_PT] align_to_page;
 PDE* get_updir();
 
