@@ -13,6 +13,7 @@ make_instr_func(in_i2r_b){
 	operand_read(&imm);
 	r.val = pio_read(imm.val, 1) & 0xff;
 	operand_write(&r);
+	print_asm_2("in", "", 2, &r, &imm);
 	return 2;
 }
 
@@ -30,6 +31,7 @@ make_instr_func(in_i2r_v){
 	operand_read(&imm);
 	r.val = pio_read(imm.val, data_size/8);
 	operand_write(&r);
+	print_asm_2("in", "", &r, &imm);
 	return 2;
 }
 
