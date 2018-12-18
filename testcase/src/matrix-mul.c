@@ -316,7 +316,9 @@ int main() {
 			for(k = 0; k < N; k ++) {
 				c[i][j] += a[i][k] * b[k][j];
 			}
+			if(c[i][j] != ans[i][j]){BREAK_POINT
 			nemu_assert(c[i][j] == ans[i][j]);
+			}
 		}
 	
 	}
