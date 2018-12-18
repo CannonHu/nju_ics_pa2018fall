@@ -4,7 +4,6 @@ int A[10];
 int b;
 
 int main() {
-	BREAK_POINT
 	A[0] = 0;
 	A[1] = 1;
 	A[2] = 2;
