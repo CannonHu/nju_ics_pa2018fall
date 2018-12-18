@@ -22,7 +22,6 @@ void create_video_mapping() {
 	uint32_t pdir_idx, ptable_idx, pframe_idx;
 	pframe_idx = 0xa0000;
 	ptable_idx = 0xa0;
-	memset(mpdir, 0, sizeof(PDE) * 2);
 
 	for(pdir_idx = 0; pdir_idx < SCR_SIZE/PT_SIZE; pdir_idx ++){
 		pdir[pdir_idx].val = make_pde(ptable);
