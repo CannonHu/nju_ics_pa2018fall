@@ -41,7 +41,7 @@ uint32_t loader() {
 			BREAK_POINT
 #ifdef HAS_DEVICE_IDE
 			//ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
-			for(int i = 0; i < ph->p_filesz; i++){
+			for(int i = 0; i < ph->p_filesz - 1; i++){
 				if(ph->p_filesz < 5000){
 				Log("i: %d",i);
 				}
