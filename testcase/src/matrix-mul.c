@@ -318,8 +318,9 @@ int main() {
 			}
 			nemu_assert(c[i][j] == ans[i][j]);
 		}
+	
 	}
-
+	BREAK_POINT
 	HIT_GOOD_TRAP;
 
 	return 0;
