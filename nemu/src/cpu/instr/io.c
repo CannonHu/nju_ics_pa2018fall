@@ -31,7 +31,7 @@ make_instr_func(in_i2r_v){
 	operand_read(&imm);
 	r.val = pio_read(imm.val, data_size/8);
 	operand_write(&r);
-	print_asm_2("in", "", &r, &imm);
+	print_asm_2("in", "", 2, &r, &imm);
 	return 2;
 }
 
@@ -48,6 +48,7 @@ make_instr_func(out_r2i_b){
 	operand_read(&imm);
 	operand_read(&r);
 	pio_write(imm.val, 1, r.val);
+	print_asm_2("out", "", 2, &r, &imm);
 	return 2;
 }
 
@@ -65,6 +66,8 @@ make_instr_func(out_r2i_v){
 	operand_read(&imm);
 	operand_read(&r);
 	pio_write(imm.val, data_size/8, r.val);
+	print_asm_2("out", "", 2, &r, &imm);
+
 	return 2;
 }
 
@@ -80,6 +83,8 @@ make_instr_func(in_r2r_b){
 	operand_read(&rp);
 	rd.val = pio_read(rp.val, 1);
 	operand_write(&rd);
+	print_asm_2("in", "", 2, &rd, &rp);
+
 	return 1;
 }
 
