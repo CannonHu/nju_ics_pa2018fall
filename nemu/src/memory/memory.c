@@ -95,8 +95,8 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			paddr = laddr + len1;
 			paddr = page_translate(paddr);
 			printf("next-page: %x data: %x\n",paddr, data>>(len1*8));
-			paddr_write(paddr, len - len1, data >> (len1 * 8));
-			//paddr_write(paddr, 4, data >> (len1 * 8));			
+			//paddr_write(paddr, len - len1, data >> (len1 * 8));
+			paddr_write(paddr, 4, data >> (len1 * 8));			
 		}
 		
 			paddr = page_translate(paddr);
