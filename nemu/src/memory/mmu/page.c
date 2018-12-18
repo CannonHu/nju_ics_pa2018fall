@@ -10,6 +10,9 @@ paddr_t page_translate(laddr_t laddr) {
 	PDE cur_pde;
        	cur_pde.val = paddr_read(pde_addr, 4);
 	//printf("cur_pde val %x\n",cur_pde.val);
+	if(cur_pde.present != 1){
+		printf("laddr: %x\n", laddr);
+	}
 	assert(cur_pde.present == 1);
 	uint32_t pte_addr = (cur_pde.page_frame << 12) + ((laddr << 10 >> 22) << 2);
 	PTE cur_pte;
