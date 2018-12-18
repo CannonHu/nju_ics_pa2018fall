@@ -320,7 +320,7 @@ int main() {
 		}
 	
 	}
-	BREAK_POINT
+
 	HIT_GOOD_TRAP;
 
 	return 0;
