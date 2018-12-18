@@ -93,13 +93,14 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			paddr_write(paddr, len1, data);
 			paddr = laddr + len1;
 			paddr = page_translate(paddr);
-			if((len - len1) == 1 || (len - len1) == 2){
+			paddr_write(paddr, len - len1, data >> (len1 * 8));
+			/*if((len - len1) == 1 || (len - len1) == 2){
 				paddr_write(paddr, len - len1, data >> (len1 * 8));
 			}
 			else{
 				paddr_write(paddr, 2, data >> 8);
 				paddr_write(paddr, 1, data >> 24);
-			}
+			}*/
 		}
 		else{
 			paddr = page_translate(paddr);
