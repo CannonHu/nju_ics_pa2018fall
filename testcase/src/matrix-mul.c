@@ -309,6 +309,7 @@ int c[N][N];
 
 int main() {
 	int i, j, k;
+	BREAK_POINT
 	for(i = 0; i < N; i ++) {
 		for(j = 0; j < N; j ++) {
 			c[i][j] = 0;
