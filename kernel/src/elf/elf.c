@@ -40,8 +40,8 @@ uint32_t loader() {
 			Log("filesize: %d", ph->p_filesz);
 			BREAK_POINT
 #ifdef HAS_DEVICE_IDE
-			//ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
-			for(int i = 0; i < ph->p_filesz - 1; i++){
+			ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
+			/*for(int i = 0; i < ph->p_filesz - 1; i++){
 				if(ph->p_filesz < 5000 && i == 2342){
 				Log("i: %d",i);
 				BREAK_POINT
@@ -50,10 +50,8 @@ uint32_t loader() {
 				ide_read(&tmp, ELF_OFFSET_IN_DISK + ph->p_offset + i, 1);
 				char* ptr = (void*)(paddr + i);
 				*ptr = tmp;
-			}
-			//BREAK_POINT
-			//elf = (void*)buf;
-#else
+			}*/
+		#else
 			memcpy((void*)paddr, (void*)elf + ph->p_offset, ph->p_filesz);	
 #endif
 			/* TODO: copy the segment from the ELF file to its proper memory area */
