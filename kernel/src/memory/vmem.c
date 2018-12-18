@@ -20,7 +20,7 @@ void create_video_mapping() {
 	CR3 cr3;
 		
 	PDE *pdir = (PDE*)va_to_pa(mpdir);
-	PTE *ptable = (PDE*)va_to_pa(mptable);
+	PTE *ptable = (PTE*)va_to_pa(mptable);
 	uint32_t pdir_idx, ptable_idx, pframe_idx;
 	pframe_idx = 0xa0000;
 	ptable_idx = 0xa0;
