@@ -204,4 +204,14 @@ make_instr_func(stos_b);
 make_instr_func(stos_v);
 
 make_instr_func(setne_b);
+
+make_instr_func(in_i2r_b);
+make_instr_func(in_i2r_v);
+make_instr_func(in_r2r_b);
+make_instr_func(in_r2r_v);
+make_instr_func(out_r2i_b);
+make_instr_func(out_r2i_v);
+make_instr_func(out_r2r_b);
+make_instr_func(out_r2r_v);
+
 #endif
