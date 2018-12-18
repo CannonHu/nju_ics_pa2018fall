@@ -34,7 +34,6 @@ static struct SectorCache *
 cache_fetch(uint32_t sector) {
 	struct SectorCache *ptr = &cache[sector % NR_SEC_CACHE];
 	
-	BREAK_POINT
 	if (ptr->used == true && ptr->sector == sector) {
 		/* cache hit, do nothing */
 	} else {
