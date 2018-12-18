@@ -8,7 +8,7 @@
 
 PDE mpdir[2] align_to_page;
 PTE mptable[NR_PT] align_to_page;
-PDE* get_updir(){return mpdir;	};
+PDE* get_updir();
 
 void create_video_mapping() {
 	
