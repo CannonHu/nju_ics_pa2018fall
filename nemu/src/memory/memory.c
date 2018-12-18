@@ -84,8 +84,8 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 	assert(len == 1 || len == 2 || len == 4);
 #ifdef IA32_PAGE
-	laddr_t paddr = laddr;/*
-	if(cpu.cr0.pg){
+	laddr_t paddr = laddr;
+	if(cpu.cr0.pg){/*
 		size_t len1 = ((paddr + len) >> 12 << 12) - paddr;
 		if(len1 != 0 && len1 < len){
 			printf("special twin-page: %x\n", laddr);
