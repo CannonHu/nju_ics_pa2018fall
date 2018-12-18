@@ -65,3 +65,31 @@ make_instr_func(out_r2i_v){
 	pio_write(imm.val, data_size/8, r.val);
 	return 2;
 }
+
+make_instr_func(in_r2r_b){
+	OPERAND rd, rp;
+	rd.data_size = 8;
+	rp.data_size = 16;
+
+	rd.type = rp.type = OPR_REG;
+	rd.addr = 0;
+	rp.addr = 2;
+
+	operand_read(&rp);
+	rd.val = pio_read(rp.val, 1) & 0xff;
+	operand_write(&rd);
+	return 1;
+}
+
+make_instr_func(in_r2r_v){
+	OPERAND rd, rp;
+	rd.data_size = data_size;
+	rp.data_size = 16;
+
+	rd.type = rp.type = OPR_REG;
+	rd.addr = 0;
+	rp.addr = 2;
+
+	operand_read(&rp);
+	rd.val = pio_
+}
