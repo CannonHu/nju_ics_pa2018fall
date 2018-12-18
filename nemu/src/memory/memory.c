@@ -64,10 +64,10 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			ret_val = paddr_read(paddr, len1);
 			paddr = laddr + len1;
 			paddr = page_translate(paddr);
-			ret_val |= (paddr_read(paddr, len - len1)) << (len1 * 8);
-			/*uint32_t np_val = paddr_read(paddr, 4);
+			//ret_val |= (paddr_read(paddr, len - len1)) << (len1 * 8);
+			uint32_t np_val = paddr_read(paddr, 4);
 			np_val &= ((1 << ((len - len1) * 8)) - 1);
-			ret_val |= np_val << (len1 * 8);*/
+			ret_val |= np_val << (len1 * 8);
 			return ret_val;
 		}
 		else{
@@ -93,14 +93,14 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			paddr_write(paddr, len1, data);
 			paddr = laddr + len1;
 			paddr = page_translate(paddr);
-			paddr_write(paddr, len - len1, data >> (len1 * 8));
-			/*if((len - len1) == 1 || (len - len1) == 2){
+			//paddr_write(paddr, len - len1, data >> (len1 * 8));
+			if((len - len1) == 1 || (len - len1) == 2){
 				paddr_write(paddr, len - len1, data >> (len1 * 8));
 			}
 			else{
 				paddr_write(paddr, 2, data >> 8);
 				paddr_write(paddr, 1, data >> 24);
-			}*/
+			}
 		}
 		else{
 			paddr = page_translate(paddr);
