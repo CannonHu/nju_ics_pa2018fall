@@ -96,7 +96,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			paddr = page_translate(paddr);
 			//paddr_write(paddr, len - len1, data >> (len1 * 8));
 			paddr_write(paddr, 4, data >> (len1 * 8));			
-		}*/
+		}
 		
 			paddr = page_translate(paddr);
 			return paddr_write(paddr, len, data);
