@@ -11,7 +11,7 @@ make_instr_func(in_i2r_b){
 	imm.addr = eip + 1;
 	
 	operand_read(&imm);
-	r.val = pio_read(imm.val, 1);
+	r.val = pio_read(imm.val, 1) & 0xff;
 	operand_write(&r);
 	return 2;
 }
@@ -27,4 +27,8 @@ make_instr_func(in_i2r_v){
 	imm.type = OPR_IMM;
 	imm.addr = eip + 1;
 
+	operand_read(&imm);
+	r.val = pio_read(imm.val, data_size/8);
+	operand_write(&r);
+	return 2;
 }
