@@ -39,8 +39,7 @@ uint32_t loader() {
 			
 			//Log("%d",ph->p_filesz);	
 #ifdef HAS_DEVICE_IDE
-			//ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
-			memcpy((void*)paddr, (void*)elf + ph->p_offset, ph->p_filesz);
+			ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
 			//BREAK_POINT
 			//elf = (void*)buf;
 #else
