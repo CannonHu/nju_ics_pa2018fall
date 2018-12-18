@@ -37,7 +37,10 @@ void create_video_mapping() {
 			ptable ++;
 		}
 	}
-
+	
+	cr3.val = 0;
+	cr3.page_directory_base = ((uint32_t)pdir) >> 12;
+	write_cr3(cr3.val);
 	//panic("please implement me");
 }
 
