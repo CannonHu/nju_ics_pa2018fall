@@ -36,7 +36,7 @@ uint32_t loader() {
 			uint32_t paddr = mm_malloc(ph->p_vaddr, ph->p_memsz);
 			//Log("mm_malloc_addr: %x vaddr: %x\n", paddr, Eh->p_vaddr);		
 			
-			Log("filesize: %d", ph->p_filesz);
+			//Log("filesize: %d", ph->p_filesz);
 			//BREAK_POINT
 #ifdef HAS_DEVICE_IDE
 			ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
