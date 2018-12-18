@@ -19,7 +19,6 @@ uint32_t loader() {
 	Elf32_Phdr *ph, *eph;
 
 #ifdef HAS_DEVICE_IDE
-	BREAK_POINT
 	uint8_t buf[4096];
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
 	elf = (void*)buf;
@@ -38,7 +37,7 @@ uint32_t loader() {
 			//Log("mm_malloc_addr: %x vaddr: %x\n", paddr, Eh->p_vaddr);		
 			
 			Log("filesize: %d", ph->p_filesz);
-			BREAK_POINT
+			//BREAK_POINT
 #ifdef HAS_DEVICE_IDE
 			ide_read((void*)paddr, ELF_OFFSET_IN_DISK + ph->p_offset, ph->p_filesz);
 			/*for(int i = 0; i < ph->p_filesz - 1; i++){
