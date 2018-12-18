@@ -88,13 +88,13 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 	if(cpu.cr0.pg){
 		size_t len1 = ((paddr + len) >> 12 << 12) - paddr;
 		if(((paddr + len - 1) >> 12) != (paddr >> 12)){
-			printf("special twin-page: %x first-len: %d\n", laddr, len1);
+			printf("data: %x special twin-page: %x first-len: %d\n", data, laddr, len1);
 
 			paddr = page_translate(paddr);
 			paddr_write(paddr, len1, data);
 			paddr = laddr + len1;
 			paddr = page_translate(paddr);
-			printf("next-page: %x\n",paddr);
+			printf("next-page: %x data: %x\n",paddr, data>>(len1*8));
 			paddr_write(paddr, len - len1, data >> (len1 * 8));
 			//paddr_write(paddr, 4, data >> (len1 * 8));			
 		}
