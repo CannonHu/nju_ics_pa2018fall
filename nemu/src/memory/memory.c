@@ -21,6 +21,10 @@ void hw_mem_write(paddr_t paddr, size_t len, uint32_t data) {
 
 uint32_t paddr_read(paddr_t paddr, size_t len) {
 	uint32_t ret = 0;
+	int mmid = is_mmio(paddr);
+	if(is_mmio(paddr)){
+		
+	}
 #ifdef CACHE_ENABLED
 	ret = cache_read(paddr, len, cache[0]);
 #else
