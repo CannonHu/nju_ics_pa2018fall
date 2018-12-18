@@ -76,7 +76,7 @@ make_instr_func(in_r2r_b){
 	rp.addr = 2;
 
 	operand_read(&rp);
-	rd.val = pio_read(rp.val, 1) & 0xff;
+	rd.val = pio_read(rp.val, 1);
 	operand_write(&rd);
 	return 1;
 }
@@ -91,5 +91,37 @@ make_instr_func(in_r2r_v){
 	rp.addr = 2;
 
 	operand_read(&rp);
-	rd.val = pio_
+	rd.val = pio_read(rp.val, data_size/8);
+	operand_write(&rd);
+	return 1;
+}
+
+make_instr_func(out_r2r_b){
+	OPERAND rd, rp;
+	rd.data_size = 8;
+	rp.data_size = 16;
+
+	rd.type = rp.type = OPR_REG;
+	rd.addr = 0;
+	rp.addr = 2;
+
+	operand_read(&rp);
+	operand_read(&rd);
+	pio_write(rp.val, 1, rd.val);
+	return 1;
+}
+
+make_instr_func(out_r2r_v){
+	OPERAND rd, rp;
+	rd.data_size = data_size;
+	rp.data_size = 16;
+
+	rd.type = rp.type = OPR_REG;
+	rd.addr = 0;
+	rp.addr = 2;
+
+	operand_read(&rp);
+	operand_read(&rd);
+	pio_write(rp.val, data_size/8, rd.val);
+	return 1;
 }
