@@ -96,8 +96,8 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 				paddr_write(paddr, len - len1, data >> (len1 * 8));
 			}
 			else{
-				paddr_write(paddr, 2, data >> (len1 * 8));
-				paddr_write(paddr, 1, data >> (len1 * 8 + 16));
+				paddr_write(paddr, 2, data >> 8);
+				paddr_write(paddr, 1, data >> 24);
 			}
 		}
 		else{
