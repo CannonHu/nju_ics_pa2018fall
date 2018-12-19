@@ -71,16 +71,14 @@ process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int))
 			judge = true;
 			key_press_callback(keycode_hash[i]);
 		}
-			if(code & 0x80) {
-				key_state[i] = KEY_STATE_RELEASE;
-			}
-			else if(key_state[i] == KEY_STATE_EMPTY) {
-				key_state[i] = KEY_STATE_PRESS;
-			}
+		if(key_state[i] == KEY_STATE_RELEASE){
+			judge = true;
+			key_release_callback(keycode_hash[i]);
 		}
+			
 	}
 
-	assert(0);
+	//assert(0);
 	sti();
 	return false;
 }
