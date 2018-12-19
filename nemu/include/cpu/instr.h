@@ -203,7 +203,20 @@ make_instr_func(idiv_rm2a_v);
 make_instr_func(stos_b);
 make_instr_func(stos_v);
 
-make_instr_func(setne_b);
+make_instr_func(seto_b);
+make_instr_func(setno_b);
+make_instr_func(setc_b);
+make_instr_func(setae_b);
+make_instr_func(sete_b);
+make_instr_func(setbe_b);
+make_instr_func(sets_b);
+make_instr_func(setns_b);
+make_instr_func(setp_b);
+make_instr_func(setnp_b);
+make_instr_func(setl_b);
+make_instr_func(setge_b);
+make_instr_func(setle_b);
+make_instr_func(setg_b);
 
 make_instr_func(in_i2r_b);
 make_instr_func(in_i2r_v);
