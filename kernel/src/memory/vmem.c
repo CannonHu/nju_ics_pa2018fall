@@ -29,6 +29,7 @@ void create_video_mapping() {
 		Log("pdir-val: %x", pdir[pdir_idx].val);
 		for(; ptable_idx < NR_PTE; ptable_idx++){
 			if(pframe_idx >= 0xafa00){
+				Log("reach max");
 				break;
 			}
 			ptable->val = make_pte(pframe_idx << 12);
