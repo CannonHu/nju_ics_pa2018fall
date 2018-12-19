@@ -76,6 +76,7 @@ void init_cond() {
 	/* Write some test data to the video memory. */
 	BREAK_POINT
 	video_mapping_write_test();
+	BREAK_POINT
 #endif
 	/* Load the program. */
 	uint32_t eip = loader();
