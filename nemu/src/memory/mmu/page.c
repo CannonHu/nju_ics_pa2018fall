@@ -12,6 +12,8 @@ paddr_t page_translate(laddr_t laddr) {
 	//printf("cur_pde val %x\n",cur_pde.val);
 	if(cur_pde.present != 1){
 		printf("laddr: %x\n", laddr);
+		printf("pde_start: %x pde_addr: %x\n", cpu.cr3.pdbr, pde_addr);
+
 	}
 	//assert(cur_pde.present == 1);
 	uint32_t pte_addr = (cur_pde.page_frame << 12) + ((laddr << 10 >> 22) << 2);
