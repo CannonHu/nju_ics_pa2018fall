@@ -25,6 +25,7 @@ void create_video_mapping() {
 	ptable_idx = 0xa0;
 
 	for(pdir_idx = 0; pdir_idx < SCR_SIZE/PT_SIZE; pdir_idx ++){
+		BREAK_POINT
 		pdir[pdir_idx].val = make_pde(ptable);
 		Log("pdir-val: %x", pdir[pdir_idx].val);
 		for(; ptable_idx < NR_PTE; ptable_idx++){
