@@ -35,9 +35,10 @@ void create_video_mapping() {
 			}
 			if(pframe_idx < 0xa0){
 				ptable->val = 0;
-				continue;
 			}
-			ptable->val = make_pte(pframe_idx << 12);
+			else{
+				ptable->val = make_pte(pframe_idx << 12);
+			}
 			pframe_idx ++;
 			ptable ++;
 		}
