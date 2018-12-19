@@ -21,8 +21,8 @@ void create_video_mapping() {
 	Log("pdir: %x\n", (uint32_t)pdir);
 	PTE *ptable = (PTE*)va_to_pa(mptable);
 	uint32_t pdir_idx, ptable_idx, pframe_idx;
-	pframe_idx = 0xa0000;
-	ptable_idx = 0xa0;
+	pframe_idx = 0xa0;
+	//ptable_idx = 0xa0;
 
 	for(pdir_idx = 0; pdir_idx < 2; pdir_idx ++){
 		if(pframe_idx >= 0xafa00){break;}
