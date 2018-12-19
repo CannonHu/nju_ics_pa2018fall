@@ -65,10 +65,11 @@ process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int))
 	 */
 	
 	int i;
-	bool judge;
+	bool judge = false;
 	for(i = 0; i < NR_KEYS; i ++) {
 		if(key_state[i] == KEY_STATE_PRESS) {
-			
+			judge = true;
+			key_press_callback(keycode_hash[i]);
 		}
 			if(code & 0x80) {
 				key_state[i] = KEY_STATE_RELEASE;
