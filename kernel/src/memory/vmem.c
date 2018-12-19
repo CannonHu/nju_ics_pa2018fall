@@ -21,15 +21,15 @@ void create_video_mapping() {
 	Log("pdir: %x\n", (uint32_t)pdir);
 	PTE *ptable = (PTE*)va_to_pa(mptable);
 	uint32_t pdir_idx, ptable_idx, pframe_idx;
-	pframe_idx = 0xa0;
+	pframe_idx = 0;
 	//ptable_idx = 0xa0;
 
 	for(pdir_idx = 0; pdir_idx < 2; pdir_idx ++){
-		if(pframe_idx >= 0xafa00){break;}
+		if(pframe_idx > 0xaf){break;}
 		pdir[pdir_idx].val = make_pde(ptable);
 		Log("pdir-val: %x", pdir[pdir_idx].val);
 		for(ptable_idx = 0; ptable_idx < NR_PTE; ptable_idx++){
-			if(pframe_idx >= 0xafa00){
+			if(pframe_idx > 0xaf){
 				Log("reach max");
 				break;
 			}
