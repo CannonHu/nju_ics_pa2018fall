@@ -10,7 +10,7 @@ paddr_t page_translate(laddr_t laddr) {
 	PDE cur_pde;
        	cur_pde.val = paddr_read(pde_addr, 4);
 	//printf("cur_pde val %x\n",cur_pde.val);
-	if(cur_pde.present != 1 || (laddr > 0x9ffff && laddr < 0xafa00)){
+	if(cur_pde.present != 1 || (laddr >= 0xa0000 && laddr < 0xafa00)){
 		printf("laddr: %x\n", laddr);
 		printf("pde_start: %x pde_addr: %x\n", cpu.cr3.pdbr, pde_addr);
 
