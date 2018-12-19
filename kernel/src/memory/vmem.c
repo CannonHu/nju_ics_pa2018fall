@@ -27,10 +27,10 @@ void create_video_mapping() {
 	for(pdir_idx = 0; pdir_idx < 2; pdir_idx ++){
 		if(pframe_idx > 0xaf){break;}
 		pdir[pdir_idx].val = make_pde(ptable);
-		Log("pdir-val: %x", pdir[pdir_idx].val);
+		//Log("pdir-val: %x", pdir[pdir_idx].val);
 		for(ptable_idx = 0; ptable_idx < NR_PTE; ptable_idx++){
 			if(pframe_idx > 0xaf){
-				Log("reach max");
+				//Log("reach max");
 				break;
 			}
 			if(pframe_idx < 0xa0){
