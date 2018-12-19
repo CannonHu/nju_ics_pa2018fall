@@ -212,6 +212,7 @@ make_instr_func(sete_b);
 make_instr_func(setne_b);
 make_instr_func(setbe_b);
 make_instr_func(seta_b);
+make_instr_func(sets_b);
 make_instr_func(setns_b);
 make_instr_func(setp_b);
 make_instr_func(setnp_b);
