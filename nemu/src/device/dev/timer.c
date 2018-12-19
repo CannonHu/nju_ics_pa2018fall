@@ -26,7 +26,7 @@ void timer_start(int hz) {
 	timer_active = true;
 	SDL_CreateThread(TIMER_Thread, (void*) &hz);
 
-	SDL_Delay(10);
+	SDL_Delay(1);
 }
 
 void timer_stop() {
