@@ -69,6 +69,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	}
 	
 	ide_read(buf, file_table[fd - 3].disk_offset + files[fd].offset, rlen);
+	files[fd].offset += rlen;
 
 	//panic("Please implement fs_read at fs.c");
 	return rlen;
