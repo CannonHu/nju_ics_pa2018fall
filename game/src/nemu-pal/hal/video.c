@@ -29,7 +29,7 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
 	 * `dst' surface.
 	 */
 
-
+	
 
 	for(int i = 0; i < dstrect->h; i++){
 		for(int j = 0; j < dstrect->w; j++){
