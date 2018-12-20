@@ -41,7 +41,15 @@ void ide_write(uint8_t *, uint32_t, uint32_t);
 /* Please implement a simple file system here */
 
 int fs_open(const char *pathname, int flags) {
-	panic("Please implement fs_open at fs.c");
+	int i = 0;
+	for(i = 0; i < NR_FILES; i ++){
+		for(int j = 0; pathname[j] != '/0'; j++){
+			if(pathname[j] != NR_FILES[i].name[j]){
+				break;
+			}
+		}	
+	}
+	//panic("Please implement fs_open at fs.c");
 	return -1;
 }
 
