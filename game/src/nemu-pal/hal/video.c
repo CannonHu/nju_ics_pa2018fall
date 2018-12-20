@@ -29,7 +29,7 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
 	 * `dst' surface.
 	 */
 
-	int p_size = dst->format->BytesPrePixel;
+	int p_size = dst->format->BytesPerPixel;
 	for(int i = 0; i < dstrect->h; i++){
 		for(int j = 0; j < dstrect->w; j++){
 			for(int k = 0; k <  p_size; k++){
@@ -49,7 +49,10 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 	 * NULL, fill the whole surface.
 	 */
 	
-	int p_size = dst->format->BytesPrePixel;
+	int p_size = dst->format->BytesPerPixel;
+	int dx = (dstrect == NULL ? 0 : dstrect->x);
+	int dy = (dstrect == NULL ? 0 : dstrect->y);
+
 
 	if(dstrect != NULL){
 		for(int i = 0; i < dstrect->h; i++){
