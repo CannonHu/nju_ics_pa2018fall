@@ -43,14 +43,7 @@ void ide_write(uint8_t *, uint32_t, uint32_t);
 int fs_open(const char *pathname, int flags) {
 	int i = 0;
 	for(i = 0; i < NR_FILES; i ++){
-		bool find = true;
-		for(int j = 0; file_table[i].name[j] != "/0"; j++){
-			if(pathname[j] != file_table[i].name[j]){
-				find = false;
-				break;
-			}
-		}
-		if(find){
+		if(strcmp(pathname, file_table[i].name)){
 			files[i + 3].used = true;
 			files[i + 3].index = i + 3;
 			files[i + 3].offset = 0;
