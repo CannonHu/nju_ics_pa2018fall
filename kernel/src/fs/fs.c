@@ -121,7 +121,12 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 }
 
 int fs_close(int fd) {
+	assert(fd < NR_FILES + 3);
 	
+	files[fd].used = false;
+	files[fd].index = 0;
+	files[fd].offset = 0;
+	return 0;	
 	//panic("Please implement fs_close at fs.c");
 	return -1;
 }
