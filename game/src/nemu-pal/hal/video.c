@@ -29,7 +29,7 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
 	 * `dst' surface.
 	 */
 
-	int p_size = dst->format->BytesPerPixel;
+	int p_size = src->format->BytesPerPixel;
 	Log("BytesPerPixel: %d", p_size);
 
 	for(int i = 0; i < dstrect->h; i++){
