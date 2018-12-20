@@ -50,10 +50,11 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 	 */
 	
 	int p_size = dst->format->BytesPerPixel;
+	int dx, dy;
 
 	if(dstrect != NULL){
-		int dx = dstrect->x;
-		int dy = dstrect->y;
+		dx = dstrect->x;
+		dy = dstrect->y;
 		for(int i = 0; i < dstrect->h; i++){
 			for(int j = 0; j < dstrect->w; j++){
 				for(int k = 0; k <  p_size; k++){
@@ -62,6 +63,16 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 			}
 		}
 
+	}
+	else{
+		for(int i = 0; i < dst->h; i++){
+			for(int j = 0; j < dst->w; j++){
+				for(int k = 0; k <  p_size; k++){
+					dst->pixels[(dx + j + (dy + i) * dst->w) * p_size + k] = (color >> (k * 8)) & 0xff;				
+				}
+			}
+		}
+	
 	}
 	//assert(0);
 }
