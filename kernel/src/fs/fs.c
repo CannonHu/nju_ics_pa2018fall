@@ -64,6 +64,7 @@ int fs_open(const char *pathname, int flags) {
 
 size_t fs_read(int fd, void *buf, size_t len) {
 	assert(fd > 2);
+	assert(fd < NR_FILES + 3);
 	int rlen = len;
 	
 	if(files[fd].offset + len - 1 > file_table[fd - 3].size){
