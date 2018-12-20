@@ -60,9 +60,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	assert(fd < NR_FILES + 3);
 	int rlen = len;
 	
-	if(fd - 3 == 8){
-		Log("loading dat");
-	}	
+
 	if(files[fd].offset + len - 1 > file_table[fd - 3].size){
 		rlen = file_table[fd - 3].size - files[fd].offset + 1;
 		Log("size over file offset: %d; len: %d; size: %d", files[fd].offset, len, file_table[fd - 3].size);	
