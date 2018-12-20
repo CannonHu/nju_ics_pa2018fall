@@ -46,7 +46,10 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 	 * NULL, fill the whole surface.
 	 */
 
-	assert(0);
+	if(dstrect != NULL){
+		
+	}
+	//assert(0);
 }
 
 void SDL_SetPalette(SDL_Surface *s, int flags, SDL_Color *colors, 
