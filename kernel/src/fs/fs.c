@@ -49,6 +49,9 @@ int fs_open(const char *pathname, int flags) {
 				find = false;
 				break;
 			}
+		}
+		if(find){
+			return i;
 		}	
 	}
 	//panic("Please implement fs_open at fs.c");
