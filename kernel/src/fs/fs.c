@@ -96,6 +96,9 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 	if(whence == SEEK_SET){
 		files[fd].offset = offset;
 	}
+	if(whence == SEEK_CUR){
+		files[fd].offset += offset;
+	}
 	//panic("Please implement fs_lseek at fs.c");
 	return -1;
 }
