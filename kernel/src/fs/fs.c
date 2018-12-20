@@ -44,8 +44,8 @@ int fs_open(const char *pathname, int flags) {
 	int i = 0;
 	for(i = 0; i < NR_FILES; i ++){
 		bool find = true;
-		for(int j = 0; NR_FILES[i].name[j] != '/0'; j++){
-			if(pathname[j] != NR_FILES[i].name[j]){
+		for(int j = 0; file_table[i].name[j] != '/0'; j++){
+			if(pathname[j] != file_table[i].name[j]){
 				find = false;
 				break;
 			}
