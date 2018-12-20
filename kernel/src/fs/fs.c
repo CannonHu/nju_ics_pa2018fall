@@ -95,6 +95,7 @@ size_t fs_write(int fd, void *buf, size_t len) {
 off_t fs_lseek(int fd, off_t offset, int whence) {
 	if(whence == SEEK_SET){
 		files[fd].offset = offset;
+		return files[fd].offset;
 	}
 	if(whence == SEEK_CUR){
 		files[fd].offset += offset;
@@ -102,6 +103,9 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 			files[fd].offset = file_table[fd - 3].size - 1;
 			Log("offset overflow");
 		}
+	}
+	if(whence == SEEK_END){
+		files[fd].offset = offset + file_table[fd - 3].size;
 	}
 	//panic("Please implement fs_lseek at fs.c");
 	return -1;
