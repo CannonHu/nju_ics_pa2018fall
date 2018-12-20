@@ -93,7 +93,10 @@ size_t fs_write(int fd, void *buf, size_t len) {
 }
 
 off_t fs_lseek(int fd, off_t offset, int whence) {
-	panic("Please implement fs_lseek at fs.c");
+	if(whence == SEEK_SET){
+		files[fd].offset = offset;
+	}
+	//panic("Please implement fs_lseek at fs.c");
 	return -1;
 }
 
