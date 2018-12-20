@@ -17,19 +17,24 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
 	int dy = (dstrect == NULL ? 0 : dstrect->y);
 	int w = (srcrect == NULL ? src->w : srcrect->w);
 	int h = (srcrect == NULL ? src->h : srcrect->h);
-	//if(dst->w - dx < w) { w = dst->w - dx; }
-	//if(dst->h - dy < h) { h = dst->h - dy; }
-	//if(dstrect != NULL) {
-	//	dstrect->w = w;
-	//	dstrect->h = h;
-	//}
+	if(dst->w - dx < w) { w = dst->w - dx; }
+	if(dst->h - dy < h) { h = dst->h - dy; }
+	if(dstrect != NULL) {
+		dstrect->w = w;
+		dstrect->h = h;
+	}
 
 	/* TODO: copy pixels from position (`sx', `sy') with size
 	 * `w' X `h' of `src' surface to position (`dx', `dy') of
 	 * `dst' surface.
 	 */
 
-	assert(0);
+	for(int i = 0; i < dstrect->h; i++){
+		for(int j = 0; j < dstrect->w; j++){
+			dst->pixels[dx + j][dy + i] = src->pixels[sx + j][sy + i];
+		}
+	}
+	//assert(0);
 }
 
 void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
