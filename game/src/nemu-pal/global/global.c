@@ -87,7 +87,7 @@ PAL_InitGlobals(
    gpGlobals->lpObjectDesc = PAL_LoadObjectDesc(va("%s%s", PAL_PREFIX, "desc.dat"));
 #endif
    gpGlobals->bCurrentSaveSlot = 1;
-   Log("phase over");	
+   
    return 0;
 }
 
