@@ -96,8 +96,7 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 	if(whence == SEEK_SET){
 		files[fd].offset = offset;
 		if(files[fd].offset >= file_table[fd - 3].size){
-			files[fd].offset = file_table[fd - 3].size - 1;
-			Log("offset overflow");
+			assert("offset overflow");
 		}
 
 		return files[fd].offset;
@@ -105,8 +104,7 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 	if(whence == SEEK_CUR){
 		files[fd].offset += offset;
 		if(files[fd].offset >= file_table[fd - 3].size){
-			files[fd].offset = file_table[fd - 3].size - 1;
-			Log("offset overflow");
+			assert("offset overflow");	
 		}
 		return files[fd].offset;
 	}
