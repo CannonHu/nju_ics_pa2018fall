@@ -51,6 +51,9 @@ int fs_open(const char *pathname, int flags) {
 			}
 		}
 		if(find){
+			files[i + 3].used = true;
+			files[i + 3].index = i + 3;
+			files[i + 3].offset = 0;
 			return i + 3;
 		}	
 	}
