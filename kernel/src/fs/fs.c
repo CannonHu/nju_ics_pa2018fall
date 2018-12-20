@@ -55,12 +55,14 @@ int fs_open(const char *pathname, int flags) {
 		}	
 	}
 	//panic("Please implement fs_open at fs.c");
+	assert("No Such File");
 	return -1;
 }
 
 size_t fs_read(int fd, void *buf, size_t len) {
 	assert(fd > 2);
-	panic("Please implement fs_read at fs.c");
+	
+	//panic("Please implement fs_read at fs.c");
 	return -1;
 }
 
