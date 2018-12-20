@@ -43,6 +43,7 @@ void ide_write(uint8_t *, uint32_t, uint32_t);
 int fs_open(const char *pathname, int flags) {
 	int i = 0;
 	for(i = 0; i < NR_FILES; i ++){
+		bool find = false;
 		for(int j = 0; pathname[j] != '/0'; j++){
 			if(pathname[j] != NR_FILES[i].name[j]){
 				break;
