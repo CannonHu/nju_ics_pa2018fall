@@ -103,9 +103,14 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 			files[fd].offset = file_table[fd - 3].size - 1;
 			Log("offset overflow");
 		}
+		return files[fd].offset;
 	}
 	if(whence == SEEK_END){
 		files[fd].offset = offset + file_table[fd - 3].size;
+		if(files[fd].offset >= file_table[fd - 3].size){
+			Log("offset overflow");
+		}
+		return files[fd].offset;
 	}
 	//panic("Please implement fs_lseek at fs.c");
 	return -1;
