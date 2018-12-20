@@ -67,14 +67,14 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	int rlen = len;
 	
 	if(files[fd].offset + len - 1 > file_table[fd - 3].size){
-		rlen = file_table[fd - 3].size;
+		rlen = file_table[fd - 3].size - files[fd].offset;
 		Log("size over file");	
 	}
 	
 	ide_read(buf, file_table[fd - 3].disk_offset + files[fd].offset, rlen);
 
 	//panic("Please implement fs_read at fs.c");
-	return -1;
+	return rlen;
 }
 
 size_t fs_write(int fd, void *buf, size_t len) {
