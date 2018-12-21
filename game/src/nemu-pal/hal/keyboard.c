@@ -70,10 +70,12 @@ process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int))
 		if(key_state[i] == KEY_STATE_PRESS) {
 			judge = true;
 			key_press_callback(keycode_hash[i]);
+			return true;
 		}
 		if(key_state[i] == KEY_STATE_RELEASE){
 			judge = true;
 			key_release_callback(keycode_hash[i]);
+			return false;
 		}
 			
 	}
