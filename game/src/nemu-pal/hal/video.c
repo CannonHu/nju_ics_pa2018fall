@@ -32,8 +32,10 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
 	
 
 	for(int i = 0; i < dstrect->h; i++){
+		int dstpn = (dy + i) * dst->w;
+		int srcpn = (sy + i) * src->w;
 		for(int j = 0; j < dstrect->w; j++){
-			dst->pixels[dx + j + (dy + i) * dst->w] = src->pixels[sx + j + (sy + i) * src->w];
+			dst->pixels[dx + j + dstpn] = src->pixels[sx + j + srcpn];
 			
 		}
 	}
