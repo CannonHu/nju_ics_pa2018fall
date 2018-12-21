@@ -14,7 +14,7 @@ void timer_intr() {
 
 static int TIMER_Thread(void* hz) {
 	int delay = 1000 / *(int*)hz;
-
+	printf("hz: %x delay: %d\n", *(int*)hz, delay);
 	while(timer_active) {
 		timer_intr();
 		SDL_Delay(delay);
