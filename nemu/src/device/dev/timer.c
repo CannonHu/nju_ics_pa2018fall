@@ -24,7 +24,6 @@ static int TIMER_Thread(void* hz) {
 // start a timer with hz Hz
 void timer_start(int hz) {
 	timer_active = true;
-//	printf("hz: %x", hz);
 	SDL_CreateThread(TIMER_Thread, (void*) &hz);
 
 	SDL_Delay(10);
