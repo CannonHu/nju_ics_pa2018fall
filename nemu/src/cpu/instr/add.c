@@ -34,7 +34,7 @@ make_instr_func(add_i2rm_bv){
 	operand_read(&imm);
 	operand_read(&rm);
 	print_asm_2("add","bv",len, &imm, &rm);
-	int iv = imm.val;
+	int iv = imm.val & 0xff;
 	rm.val = alu_add(iv, rm.val, data_size);
 	operand_write(&rm);
 	return 1 + len;
