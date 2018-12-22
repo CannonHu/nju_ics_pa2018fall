@@ -2,7 +2,7 @@
 #define __PA_CONFIG_H__
 
 // reference implementations, only for debugging, do not submit when defined
-//#define NEMU_REF_ALU
+#define NEMU_REF_ALU
 //#define NEMU_REF_INSTR
 
 
