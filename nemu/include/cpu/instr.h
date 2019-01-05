@@ -140,6 +140,10 @@ make_instr_func(dec_rm_v);
 make_instr_func(mul_rm2a_b);
 make_instr_func(mul_rm2a_v);
 
+make_instr_func(div_rm2a_b);
+make_instr_func(div_rm2a_v);
+
+
 make_instr_func(cmps_b);
 make_instr_func(cmps_v);
 
